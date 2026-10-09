@@ -232,9 +232,10 @@ const step = d.yield.qty > 12 ? Math.max(1, Math.round(d.yield.qty / 5)) : 1;
     {
       d.photo && (
         <figure class="photo card">
-          <img src={d.photo.src} alt={d.photo.alt} width="1200" height="900" loading="eager" decoding="async" />
+          <img src={d.photo.src} alt={d.photo.alt} width="1280" height="960" decoding="async" />
           <figcaption>
-            Photo: <a href={d.photo.href} rel="noopener">{d.photo.credit}</a>, {d.photo.license}. Not Eric's cooking.
+            {d.photo.caption ? `${d.photo.caption}. ` : 'For reference, not Eric’s cooking. '}
+            Photo <a href={d.photo.href} rel="noopener">{d.photo.credit}</a>, {d.photo.license}.
           </figcaption>
         </figure>
       )
@@ -821,9 +822,10 @@ const step = d.yield.qty > 12 ? Math.max(1, Math.round(d.yield.qty / 5)) : 1;
   @media (min-width: 1180px) {
     .page:has(.photo) {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 300px;
-      column-gap: 48px;
+      grid-template-columns: minmax(0, 1fr) clamp(240px, 20vw, 300px);
+      column-gap: clamp(32px, 3vw, 48px);
       align-items: start;
+      width: min(1440px, 100%);
     }
     .page:has(.photo) .crumbs {
       grid-column: 1 / -1;

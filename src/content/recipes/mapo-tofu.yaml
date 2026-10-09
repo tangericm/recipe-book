@@ -10,6 +10,12 @@ source:
 summary: Soft tofu simmered in a red, numbing sauce of chili bean paste, fermented black beans and crisped beef, finished with ground Sichuan pepper. Written for the book from the bookmarked recipe; not cooked yet.
 yield: { qty: 4, unit: servings }
 time: { active: 25, total: 30 }
+photo:
+  src: "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Authentic_Mapo_Tofu.jpg/1280px-Authentic_Mapo_Tofu.jpg"
+  alt: "Mapo tofu cubes in red chili oil on a white plate"
+  credit: "Sichuanfoodlover"
+  license: "CC BY-SA 4.0"
+  href: "https://commons.wikimedia.org/wiki/File:Authentic_Mapo_Tofu.jpg"
 ingredients:
   - name: Tofu
     items:

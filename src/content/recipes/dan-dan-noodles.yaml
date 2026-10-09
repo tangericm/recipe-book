@@ -8,6 +8,12 @@ source:
 summary: Wheat noodles over a sesame and chili oil sauce, topped with crisp-fried pork and preserved mustard greens. On the notebook's list with no recipe yet; written for the book and not cooked.
 yield: { qty: 2, unit: bowls }
 time: { active: 25, total: 30 }
+photo:
+  src: "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Dandan_Noodles.jpg/1280px-Dandan_Noodles.jpg"
+  alt: "Folded noodles in red chili oil topped with crisp minced pork in a white bowl"
+  credit: "ZhengZhou"
+  license: "CC BY-SA 4.0"
+  href: "https://commons.wikimedia.org/wiki/File:Dandan_Noodles.jpg"
 ingredients:
   - name: Pork topping
     items:

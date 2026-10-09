@@ -9,6 +9,12 @@ summary: Juicy pork, chive and ginger filling, pan-fried with a crisp cornstarch
 yield: { qty: 50, unit: dumplings }
 time: { active: 60, total: 75 }
 related: [dumpling-wrappers]
+photo:
+  src: "https://images.pexels.com/photos/7287716/pexels-photo-7287716.jpeg?auto=compress&cs=tinysrgb&w=1280"
+  alt: "Crisp pan-fried dumplings fanned on a white plate with scallions and sesame"
+  credit: "Anna Tarazevich"
+  license: "Pexels License"
+  href: "https://www.pexels.com/photo/close-up-photo-of-crispy-dumplings-on-a-ceramic-plate-7287716/"
 ingredients:
   - name: Filling
     items:

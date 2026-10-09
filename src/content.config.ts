@@ -44,6 +44,7 @@ const recipes = defineCollection({
         credit: z.string(),
         license: z.string(),
         href: z.string().url(),
+        caption: z.string().optional(),
       })
       .optional(),
     ingredients: z.array(z.object({ name: z.string().optional(), items: z.array(ingredient) })),

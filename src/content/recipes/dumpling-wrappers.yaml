@@ -11,6 +11,12 @@ summary: A two-ingredient half hot-water dough, rested until soft as an earlobe 
 yield: { qty: 30, unit: wrappers }
 time: { active: 40, total: 100 }
 related: [pork-dumplings]
+photo:
+  src: "https://images.pexels.com/photos/13995953/pexels-photo-13995953.jpeg?auto=compress&cs=tinysrgb&w=1280"
+  alt: "Hands rolling small dough discs with a short rolling pin on a floured board"
+  credit: "tom L"
+  license: "Pexels License"
+  href: "https://www.pexels.com/photo/a-person-making-dumpling-wrappers-13995953/"
 ingredients:
   - items:
       - { id: flour, qty: 250, unit: g, name: all-purpose flour }

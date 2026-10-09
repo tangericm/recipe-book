@@ -10,6 +10,12 @@ source:
 summary: Hot-water dough rolled thin, brushed with a lard and Sichuan pepper paste, rolled up with scallions, coiled and pan-fried under a lid.
 yield: { qty: 4, unit: pancakes }
 time: { active: 35, total: 55 }
+photo:
+  src: "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Scallion_pancake_%284354349219%29.jpg/1280px-Scallion_pancake_%284354349219%29.jpg"
+  alt: "A scallion pancake frying in a black pan on a home stove"
+  credit: "Karen and Brad Emerson"
+  license: "CC BY 2.0"
+  href: "https://commons.wikimedia.org/wiki/File:Scallion_pancake_(4354349219).jpg"
 ingredients:
   - name: Dough
     items:

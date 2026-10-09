@@ -11,6 +11,12 @@ source:
 summary: Hong Kong bakery buns with a roux-softened milk dough, a crackly sugar-butter topping and a custard center. Made more than once; the notes are from those bakes.
 yield: { qty: 6, unit: buns }
 time: { active: 75, total: 300 }
+photo:
+  src: "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Pineapple_buns.jpg/1280px-Pineapple_buns.jpg"
+  alt: "Three glossy pineapple buns with crackled tops on a white plate"
+  credit: "Party Lin"
+  license: "CC BY 2.0"
+  href: "https://commons.wikimedia.org/wiki/File:Pineapple_buns.jpg"
 ingredients:
   - name: Bread dough
     items:

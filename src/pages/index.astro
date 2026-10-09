@@ -119,6 +119,9 @@ const counts = {
                         </span>
                       )}
                       <span class="dish__en">{r.data.title}</span>
+                      <span class="dish__meta num" aria-hidden="true">
+                        {minutes(r.data.time.total)}
+                      </span>
                     </a>
                   </th>
                   <td class="dish__time num">{minutes(r.data.time.total)}</td>
@@ -607,24 +610,34 @@ const counts = {
     font-size: 0.8rem;
   }
 
+  .dish__meta {
+    display: none;
+  }
   @media (max-width: 640px) {
+    .order {
+      padding-inline: 16px;
+    }
     .dish__link {
       padding: 10px 6px 11px 0;
     }
     .dish__hz {
       font-size: var(--step-1);
     }
-    .grid__time {
-      width: 4.4em;
+    .dish__meta {
+      display: block;
+      color: var(--ink-2);
+      font-size: 0.875rem;
+    }
+    .grid__time,
+    .grid thead th:nth-child(2),
+    .dish__time {
+      display: none;
     }
     .grid__status {
-      width: 3.6em;
+      width: 3.4em;
     }
     .grid__plan {
       width: 3.4em;
-    }
-    .dish__time {
-      font-size: 0.875rem;
     }
     thead th {
       font-size: 0.6875rem;
