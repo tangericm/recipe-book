@@ -1,0 +1,56 @@
+title: Thai Red Curry with Chicken
+pinyin: ""
+cuisine: Thai
+chapter: braises
+status: draft
+source:
+  kind: chat
+  date: 2026-10
+summary: Red curry paste fried in coconut cream until it smells toasty, then simmered with sliced chicken breast, baby corn, bell peppers and ginger. Fish sauce and sugar bring it into balance.
+yield: { qty: 6, unit: servings }
+time: { active: 30, total: 40 }
+equipment: Wok or wide pot
+ingredients:
+  - name: Curry
+    items:
+      - { id: coconut, qty: 2, name: cans coconut milk, note: "400 ml each; don't shake them" }
+      - { id: oil, qty: 1, unit: tbsp, name: neutral oil }
+      - { id: paste, qty: 3, unit: tbsp, name: red curry paste, note: "Mae Ploy is hot and salty; go to 4 for more heat" }
+      - { id: ginger, qty: 15, unit: g, name: fresh ginger, note: "a thumb-sized piece, cut into thin matchsticks" }
+      - { id: chicken, qty: 900, unit: g, name: boneless chicken breast, note: "thawed, sliced thin across the grain" }
+      - { id: fish-sauce, qty: 2, unit: tbsp, name: fish sauce, note: more to taste }
+      - { id: sugar, qty: 1, unit: tbsp, name: palm or brown sugar }
+  - name: Vegetables
+    items:
+      - { id: corn, qty: 227, unit: g, name: baby corn, note: "drained if canned, halved on the diagonal" }
+      - { id: peppers, qty: 3, name: bell peppers, note: "mixed colours, cut into strips" }
+      - { id: scallions, qty: 4, name: green onions, note: "whites in 5 cm lengths, greens thinly sliced" }
+  - name: To serve
+    items:
+      - { id: rice, name: steamed jasmine rice }
+steps:
+  - name: Prep
+    steps:
+      - text: Slice {chicken}, cut {peppers} into strips, halve {corn} and cut {ginger} into matchsticks. Keep the green onion whites and greens from {scallions} apart.
+  - name: Fry the paste
+    steps:
+      - text: Open {coconut} without shaking and spoon the thick cream off the top of one can, about half a cup, into the wok with {oil}. Simmer over medium heat, stirring, until it thickens and little beads of oil appear.
+        timer: 240
+      - text: Add {paste} and {ginger}. Fry, stirring and scraping, until the paste darkens a shade and smells toasty rather than raw.
+        timer: 120
+  - name: Simmer
+    steps:
+      - text: Add the chicken and stir to coat it in the paste. Cook until the outside is no longer pink.
+        timer: 180
+      - text: Pour in the rest of the coconut milk from both cans. Add {fish-sauce}, {sugar} and the baby corn. Bring to a gentle simmer, not a hard boil, which can split the coconut milk.
+        timer: 300
+      - text: Add the peppers and green onion whites. Simmer until the peppers are just tender but still bright and the chicken is cooked through.
+        timer: 180
+  - name: Finish
+    steps:
+      - text: Taste. Add fish sauce a little at a time for salt and a pinch of sugar to round out the heat. It should taste hot, salty and sweet in that order.
+      - text: Scatter the sliced green onion greens over the curry and serve with {rice}.
+notes:
+  - { kind: tip, text: "Thaw the chicken overnight in the fridge. Slightly frozen breast is easier to slice thin." }
+  - { kind: tip, text: "If you have Thai basil, stir in a big handful of leaves off the heat just before serving. A squeeze of lime also works." }
+  - { kind: tip, text: Breast dries out fast. Keep the simmer gentle and stop as soon as the chicken is cooked through. }

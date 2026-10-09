@@ -21,6 +21,7 @@ Each recipe is one YAML file in `src/content/recipes/`. The file name becomes th
 title: Salt Chicken
 hanzi: 盐鸡            # optional; set hanziLang: zh-Hant for traditional characters
 pinyin: Yán jī         # optional
+cuisine: Chinese       # optional, defaults to Chinese (Thai, Indian, ...)
 chapter: braises       # dough | braises | bakery | hotpot
 status: cooked         # cooked | saved | draft
 source:

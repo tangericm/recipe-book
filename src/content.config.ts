@@ -22,6 +22,7 @@ const recipes = defineCollection({
     hanzi: z.string().optional(),
     hanziLang: z.enum(['zh-Hans', 'zh-Hant']).default('zh-Hans'),
     pinyin: z.string().optional(),
+    cuisine: z.string().default('Chinese'),
     chapter: z.enum(['dough', 'braises', 'bakery', 'hotpot']),
     status: z.enum(['cooked', 'saved', 'draft']),
     scalable: z.boolean().default(true),

@@ -80,7 +80,7 @@ export function jsonLd(r: Recipe, url: string) {
     alternateName: d.hanzi,
     description: d.summary,
     author: { '@type': 'Person', name: 'Eric Tang' },
-    recipeCuisine: d.chapter === 'braises' && d.title.includes('Masala') ? 'Indian' : 'Chinese',
+    recipeCuisine: d.cuisine,
     recipeCategory: d.chapter,
     recipeYield: [String(d.yield.qty), `${d.yield.qty} ${d.yield.unit}`],
     totalTime: isoDuration(d.time.total),
