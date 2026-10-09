@@ -2,7 +2,7 @@
 
 Eric's recipe book: Chinese home cooking, braises, buns and a cake, built as a printed dim sum order card. Find a dish, tick a few to plan a cook and get a shopping list, or open one and let the guided mode walk you through it: mise en place first, one step at a time, the step's timer front and center, the screen kept awake, and your place remembered if you leave.
 
-Built with [Astro](https://astro.build) as a static site.
+Live at **https://erics-kitchen.vercel.app**. Built with [Astro](https://astro.build) as a static site; every push to `main` deploys to Vercel.
 
 ## Run it
 
