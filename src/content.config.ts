@@ -26,7 +26,7 @@ const recipes = defineCollection({
     status: z.enum(['cooked', 'saved', 'draft']),
     scalable: z.boolean().default(true),
     source: z.object({
-      kind: z.enum(['notebook', 'adapted', 'chat', 'draft']),
+      kind: z.enum(['notebook', 'family', 'adapted', 'chat', 'draft']),
       label: z.string().optional(),
       url: z.string().url().optional(),
       date: z.union([z.string(), z.number()]).optional(),

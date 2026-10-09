@@ -55,26 +55,30 @@ const counts = {
           <span class="hz" lang="zh-Hans">家常</span>
           <span class="order__en print">Home Cooking</span>
         </h1>
-        <p class="order__sub">
-          Eric's recipe book. {counts.total} dishes, {counts.cooked} of them cooked and annotated. Open one to be walked
-          through it, or tick a few to plan a cook.
+        <p class="order__meta print">
+          <span>Eric's recipe book</span>
+          <span><span class="num">{counts.total}</span> dishes</span>
+          <span><span class="num">{counts.cooked}</span> cooked</span>
+          <span>Tick to plan</span>
         </p>
         <div class="find">
           <label for="find" class="find__label">
             <span class="hz" lang="zh-Hans" aria-hidden="true">找</span>
             <span class="print">Find a dish</span>
           </label>
-          <input
-            id="find"
-            class="find__input"
-            type="search"
-            autocomplete="off"
-            spellcheck="false"
-            enterkeyhint="search"
-            placeholder=" "
-            aria-describedby="find-hint"
-          />
-          <Icon name="search" class="icon find__icon" />
+          <div class="find__field">
+            <input
+              id="find"
+              class="find__input"
+              type="search"
+              autocomplete="off"
+              spellcheck="false"
+              enterkeyhint="search"
+              placeholder=" "
+              aria-describedby="find-hint"
+            />
+            <Icon name="search" class="icon find__icon" />
+          </div>
           <p id="find-hint" class="find__hint">Search by name, ingredient, pinyin or 汉字.</p>
         </div>
       </header>
@@ -406,12 +410,29 @@ const counts = {
     font-stretch: 72%;
     letter-spacing: 0.04em;
   }
-  .order__sub {
-    max-width: 58ch;
-    margin: 0.9rem 0 0;
-    color: var(--ink-2);
-    font-size: var(--step-1);
-    line-height: 1.45;
+  /* Separators sit in the gap to the left of each item; the one that would
+     open a wrapped row falls outside the box and is clipped. */
+  .order__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 29px;
+    margin: 14px 0 0;
+    padding: 8px 0;
+    border-block: 1.5px solid var(--green);
+    color: var(--green);
+    font-size: 0.875rem;
+    overflow: hidden;
+  }
+  .order__meta > span {
+    position: relative;
+  }
+  .order__meta > span::before {
+    content: '';
+    position: absolute;
+    top: 0.2em;
+    bottom: 0.2em;
+    left: -15px;
+    border-left: 1px solid var(--green-rule);
   }
 
   .find {
@@ -450,10 +471,14 @@ const counts = {
   .find__input::-webkit-search-cancel-button {
     filter: hue-rotate(120deg);
   }
+  .find__field {
+    position: relative;
+  }
   .find :global(.find__icon) {
     position: absolute;
     right: 6px;
-    top: 14px;
+    top: 50%;
+    margin-top: -11px;
     width: 22px;
     height: 22px;
     color: var(--green);
@@ -579,7 +604,31 @@ const counts = {
     font-size: 0.95rem;
   }
   .dish__plan {
-    padding: 0 6px;
+    padding: 0;
+  }
+  /* A printed blank to mark, not a box: the ruled cell is the target. */
+  .dish__plan .tick {
+    width: 100%;
+    height: 100%;
+    min-height: 64px;
+    border: 0;
+    background: none;
+  }
+  .dish__plan .tick::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 22px;
+    width: 26px;
+    margin-left: -13px;
+    border-bottom: 1.5px solid var(--green-rule);
+  }
+  .dish__plan .tick:hover {
+    background: var(--blue-faint);
+  }
+  .dish__plan .tick::after {
+    width: 30px;
+    height: 30px;
   }
 
   .nomatch td {
@@ -697,6 +746,10 @@ const counts = {
   .chit__list :global(a) {
     text-decoration: none;
   }
+  .chit__list :global(li > .num) {
+    flex: none;
+    white-space: nowrap;
+  }
   .chit__list :global(a:hover) {
     text-decoration: underline;
   }
@@ -705,9 +758,13 @@ const counts = {
   }
   .chit__sum {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 8px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 8px;
     margin: 0 0 18px;
+  }
+  .chit__sum > div:nth-child(2) {
+    grid-column: 1 / -1;
+    grid-row: 1;
   }
   .chit__sum dt {
     color: var(--green);
@@ -717,6 +774,18 @@ const counts = {
     margin: 2px 0 0;
     font-size: var(--step-1);
     font-weight: 700;
+  }
+  .chit__sum > div:nth-child(2) dd {
+    color: var(--red);
+    font-size: var(--step-4);
+    font-weight: 800;
+    font-stretch: 78%;
+    line-height: 1;
+  }
+  .chit .btn--red[disabled] {
+    background: transparent;
+    color: var(--red);
+    border-color: var(--red-ink);
   }
   .chit__actions {
     display: flex;
@@ -753,10 +822,18 @@ const counts = {
       display: none;
     }
     .chit__sum {
+      grid-template-columns: repeat(3, auto);
+      justify-content: start;
+      gap: 0 18px;
       margin: 0;
     }
-    .chit__sum dd {
-      font-size: var(--step-0);
+    .chit__sum > div:nth-child(2) {
+      grid-column: auto;
+      grid-row: auto;
+    }
+    .chit__sum dd,
+    .chit__sum > div:nth-child(2) dd {
+      font-size: var(--step-1);
     }
     #clear-plan {
       display: none;

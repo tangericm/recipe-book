@@ -24,7 +24,7 @@ pinyin: Yán jī         # optional
 chapter: braises       # dough | braises | bakery | hotpot
 status: cooked         # cooked | saved | draft
 source:
-  kind: notebook       # notebook | adapted | chat | draft
+  kind: notebook       # notebook | family | adapted | chat | draft
   label: Red House Spice   # for adapted or draft
   url: https://...
 summary: One or two sentences.

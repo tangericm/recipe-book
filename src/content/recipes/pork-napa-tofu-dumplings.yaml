@@ -1,0 +1,46 @@
+title: Pork, Napa and Tofu Dumplings
+hanzi: 白菜猪肉饺子
+pinyin: Báicài zhūròu jiǎozi
+chapter: dough
+status: saved
+source:
+  kind: family
+summary: Pork with napa cabbage, pressed tofu, grated ginger and green onion, seasoned with two soy sauces, Shaoxing wine, sesame oil and a little black vinegar, then boiled.
+yield: { qty: 40, unit: dumplings }
+time: { active: 70, total: 80 }
+related: [hand-rolled-wrappers, pork-dumplings]
+ingredients:
+  - name: Filling
+    items:
+      - { id: pork, qty: 450, unit: g, name: ground pork, note: not too lean }
+      - { id: cabbage, qty: 400, unit: g, name: napa cabbage, note: "about half a small head, finely chopped" }
+      - { id: tofu, qty: 150, unit: g, name: pressed tofu, note: finely diced }
+      - { id: ginger, qty: 1, unit: tbsp, name: fresh ginger, note: grated }
+      - { id: scallions, qty: 3, name: green onions, note: finely chopped }
+      - { id: light-soy, qty: 2, unit: tbsp, name: light soy sauce }
+      - { id: dark-soy, qty: 1, unit: tsp, name: dark soy sauce, note: for colour }
+      - { id: wine, qty: 1, unit: tbsp, name: Shaoxing wine }
+      - { id: sesame-oil, qty: 1, unit: tbsp, name: sesame oil }
+      - { id: vinegar, qty: 1, unit: tsp, name: Chinese black vinegar, note: plus more for dipping }
+  - name: Wrapping
+    items:
+      - { id: wrappers, qty: 40, name: dumpling wrappers, note: hand-rolled }
+steps:
+  - name: Filling
+    steps:
+      - text: Squeeze {cabbage} hard, a handful at a time or wrapped in a clean towel, to get out as much water as you can.
+      - text: Put {pork} in a large bowl with {ginger}, {light-soy}, {dark-soy}, {wine} and {vinegar}. Stir in one direction with chopsticks until the meat turns sticky and pulls together.
+      - text: Add {tofu}, {cabbage}, {scallions} and {sesame-oil}. Fold through until evenly mixed, without working it more than that.
+  - name: Wrap
+    steps:
+      - text: Put a scant tablespoon of filling in the middle of a wrapper from {wrappers}. Fold it in half and pinch the edges firmly closed, pleating if you like. Fresh dough sticks to itself; dab on water only if the edge has dried.
+      - text: Set each dumpling on a floured tray, not touching the others.
+  - name: Boil
+    steps:
+      - text: Bring a large pot of water to a rolling boil. Add the dumplings in batches and nudge them with a spoon so they don't stick to the bottom.
+      - text: Each time the water comes back to a boil, add a cup of cold water. After the third time, the dumplings should float, puff up, and feel firm.
+        timer: 420
+      - text: Lift them out with a slotted spoon. Serve hot, with more black vinegar on the side.
+notes:
+  - { kind: tip, text: "The amounts are a starting point for her method. Boil one test dumpling and adjust the soy before you wrap the rest." }
+  - { kind: tip, text: "To freeze, set the tray in the freezer until firm, then bag them. Boil from frozen with one extra round of cold water." }

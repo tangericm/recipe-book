@@ -2,7 +2,7 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://recipe-book-tangericm.vercel.app',
+  site: 'https://recipe-book-eight-beta.vercel.app',
   output: 'static',
   trailingSlash: 'ignore',
   build: { format: 'directory' },

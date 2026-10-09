@@ -10,3 +10,6 @@ research_notes/
 *.log
 .impeccable/questions/
 .impeccable/hook.cache.json
+
+.vercel
+.env*

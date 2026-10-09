@@ -245,12 +245,13 @@ const step = d.yield.qty > 12 ? Math.max(1, Math.round(d.yield.qty / 5)) : 1;
   <div class="tray" id="tray-page" aria-live="polite"></div>
 
   <dialog class="cook" id="cook" aria-labelledby="cook-title">
+    <div class="cook__sheet card">
     <div class="cook__bar">
       <p class="cook__title" id="cook-title">
         {d.hanzi && <span class="hz" lang={d.hanziLang}>{d.hanzi}</span>}
         <span>{d.title}</span>
       </p>
-      <p class="cook__where print" id="cook-where">Get everything out</p>
+      <p class="cook__where print" id="cook-where" hidden></p>
       <button class="cook__icon-btn" type="button" id="awake" aria-pressed="false" hidden>
         <Icon name="sun" />
         <span class="cook__awake-label">Screen on</span>
@@ -365,6 +366,7 @@ const step = d.yield.qty > 12 ? Math.max(1, Math.round(d.yield.qty / 5)) : 1;
       </button>
     </div>
     <div class="tray tray--cook" id="tray-cook" aria-live="polite"></div>
+    </div>
   </dialog>
 
   <script
@@ -434,8 +436,10 @@ const step = d.yield.qty > 12 ? Math.max(1, Math.round(d.yield.qty / 5)) : 1;
     line-height: 1.02;
     letter-spacing: 0.02em;
     overflow-wrap: anywhere;
+    text-wrap: balance;
   }
   .sheet__en {
+    color: var(--green);
     font-family: var(--print);
     font-stretch: 80%;
     font-weight: 750;
@@ -544,13 +548,15 @@ const step = d.yield.qty > 12 ? Math.max(1, Math.round(d.yield.qty / 5)) : 1;
       padding-left: 0;
       border-left: 0;
     }
+    /* The stamp keeps its own column so long dish names wrap beside it. */
     .sheet__head {
-      grid-template-columns: minmax(0, 1fr);
+      column-gap: 10px;
     }
     .sheet__stamp {
-      position: absolute;
-      top: 14px;
-      right: 14px;
+      padding-top: 2px;
+    }
+    .sheet__stamp .stamp {
+      font-size: 1.15rem;
     }
   }
 
@@ -680,19 +686,22 @@ const step = d.yield.qty > 12 ? Math.max(1, Math.round(d.yield.qty / 5)) : 1;
     color: var(--red-ink);
     font-family: var(--hz);
     font-weight: 900;
-    transform: rotate(-10deg);
+    transform: rotate(var(--stamp-rot, -10deg));
     mix-blend-mode: var(--stamp-blend);
+    -webkit-mask-image: var(--ink-mask);
+    mask-image: var(--ink-mask);
+  }
+  .step:nth-child(3n + 2),
+  .track li:nth-child(3n + 2) {
+    --stamp-rot: 7deg;
+  }
+  .step:nth-child(3n),
+  .track li:nth-child(3n) {
+    --stamp-rot: -19deg;
   }
   .step[data-done] .step__text {
     padding-right: 2.6em;
   }
-  :global(.ref) {
-    text-decoration: underline;
-    text-decoration-color: var(--green-rule);
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.22em;
-  }
-
   .timer-chip {
     justify-self: start;
     display: inline-flex;
@@ -847,16 +856,33 @@ const step = d.yield.qty > 12 ? Math.max(1, Math.round(d.yield.qty / 5)) : 1;
     margin: 0;
     padding: 0;
     border: 0;
-    background: var(--card);
+    background: var(--table);
     color: var(--ink);
     overflow: hidden;
   }
   .cook[open] {
     display: grid;
-    grid-template-rows: auto auto minmax(0, 1fr) auto auto;
   }
   .cook::backdrop {
     background: var(--table);
+  }
+  .cook__sheet {
+    display: grid;
+    grid-template-rows: auto auto minmax(0, 1fr) auto auto;
+    width: min(1120px, 100%);
+    min-height: 0;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  @media (min-width: 900px) {
+    .cook[open] {
+      padding: clamp(16px, 2.5vh, 32px) var(--gutter);
+    }
+  }
+  @media (max-width: 899px) {
+    .cook__sheet {
+      box-shadow: none;
+    }
   }
   .cook__bar {
     display: grid;
@@ -931,13 +957,16 @@ const step = d.yield.qty > 12 ? Math.max(1, Math.round(d.yield.qty / 5)) : 1;
 
   .track {
     display: flex;
-    gap: 4px;
     margin: 0;
-    padding: 10px var(--gutter);
+    padding: 0 56px 0 var(--gutter);
+    border-bottom: 1px solid var(--green-rule);
     overflow-x: auto;
     list-style: none;
     scrollbar-width: none;
     overscroll-behavior-x: contain;
+    /* Fade the far edge: there is more strip to scroll to. */
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 56px), transparent);
+    mask-image: linear-gradient(to right, #000 calc(100% - 56px), transparent);
   }
   .track::-webkit-scrollbar {
     display: none;
@@ -945,36 +974,61 @@ const step = d.yield.qty > 12 ? Math.max(1, Math.round(d.yield.qty / 5)) : 1;
   .track li {
     flex: none;
   }
+  .track li + li {
+    border-left: 1px solid var(--green-faint);
+  }
   .track button {
     position: relative;
     display: grid;
     place-items: center;
-    width: 34px;
-    height: 34px;
+    width: 42px;
+    height: 46px;
     padding: 0;
-    border: 1px solid var(--green-rule);
-    border-radius: 1px;
+    border: 0;
+    border-bottom: 3px solid transparent;
     background: none;
     color: var(--ink-2);
-    font-size: 0.8125rem;
+    font-size: 0.9375rem;
     cursor: pointer;
   }
+  .track button:hover {
+    background: var(--blue-faint);
+  }
+  .track button:focus-visible {
+    outline-offset: -3px;
+  }
+  .track .hz {
+    color: var(--green);
+  }
   .track button[aria-current='step'] {
-    border: 2px solid var(--blue);
+    border-bottom-color: var(--blue);
     color: var(--blue);
     font-weight: 700;
   }
   .track button[data-done]::after {
-    content: '';
+    content: '好';
     position: absolute;
-    inset: 4px;
-    border: 2px solid var(--red-ink);
+    top: 50%;
+    left: 50%;
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    margin: -15px 0 0 -14px;
+    border: 1.5px solid var(--red-ink);
     border-radius: 50%;
-    transform: rotate(-12deg);
+    color: var(--red-ink);
+    font-family: var(--hz);
+    font-weight: 900;
+    font-size: 14px;
+    line-height: 1;
+    transform: rotate(var(--stamp-rot, -12deg));
     mix-blend-mode: var(--stamp-blend);
+    -webkit-mask-image: var(--ink-mask);
+    mask-image: var(--ink-mask);
   }
-  .track button[data-done] .num {
-    color: var(--red);
+  .track button[data-done] > span {
+    opacity: 0.28;
   }
 
   .stage {
@@ -1006,6 +1060,7 @@ const step = d.yield.qty > 12 ? Math.max(1, Math.round(d.yield.qty / 5)) : 1;
   }
   .panel__lead {
     margin: 0 0 8px;
+    color: var(--green);
     font-family: var(--print);
     font-stretch: 82%;
     font-weight: 750;

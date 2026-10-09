@@ -37,6 +37,8 @@ export function sourceLine(r: Recipe): { text: string; label?: string; url?: str
   switch (s.kind) {
     case 'notebook':
       return { text: "From Eric's recipe notebook" };
+    case 'family':
+      return { text: s.label ? `Family recipe, the way ${s.label} makes it` : 'Family recipe' };
     case 'adapted':
       return { text: 'Adapted from', label: s.label, url: s.url, date };
     case 'chat':

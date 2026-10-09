@@ -1,0 +1,32 @@
+title: Hand-Rolled Dumpling Wrappers
+hanzi: 手擀饺子皮
+pinyin: Shǒugǎn jiǎozi pí
+chapter: dough
+status: saved
+source:
+  kind: family
+summary: Flour, then water a splash at a time until there is no loose flour left in the bowl. Nothing else goes in.
+yield: { qty: 40, unit: wrappers }
+time: { active: 40, total: 70 }
+related: [pork-napa-tofu-dumplings]
+ingredients:
+  - items:
+      - { id: flour, qty: 300, unit: g, name: all-purpose flour, note: plus more for dusting }
+      - { id: water, qty: 150, unit: ml, name: cold water, note: "about this much; you may not need all of it" }
+steps:
+  - name: Dough
+    steps:
+      - text: Put {flour} in a large bowl. Drizzle in a little of {water} and stir with chopsticks.
+      - text: Keep adding water a splash at a time, stirring after each, until there is no loose flour left in the bowl. Stop there, even if water is left over.
+      - text: Press the shaggy pieces together by hand and knead into a firm, smooth dough, about 5 minutes.
+      - text: Cover and rest so the dough relaxes and rolls out without springing back.
+        timer: 1800
+  - name: Roll
+    steps:
+      - text: Knead briefly again, then roll the dough into a long rope about 2.5 cm thick. Keep whatever you are not working with covered.
+      - text: Cut the rope into 40 pieces, each about 11 g. Toss them in a little flour so they don't stick.
+      - text: Flatten each piece with your palm, then roll it into a round about 8 cm across, turning as you go so the edge ends up thinner than the middle.
+      - text: Fill them right away while they are soft. Fresh wrappers dry out fast.
+notes:
+  - { kind: tip, text: "The amounts are a starting point. She goes by feel: the dough is ready when the bowl is clean of loose flour." }
+  - { kind: tip, text: Plain cold-water dough gives a chewy wrapper that holds up to boiling. }

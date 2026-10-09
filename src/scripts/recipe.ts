@@ -267,9 +267,9 @@ export function initRecipe() {
       } else b.removeAttribute('aria-current');
     });
     const n = data.steps.length;
-    if (i === 0) where.textContent = 'Get everything out';
-    else if (i === last) where.textContent = 'Finished';
-    else where.textContent = `Step ${i} of ${n}${data.steps[i - 1].phase ? `  ·  ${data.steps[i - 1].phase}` : ''}`;
+    // The panel lead already names the mise and done screens.
+    where.hidden = i === 0 || i === last;
+    if (i > 0 && i < last) where.textContent = `Step ${i} of ${n}${data.steps[i - 1].phase ? `  ·  ${data.steps[i - 1].phase}` : ''}`;
     prevBtn.disabled = i === 0;
     nextBtn.hidden = i === last;
     nextLabel.textContent = i === 0 ? 'Start cooking' : i === n ? 'Done, finish' : 'Done, next step';
