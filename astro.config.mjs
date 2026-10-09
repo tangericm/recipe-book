@@ -6,9 +6,10 @@ export default defineConfig({
   output: 'static',
   trailingSlash: 'ignore',
   build: { format: 'directory' },
-  // Older dumpling cards, replaced by the family versions.
+  // Wrappers now live inside the dumpling recipe.
   redirects: {
-    '/r/pork-dumplings': '/r/pork-napa-tofu-dumplings',
-    '/r/dumpling-wrappers': '/r/hand-rolled-wrappers',
+    '/r/dumpling-wrappers': '/r/pork-dumplings',
+    '/r/hand-rolled-wrappers': '/r/pork-dumplings',
+    '/r/pork-napa-tofu-dumplings': '/r/pork-dumplings',
   },
 });

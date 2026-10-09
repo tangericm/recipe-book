@@ -1,0 +1,63 @@
+title: Pork Dumplings
+hanzi: 猪肉饺子
+pinyin: Zhūròu jiǎozi
+chapter: dough
+status: saved
+source:
+  kind: family
+summary: Wrappers from just flour and water, a pork, napa cabbage and pressed tofu filling seasoned with two soy sauces, Shaoxing wine, sesame oil and black vinegar, then boiled.
+yield: { qty: 40, unit: dumplings }
+time: { active: 100, total: 110 }
+photo:
+  src: "https://images.pexels.com/photos/13995953/pexels-photo-13995953.jpeg?auto=compress&cs=tinysrgb&w=1280"
+  alt: "Hands rolling small dough discs with a short rolling pin on a floured board"
+  credit: "tom L"
+  license: "Pexels License"
+  href: "https://www.pexels.com/photo/a-person-making-dumpling-wrappers-13995953/"
+ingredients:
+  - name: Wrappers
+    items:
+      - { id: flour, qty: 300, unit: g, name: all-purpose flour, note: plus more for dusting }
+      - { id: water, qty: 150, unit: ml, name: cold water, note: "about this much; you may not need all of it" }
+  - name: Filling
+    items:
+      - { id: pork, qty: 450, unit: g, name: ground pork, note: not too lean }
+      - { id: cabbage, qty: 400, unit: g, name: napa cabbage, note: "about half a small head, finely chopped" }
+      - { id: tofu, qty: 150, unit: g, name: pressed tofu, note: finely diced }
+      - { id: ginger, qty: 1, unit: tbsp, name: fresh ginger, note: grated }
+      - { id: scallions, qty: 3, name: green onions, note: finely chopped }
+      - { id: light-soy, qty: 2, unit: tbsp, name: light soy sauce }
+      - { id: dark-soy, qty: 1, unit: tsp, name: dark soy sauce, note: for colour }
+      - { id: wine, qty: 1, unit: tbsp, name: Shaoxing wine }
+      - { id: sesame-oil, qty: 1, unit: tbsp, name: sesame oil }
+      - { id: vinegar, qty: 1, unit: tsp, name: Chinese black vinegar, note: plus more for dipping }
+steps:
+  - name: Dough
+    steps:
+      - text: Put {flour} in a large bowl. Drizzle in a little of {water} and stir with chopsticks.
+      - text: Keep adding water a splash at a time, stirring after each, until there is no loose flour left in the bowl. Stop there, even if water is left over.
+      - text: Press the shaggy pieces together by hand and knead into a firm, smooth dough, about 5 minutes.
+      - text: Cover and rest so the dough relaxes and rolls out without springing back. Make the filling while it rests.
+        timer: 1800
+  - name: Filling
+    steps:
+      - text: Squeeze {cabbage} hard, a handful at a time or wrapped in a clean towel, to get out as much water as you can.
+      - text: Put {pork} in a large bowl with {ginger}, {light-soy}, {dark-soy}, {wine} and {vinegar}. Stir in one direction with chopsticks until the meat turns sticky and pulls together.
+      - text: Add {tofu}, {cabbage}, {scallions} and {sesame-oil}. Fold through until evenly mixed, without working it more than that.
+  - name: Roll and wrap
+    steps:
+      - text: Knead the rested dough briefly, then roll it into a long rope about 2.5 cm thick. Keep whatever you are not working with covered.
+      - text: Cut the rope into 40 pieces, each about 11 g. Toss them in a little flour so they don't stick.
+      - text: Flatten a piece with your palm, then roll it into a round about 8 cm across, turning as you go so the edge ends up thinner than the middle. Roll a few at a time; fresh wrappers dry out fast.
+      - text: Put a scant tablespoon of filling in the middle of each wrapper. Fold it in half and pinch the edges firmly closed, pleating if you like. Fresh dough sticks to itself; dab on water only if the edge has dried.
+      - text: Set each dumpling on a floured tray, not touching the others. Repeat until the dough and filling are used up.
+  - name: Boil
+    steps:
+      - text: Bring a large pot of water to a rolling boil. Add the dumplings in batches and nudge them with a spoon so they don't stick to the bottom.
+      - text: Each time the water comes back to a boil, add a cup of cold water. After the third time, the dumplings should float, puff up, and feel firm.
+        timer: 420
+      - text: Lift them out with a slotted spoon. Serve hot, with more black vinegar on the side.
+notes:
+  - { kind: tip, text: "The amounts are a starting point. She goes by feel: the dough is ready when the bowl is clean of loose flour, and the filling is right when a test dumpling tastes right. Boil one and adjust the soy before you wrap the rest." }
+  - { kind: tip, text: Plain cold-water dough gives a chewy wrapper that holds up to boiling. }
+  - { kind: tip, text: "To freeze, set the tray in the freezer until firm, then bag them. Boil from frozen with one extra round of cold water." }
