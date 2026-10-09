@@ -1,0 +1,85 @@
+title: Hot Pot at Home
+hanzi: 火锅
+pinyin: Huǒguō
+chapter: hotpot
+status: cooked
+source:
+  kind: chat
+  date: 2026-09
+summary: A split pot, spicy on one side and tomato on the other, over a quick daikon and carrot stock, with a timed run of show from 60 minutes out.
+yield: { qty: 4, unit: people }
+time: { active: 60, total: 60 }
+related: [sesame-dipping-sauce]
+ingredients:
+  - name: Stock
+    items:
+      - { id: water, qty: 4, unit: qt, name: water }
+      - { id: daikon, qty: 1, name: daikon, note: "half thick for the stock, half thin for the table" }
+      - { id: carrots, qty: 3, name: carrots, note: same split }
+      - { id: celery, qty: 3, name: celery stalks, note: in 8 cm chunks for the stock }
+      - { id: spicy-base, qty: 1, name: packet Haidilao spicy base }
+      - { id: tomato-base, qty: 1, name: packet Haidilao tomato base, note: 200 g }
+  - name: Meat
+    items:
+      - { id: beef, qty: 1.5, unit: lb, name: sliced beef, note: "chuck, brisket or short plate" }
+      - { id: pork-belly, qty: 1, unit: lb, name: pork belly rolls }
+  - name: Table
+    items:
+      - { id: shiitake, name: shiitake mushrooms, note: stems trimmed }
+      - { id: fried-tofu, name: fried tofu puffs }
+      - { id: soft-tofu, qty: 2, name: blocks soft tofu, note: in 2.5 cm cubes }
+      - { id: spinach, name: spinach }
+      - { id: enoki, name: enoki, note: in small clumps }
+      - { id: bok-choy, name: baby bok choy, note: halved }
+      - { id: noodles, name: udon or glass noodles, note: to finish }
+      - { id: sauce, name: sesame dipping sauce, note: see its own recipe }
+steps:
+  - name: T-60
+    steps:
+      - text: Take {beef} and {pork-belly} out of the freezer, still sealed. Put {water} on high and peel {daikon} and {carrots} while it heats.
+      - text: "Cut half the daikon and carrots thick (1 cm half-moons) for the stock and half thin (3 mm) for the table. Cut {celery} into chunks."
+  - name: T-50
+    steps:
+      - text: Water boiling. Add the thick daikon, carrots and celery. Simmer.
+        timer: 1800
+  - name: T-48
+    steps:
+      - text: Wash {spinach} in a big bowl of water. Halve {bok-choy}. Trim {shiitake}. Pull {enoki} into clumps (don't wash much). Cube {soft-tofu}.
+  - name: T-32
+    steps:
+      - text: Make {sauce}.
+  - name: T-25
+    steps:
+      - text: Check the meat. Edges pliable and center still frozen is right. Still a brick? Sealed bag into cool water for 10 minutes.
+  - name: T-22
+    steps:
+      - text: Set the table. Pot in the middle on a heatproof mat with the cord routed away from feet. Each place gets a rice bowl, plate, chopsticks, spoon, sauce bowl and a skimmer.
+  - name: T-20
+    steps:
+      - text: "Strain the stock and fill the pot at the table: about 1.5 quarts a side, well under the rim. Stir {spicy-base} into one side and {tomato-base} into the other."
+  - name: T-12
+    steps:
+      - text: Load the slow cookers. {shiitake}, the thin daikon and carrots, and {fried-tofu} go in now. Boil, then back off to a strong simmer.
+  - name: T-10
+    steps:
+      - text: Fan the meat out on plates and put it straight back in the fridge.
+  - name: T-0
+    steps:
+      - text: Taste and adjust. Hot water if it's too strong. Then the meat comes out and you eat. Finish with {noodles} in the tomato side.
+extras:
+  - title: Cook times at the table
+    rows:
+      - [Sliced beef, 10 to 20 sec]
+      - [Pork belly roll, 30 to 45 sec]
+      - [Spinach, 20 to 30 sec]
+      - [Enoki, 45 to 60 sec]
+      - [Baby bok choy, 1 to 2 min]
+      - [Celery, 2 min]
+      - [Soft tofu, 2 to 3 min]
+notes:
+  - kind: cook
+    text: About 1.5 quarts per side of the 4 quarts of stock. Food and the spicy base foam push the level up fast, so stop short of the line. Keep the leftover stock warm on the stove for top-ups.
+  - kind: tip
+    text: Fatty beef and pork belly shine in the spicy side; soft tofu, enoki and spinach in the tomato. Always top up with hot liquid, never cold.
+  - kind: tip
+    text: Chuck forgives a few extra seconds. Brisket is the beefiest but turns leathery fast. Short plate is fattiest and is best in the tomato broth.

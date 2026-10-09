@@ -1,0 +1,52 @@
+---
+// Phosphor Icons (bold), MIT licensed. One family, one weight.
+import arrowLeft from '@phosphor-icons/core/assets/bold/arrow-left-bold.svg?raw';
+import arrowRight from '@phosphor-icons/core/assets/bold/arrow-right-bold.svg?raw';
+import arrowUpRight from '@phosphor-icons/core/assets/bold/arrow-up-right-bold.svg?raw';
+import check from '@phosphor-icons/core/assets/bold/check-bold.svg?raw';
+import clock from '@phosphor-icons/core/assets/bold/clock-bold.svg?raw';
+import cookingPot from '@phosphor-icons/core/assets/bold/cooking-pot-bold.svg?raw';
+import listChecks from '@phosphor-icons/core/assets/bold/list-checks-bold.svg?raw';
+import search from '@phosphor-icons/core/assets/bold/magnifying-glass-bold.svg?raw';
+import minus from '@phosphor-icons/core/assets/bold/minus-bold.svg?raw';
+import pause from '@phosphor-icons/core/assets/bold/pause-bold.svg?raw';
+import play from '@phosphor-icons/core/assets/bold/play-bold.svg?raw';
+import plus from '@phosphor-icons/core/assets/bold/plus-bold.svg?raw';
+import printer from '@phosphor-icons/core/assets/bold/printer-bold.svg?raw';
+import reset from '@phosphor-icons/core/assets/bold/arrow-counter-clockwise-bold.svg?raw';
+import sun from '@phosphor-icons/core/assets/bold/sun-bold.svg?raw';
+import timer from '@phosphor-icons/core/assets/bold/timer-bold.svg?raw';
+import x from '@phosphor-icons/core/assets/bold/x-bold.svg?raw';
+
+const ICONS = {
+  'arrow-left': arrowLeft,
+  'arrow-right': arrowRight,
+  'arrow-up-right': arrowUpRight,
+  check,
+  clock,
+  'cooking-pot': cookingPot,
+  'list-checks': listChecks,
+  search,
+  minus,
+  pause,
+  play,
+  plus,
+  printer,
+  reset,
+  sun,
+  timer,
+  x,
+} as const;
+
+export type IconName = keyof typeof ICONS;
+
+interface Props {
+  name: IconName;
+  class?: string;
+}
+
+const { name, class: cls = 'icon' } = Astro.props;
+const svg = ICONS[name].replace('<svg ', `<svg class="${cls}" aria-hidden="true" focusable="false" `);
+---
+
+<Fragment set:html={svg} />

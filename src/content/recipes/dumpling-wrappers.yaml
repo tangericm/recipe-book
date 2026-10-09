@@ -1,0 +1,34 @@
+title: Dumpling Wrappers
+hanzi: 饺子皮
+pinyin: Jiǎozi pí
+chapter: dough
+status: saved
+source:
+  kind: adapted
+  label: Red House Spice
+  url: https://redhousespice.com/
+summary: A two-ingredient half hot-water dough, rested until soft as an earlobe and rolled into thin rounds.
+yield: { qty: 30, unit: wrappers }
+time: { active: 40, total: 100 }
+related: [pork-dumplings]
+ingredients:
+  - items:
+      - { id: flour, qty: 250, unit: g, name: all-purpose flour }
+      - { id: boiling, qty: 65, unit: ml, name: boiling water }
+      - { id: room-water, qty: 65, unit: ml, name: room-temperature water }
+steps:
+  - name: Dough
+    steps:
+      - text: Add {boiling} and then {room-water} to {flour} a little at a time, stirring with chopsticks until no dry flour is left. Bring it together by hand.
+      - text: Cover and rest, then knead into a smooth dough.
+        timer: 900
+      - text: Cover again and rest until the dough is soft, as soft as an earlobe.
+        timer: 2700
+  - name: Roll
+    steps:
+      - text: Form the dough into a ring and cut it into 4. Keep three covered while you work.
+      - text: Roll one piece into a rope and cut it into 7 or 8 equal pieces.
+      - text: Press each piece into a disc with your palm, then roll it into a thin round, thinner at the edge than the middle. Dust with flour if it sticks.
+  - name: Use or store
+    steps:
+      - text: Use them right away. To freeze, flour well between wrappers, stack, and seal airtight; thaw in the fridge and use at once.

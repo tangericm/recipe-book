@@ -1,0 +1,41 @@
+title: Sesame Dipping Sauce
+hanzi: 麻酱蘸料
+pinyin: Májiàng zhànliào
+chapter: hotpot
+status: cooked
+source:
+  kind: chat
+  date: 2026-09
+summary: Beijing-style ma jiang dip for hot pot. Nutty, salty and thick enough to cling to a slice of beef; everyone spikes their own bowl.
+yield: { qty: 4, unit: people }
+time: { active: 10, total: 10 }
+related: [hot-pot]
+ingredients:
+  - name: Base
+    items:
+      - { id: paste, qty: 8, unit: tbsp, name: Chinese sesame paste, note: or tahini or natural peanut butter }
+      - { id: water, qty: 6, unit: tbsp, name: warm water or hot broth }
+      - { id: soy, qty: 4, unit: tbsp, name: light soy sauce }
+      - { id: vinegar, qty: 4, unit: tsp, name: Chinkiang black vinegar }
+      - { id: sesame-oil, qty: 4, unit: tsp, name: toasted sesame oil }
+      - { id: oyster, qty: 4, unit: tsp, name: oyster sauce }
+      - { id: sugar, qty: 2, unit: tsp, name: sugar }
+      - { id: furu, qty: 2, name: cubes fermented bean curd, note: optional but traditional }
+  - name: Aromatics
+    items:
+      - { id: garlic, qty: 4, name: garlic cloves, note: finely minced }
+      - { id: scallions, qty: 4, name: scallions, note: thinly sliced }
+      - { id: cilantro, qty: 0.5, unit: cup, name: cilantro, note: roughly chopped }
+      - { id: chili-oil, qty: 4, unit: tsp, name: chili oil, note: to taste }
+steps:
+  - steps:
+      - text: Stir {paste} well in its jar first; the oil separates. Scoop into a bowl.
+      - text: Whisk in {water} one tablespoon at a time. It seizes and looks broken at first; keep whisking and it comes back. Stop when it pours like heavy cream.
+      - text: Whisk in {soy}, {vinegar}, {sesame-oil}, {oyster} and {sugar}. Mash {furu} against the bowl first if using.
+      - text: Stir in {garlic}, {scallions} and {cilantro}. It should taste assertively salty on its own; hot food dilutes it.
+      - text: Spoon into bowls and let everyone add {chili-oil} at the table.
+notes:
+  - kind: cook
+    text: Mine came out a touch thick. That's what a ladle of hot broth at the table is for.
+  - kind: tip
+    text: It thickens as it sits. Stir a spoonful of hot broth into your bowl mid-meal to loosen it. Keeps 4 to 5 days in the fridge.

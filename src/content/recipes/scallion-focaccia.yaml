@@ -1,0 +1,54 @@
+title: Overnight Scallion Focaccia
+hanzi: 葱香佛卡夏
+pinyin: Cōngxiāng fókǎxià
+chapter: bakery
+status: cooked
+source:
+  kind: adapted
+  label: Tiffy Cooks
+  url: https://tiffycooks.com/scallion-focaccia-same-day-or-overnight-rise/
+  date: 2026-09
+summary: A wet, no-knead focaccia with a scallion-oil fold inside and on top. Mix the night before, bake the next afternoon.
+yield: { qty: 1, unit: 9 × 13 in pan }
+time: { active: 40, total: 840 }
+ingredients:
+  - name: Dough
+    items:
+      - { id: flour, qty: 500, unit: g, name: all-purpose flour, note: about 4 cups; weigh it }
+      - { id: salt, qty: 1, unit: tbsp, name: salt, note: a little less if using fine table salt }
+      - { id: yeast, qty: 1.5, unit: tsp, name: instant yeast }
+      - { id: water, qty: 450, unit: ml, name: water, note: room temperature }
+  - name: Topping
+    items:
+      - { id: scallions, qty: 2, unit: cup, name: scallions, note: chopped }
+      - { id: olive-oil, qty: 0.25, unit: cup, name: olive oil }
+      - { id: sesame, name: sesame seeds, note: optional }
+steps:
+  - name: The night before
+    steps:
+      - text: Mix {flour}, {salt} and {yeast}. Add {water} and stir until no dry flour is left. It will be sticky and shaggy. Cover.
+        timer: 1800
+      - text: "With a wet hand, stretch and fold 4 to 6 times around the bowl. It should feel slack and loose. Cover."
+        timer: 1800
+      - text: Fold again. Now it should feel tighter and stretch further. Cover tightly and refrigerate 8 to 24 hours.
+  - name: The next day
+    steps:
+      - text: Let the dough sit out until it has lost its chill and looks a little puffy.
+        timer: 5400
+      - text: Mix {scallions} with 2 tablespoons of {olive-oil} and a pinch of salt.
+      - text: Oil a 9 × 13 in pan generously and press the dough out into it.
+      - text: Scatter half the scallions. Fold the sides in to the middle, add another quarter of the scallions, then fold the bottom up and pinch to seal. Drizzle with oil and cover.
+      - text: Rest while the oven heats to 475°F (245°C). It should look puffy, and a floured poke should spring back slowly.
+        timer: 3000
+      - text: Drizzle with more oil, press the last scallions and {sesame} into the top, and dimple all over with your fingertips.
+      - text: Bake until deep golden.
+        timer: 1080
+notes:
+  - kind: cook
+    text: My first fold felt tight and wouldn't stretch. That's under-hydrated, almost always from packed cups of flour. Weigh 500 g, or work 2 to 3 tablespoons of water in at the second fold.
+  - kind: cook
+    text: "Out of the fridge mine had risen into a dome with a few bubbles: good. A drier dough won't jiggle much, so go by lost chill and puffiness instead."
+  - kind: tip
+    text: Extend fridge time freely, but keep counter time near the recipe. Four or five hours out and it over-proofs and bakes flat.
+  - kind: tip
+    text: Dimple the top scallions into the dough so they don't burn.

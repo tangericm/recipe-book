@@ -1,0 +1,57 @@
+title: Butter Masala Chicken Legs
+pinyin: ""
+chapter: braises
+status: saved
+source:
+  kind: chat
+  date: 2026-09
+summary: A weeknight shortcut. Bone-in legs braised in a jar of butter masala sauce, stretched with fresh aromatics, tomato and coconut milk.
+yield: { qty: 4, unit: servings }
+time: { active: 25, total: 55 }
+equipment: Instant Pot
+ingredients:
+  - name: Chicken
+    items:
+      - { id: chicken, qty: 6, name: bone-in chicken legs, note: drumsticks or thighs }
+      - { id: salt, qty: 1, unit: tsp, name: salt }
+      - { id: pepper, qty: 0.5, unit: tsp, name: black pepper }
+      - { id: ghee, qty: 2, unit: tbsp, name: ghee or neutral oil }
+  - name: Sauce
+    items:
+      - { id: onion, qty: 1, name: large onion, note: thinly sliced }
+      - { id: garlic, qty: 4, name: garlic cloves, note: minced }
+      - { id: ginger, qty: 1, unit: tbsp, name: fresh ginger, note: grated }
+      - { id: tomatoes, qty: 2, name: tomatoes, note: diced }
+      - { id: water, qty: 120, unit: ml, name: water }
+      - { id: jar, qty: 1, name: jar butter masala sauce, note: 285 g; Gymkhana }
+      - { id: garam, qty: 0.5, unit: tsp, name: garam masala, note: optional }
+      - { id: coconut, qty: 120, unit: ml, name: coconut milk }
+      - { id: cilantro, qty: 2, unit: tbsp, name: cilantro, note: chopped; optional }
+steps:
+  - name: Sear
+    steps:
+      - text: Pat {chicken} dry and season with {salt} and {pepper}. On Sauté (High) with {ghee}, brown 3 to 4 minutes a side. Set aside.
+        timer: 480
+  - name: Sauce
+    steps:
+      - text: Cook {onion} until soft and golden. Stir in {garlic} and {ginger} for a minute.
+        timer: 360
+      - text: Add {tomatoes} and cook until they break down. Pour in {water} and scrape the bottom clean.
+        timer: 180
+  - name: Pressure cook
+    steps:
+      - text: Stir in {jar} and {garam}. Nestle the chicken in skin side up and spoon sauce over it.
+      - text: Seal and cook on High pressure. Thighs need only 10 minutes.
+        timer: 720
+      - text: Natural release.
+        timer: 600
+  - name: Finish
+    steps:
+      - text: Lift out the chicken. Stir {coconut} into the sauce and simmer on Sauté until slightly thickened. Taste for salt.
+        timer: 300
+      - text: Return the chicken, coat it, and top with {cilantro}. Serve with rice or naan.
+notes:
+  - kind: tip
+    text: Slow cooker route. Do the sear and sauce on Sauté, then Slow Cook on Low for 4 to 5 hours, adding the coconut milk in the last 20 minutes.
+  - kind: tip
+    text: For crisp skin, broil the legs 4 to 5 minutes while the sauce reduces. The jar is mild; add cayenne or a slit green chili for heat.

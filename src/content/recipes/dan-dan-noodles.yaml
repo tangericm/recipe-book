@@ -1,0 +1,52 @@
+title: Dan Dan Noodles
+hanzi: 担担面
+pinyin: Dàndàn miàn
+chapter: dough
+status: draft
+source:
+  kind: draft
+summary: Wheat noodles over a sesame and chili oil sauce, topped with crisp-fried pork and preserved mustard greens. On the notebook's list with no recipe yet; written for the book and not cooked.
+yield: { qty: 2, unit: bowls }
+time: { active: 25, total: 30 }
+ingredients:
+  - name: Pork topping
+    items:
+      - { id: oil, qty: 1, unit: tbsp, name: neutral oil }
+      - { id: pork, qty: 150, unit: g, name: ground pork }
+      - { id: shaoxing, qty: 1, unit: tbsp, name: Shaoxing wine }
+      - { id: top-soy, qty: 1, unit: tsp, name: light soy sauce }
+      - { id: dark-soy, qty: 1, unit: tsp, name: dark soy sauce }
+      - { id: yacai, qty: 2, unit: tbsp, name: preserved mustard greens (ya cai), note: optional }
+  - name: Sauce
+    items:
+      - { id: chili-oil, qty: 4, unit: tbsp, name: chili oil, note: with plenty of sediment }
+      - { id: sesame-paste, qty: 2, unit: tbsp, name: Chinese sesame paste }
+      - { id: soy, qty: 2, unit: tbsp, name: light soy sauce }
+      - { id: vinegar, qty: 2, unit: tsp, name: Chinese black vinegar }
+      - { id: sugar, qty: 1, unit: tsp, name: sugar }
+      - { id: sichuan, qty: 0.5, unit: tsp, name: ground Sichuan peppercorn }
+      - { id: garlic, qty: 2, name: garlic cloves, note: minced }
+  - name: Bowls
+    items:
+      - { id: noodles, qty: 200, unit: g, name: fresh thin wheat noodles }
+      - { id: greens, qty: 2, name: handfuls bok choy or choy sum }
+      - { id: peanuts, qty: 2, unit: tbsp, name: roasted peanuts, note: crushed }
+      - { id: scallion, qty: 1, name: scallion, note: sliced }
+steps:
+  - name: Pork
+    steps:
+      - text: Heat {oil} in a wok. Fry {pork} over medium-high, breaking it up, until dry, brown and crisp at the edges.
+        timer: 480
+      - text: Add {shaoxing}, {top-soy} and {dark-soy}, then {yacai} if using. Stir a minute more and set aside.
+  - name: Sauce
+    steps:
+      - text: Divide {chili-oil}, {sesame-paste}, {soy}, {vinegar}, {sugar}, {sichuan} and {garlic} between two bowls and stir each into a paste.
+  - name: Noodles
+    steps:
+      - text: Boil {noodles} until just tender, following the package time. Add {greens} for the last minute.
+        timer: 180
+      - text: Stir 2 or 3 tablespoons of the hot noodle water into each bowl of sauce to loosen it.
+      - text: Divide noodles and greens between the bowls. Top with the pork, {peanuts} and {scallion}. Toss everything at the table.
+notes:
+  - kind: tip
+    text: Peanut butter loosened with a little sesame oil stands in for Chinese sesame paste.

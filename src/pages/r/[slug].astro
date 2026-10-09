@@ -1,0 +1,1223 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import { allRecipes, CHAPTERS, jsonLd, sourceLine, STATUS, type Recipe } from '../../lib/recipes';
+import { minutes, refIds, seconds, type Ingredient } from '../../lib/format';
+import { qtyHtml, stepHtml } from '../../lib/render';
+
+export async function getStaticPaths() {
+  const list = await allRecipes();
+  return list.map((r) => ({ params: { slug: r.id }, props: { recipe: r, all: list } }));
+}
+
+interface Props {
+  recipe: Recipe;
+  all: Recipe[];
+}
+
+const { recipe, all } = Astro.props;
+const d = recipe.data;
+const items = new Map<string, Ingredient>(d.ingredients.flatMap((g) => g.items).map((i) => [i.id, i]));
+const chapter = CHAPTERS.find((c) => c.id === d.chapter)!;
+const status = STATUS[d.status];
+const src = sourceLine(recipe);
+const related = d.related.map((id) => all.find((r) => r.id === id)).filter(Boolean) as Recipe[];
+
+// Flatten steps; numbering runs through the whole recipe.
+let n = 0;
+const groups = d.steps.map((g) => ({
+  name: g.name,
+  start: n + 1,
+  steps: g.steps.map((s) => ({ ...s, index: ++n, html: stepHtml(s.text, items), refs: refIds(s.text) })),
+}));
+const flat = groups.flatMap((g) => g.steps.map((s) => ({ ...s, phase: g.name })));
+const cookNotes = d.notes.filter((x) => x.kind === 'cook');
+const tips = d.notes.filter((x) => x.kind === 'tip');
+const url = new URL(`/r/${recipe.id}/`, Astro.site).href;
+const step = d.yield.qty > 12 ? Math.max(1, Math.round(d.yield.qty / 5)) : 1;
+---
+
+<Base title={`${d.hanzi ? `${d.hanzi} ` : ''}${d.title}, Home Cooking`} description={d.summary} jsonLd={jsonLd(recipe, url)}>
+  <div class="page">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="/" class="crumbs__back"><Icon name="arrow-left" /> <span>All recipes</span></a>
+    </nav>
+
+    <article class="sheet card" data-slug={recipe.id} data-base={d.yield.qty} data-step={step}>
+      <header class="sheet__head">
+        <div class="sheet__titles">
+          <h1 class="sheet__title">
+            {d.hanzi && <span class="hz sheet__hz" lang={d.hanziLang}>{d.hanzi}</span>}
+            <span class="sheet__en">{d.title}</span>
+          </h1>
+          {d.pinyin && <p class="sheet__py">{d.pinyin}</p>}
+          <p class="sheet__summary">{d.summary}</p>
+        </div>
+        <div class="sheet__stamp" title={status.long}>
+          <span class="stamp" data-status={d.status} aria-hidden="true">{status.stamp}</span>
+          <span class="sheet__stamp-label print">{status.label}</span>
+        </div>
+      </header>
+
+      <dl class="fields">
+        <div class="field">
+          <dt class="print">Time</dt>
+          <dd><span class="num">{minutes(d.time.active)}</span> hands-on, <span class="num">{minutes(d.time.total)}</span> total</dd>
+        </div>
+        <div class="field">
+          <dt class="print">Makes</dt>
+          <dd class="yield">
+            {
+              d.scalable ? (
+                <>
+                  <button class="yield__btn" type="button" data-yield="-1" aria-label="Make less">
+                    <Icon name="minus" />
+                  </button>
+                  <output class="num yield__n" id="yield-n" aria-live="polite">
+                    {d.yield.qty}
+                  </output>
+                  <button class="yield__btn" type="button" data-yield="1" aria-label="Make more">
+                    <Icon name="plus" />
+                  </button>
+                  <span>{d.yield.unit}</span>
+                </>
+              ) : (
+                <span>
+                  <span class="num">{d.yield.qty}</span> {d.yield.unit}
+                </span>
+              )
+            }
+          </dd>
+        </div>
+        <div class="field">
+          <dt class="print">Chapter</dt>
+          <dd><span class="hz" lang="zh-Hans">{chapter.hanzi}</span> {chapter.name}</dd>
+        </div>
+        <div class="field field--wide">
+          <dt class="print">Source</dt>
+          <dd>
+            {src.text}
+            {src.url && <> <a href={src.url} rel="noopener">{src.label}<Icon name="arrow-up-right" /></a></>}
+            {src.date && <span class="num">, {src.date}</span>}
+            {d.source.also && <>; see also <a href={d.source.also.url} rel="noopener">{d.source.also.label}<Icon name="arrow-up-right" /></a></>}
+          </dd>
+        </div>
+        {
+          d.equipment && (
+            <div class="field field--wide">
+              <dt class="print">Gear</dt>
+              <dd>{d.equipment}</dd>
+            </div>
+          )
+        }
+      </dl>
+
+      <div class="actions">
+        <button class="btn btn--red btn--big" type="button" id="cook-open">
+          <Icon name="cooking-pot" />
+          <span id="cook-open-label">Cook this, step by step</span>
+        </button>
+        <button class="btn" type="button" id="cook-restart" hidden>Start over</button>
+        <button class="btn" type="button" id="print-page"><Icon name="printer" /> Print</button>
+      </div>
+
+      <div class="sheet__body">
+        <section class="ingredients" aria-labelledby="ing-title">
+          <h2 id="ing-title" class="sec"><span class="hz" lang="zh-Hans">配料</span> <span class="print">Ingredients</span></h2>
+          {
+            d.ingredients.map((g) => (
+              <div class="ing-group">
+                {g.name && <h3 class="sub print">{g.name}</h3>}
+                <ul class="ing-list">
+                  {g.items.map((i) => (
+                    <li>
+                      <input class="tick" type="checkbox" id={`ing-${i.id}`} data-ing={i.id} />
+                      <label for={`ing-${i.id}`}>
+                        <Fragment set:html={qtyHtml(i)} /> <span class="ing__name">{i.name}</span>
+                        {i.note && <span class="ing__note">{i.note}</span>}
+                      </label>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))
+          }
+        </section>
+
+        <section class="method" aria-labelledby="method-title">
+          <h2 id="method-title" class="sec"><span class="hz" lang="zh-Hans">做法</span> <span class="print">Method</span></h2>
+          {
+            groups.map((g) => (
+              <div class="step-group">
+                {g.name && <h3 class="sub print">{g.name}</h3>}
+                <ol class="steps" start={g.start}>
+                  {g.steps.map((s) => (
+                    <li class="step" data-index={s.index}>
+                      <p class="step__text" set:html={s.html} />
+                      {s.timer && (
+                        <button class="timer-chip" type="button" data-timer={s.index} data-seconds={s.timer}>
+                          <Icon name="timer" /> <span>{seconds(s.timer)}</span>
+                        </button>
+                      )}
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            ))
+          }
+        </section>
+      </div>
+
+      {
+        d.extras.map((x) => (
+          <section class="extra">
+            <h2 class="sec"><span class="print">{x.title}</span></h2>
+            <table class="extra__table">
+              <tbody>
+                {x.rows.map((row) => (
+                  <tr>
+                    {row.map((cell, ci) => (ci === 0 ? <th scope="row">{cell}</th> : <td class="num">{cell}</td>))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </section>
+        ))
+      }
+
+      {
+        (cookNotes.length > 0 || tips.length > 0) && (
+          <section class="notes" aria-labelledby="notes-title">
+            <h2 id="notes-title" class="sec"><span class="hz" lang="zh-Hans">笔记</span> <span class="print">Notes</span></h2>
+            <div class="notes__cols">
+              {cookNotes.length > 0 && (
+                <div class="notes__cook">
+                  <h3 class="sub print">From cooking it</h3>
+                  <ul>
+                    {cookNotes.map((x) => (
+                      <li>{x.text}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {tips.length > 0 && (
+                <div class="notes__tips">
+                  <h3 class="sub print">Tips</h3>
+                  <ul>
+                    {tips.map((x) => (
+                      <li>{x.text}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </section>
+        )
+      }
+
+      {
+        related.length > 0 && (
+          <nav class="related" aria-label="Goes with">
+            <span class="print">Goes with</span>
+            {related.map((r) => (
+              <a href={`/r/${r.id}/`}>
+                {r.data.hanzi && <span class="hz" lang={r.data.hanziLang}>{r.data.hanzi}</span>} {r.data.title}
+              </a>
+            ))}
+          </nav>
+        )
+      }
+    </article>
+
+    {
+      d.photo && (
+        <figure class="photo card">
+          <img src={d.photo.src} alt={d.photo.alt} width="1200" height="900" loading="eager" decoding="async" />
+          <figcaption>
+            Photo: <a href={d.photo.href} rel="noopener">{d.photo.credit}</a>, {d.photo.license}. Not Eric's cooking.
+          </figcaption>
+        </figure>
+      )
+    }
+  </div>
+
+  <div class="tray" id="tray-page" aria-live="polite"></div>
+
+  <dialog class="cook" id="cook" aria-labelledby="cook-title">
+    <div class="cook__bar">
+      <p class="cook__title" id="cook-title">
+        {d.hanzi && <span class="hz" lang={d.hanziLang}>{d.hanzi}</span>}
+        <span>{d.title}</span>
+      </p>
+      <p class="cook__where print" id="cook-where">Get everything out</p>
+      <button class="cook__icon-btn" type="button" id="awake" aria-pressed="false" hidden>
+        <Icon name="sun" />
+        <span class="cook__awake-label">Screen on</span>
+      </button>
+      <button class="cook__icon-btn" type="button" id="cook-close" aria-label="Close and keep my place">
+        <Icon name="x" />
+      </button>
+    </div>
+
+    <ol class="track" id="track" aria-label="Steps">
+      <li><button type="button" data-go="0" aria-label="Get everything out"><span class="hz" lang="zh-Hans">料</span></button></li>
+      {
+        flat.map((s) => (
+          <li>
+            <button type="button" data-go={s.index} aria-label={`Step ${s.index}`}>
+              <span class="num">{s.index}</span>
+            </button>
+          </li>
+        ))
+      }
+    </ol>
+
+    <div class="stage" id="stage">
+      <section class="panel" data-panel="0" aria-labelledby="mise-title">
+        <h2 class="panel__lead" id="mise-title" tabindex="-1">Get everything out first.</h2>
+        <p class="panel__aside">Tick things off as they hit the counter. Quantities follow the batch size on the card.</p>
+        <div class="mise">
+          {
+            d.ingredients.map((g) => (
+              <div class="mise__group">
+                {g.name && <h3 class="sub print">{g.name}</h3>}
+                <ul>
+                  {g.items.map((i) => (
+                    <li>
+                      <input class="tick" type="checkbox" id={`mise-${i.id}`} data-ing={i.id} />
+                      <label for={`mise-${i.id}`}>
+                        <Fragment set:html={qtyHtml(i)} /> {i.name}
+                        {i.note && <span class="ing__note">{i.note}</span>}
+                      </label>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))
+          }
+        </div>
+      </section>
+
+      {
+        flat.map((s, k) => (
+          <section class="panel" data-panel={s.index} hidden aria-labelledby={`p-${s.index}`}>
+            <p class="panel__text" id={`p-${s.index}`} tabindex="-1" set:html={s.html} />
+            {s.refs.length > 0 && (
+              <div class="need">
+                <h3 class="sub print">For this step</h3>
+                <ul>
+                  {s.refs.map((id) => {
+                    const it = items.get(id);
+                    return it ? (
+                      <li>
+                        <Fragment set:html={qtyHtml(it)} /> {it.name}
+                      </li>
+                    ) : null;
+                  })}
+                </ul>
+              </div>
+            )}
+            {s.timer && (
+              <div class="clock" data-clock={s.index} data-seconds={s.timer}>
+                <output class="clock__face num">{seconds(s.timer)}</output>
+                <div class="clock__btns">
+                  <button class="btn btn--big clock__go" type="button" data-timer={s.index} data-seconds={s.timer}>
+                    <Icon name="play" class="icon i-play" />
+                    <Icon name="pause" class="icon i-pause" />
+                    <span>Start timer</span>
+                  </button>
+                  <button class="btn clock__reset" type="button" data-reset={s.index} hidden>
+                    <Icon name="reset" /> Reset
+                  </button>
+                </div>
+              </div>
+            )}
+            {flat[k + 1] && (
+              <p class="panel__next">
+                <span class="print">Next</span>
+                <span set:html={flat[k + 1].html} />
+              </p>
+            )}
+          </section>
+        ))
+      }
+
+      <section class="panel panel--done" data-panel={flat.length + 1} hidden aria-labelledby="done-title">
+        <span class="stamp stamp--hero" aria-hidden="true">好</span>
+        <h2 class="panel__lead" id="done-title" tabindex="-1">That's every step.</h2>
+        {
+          cookNotes.length > 0 && (
+            <p class="panel__aside">
+              Before next time, reread the notes on the card. Last time: “{cookNotes[0].text}”
+            </p>
+          )
+        }
+        <button class="btn" type="button" id="cook-finish">Back to the card</button>
+      </section>
+    </div>
+
+    <div class="cook__nav">
+      <button class="btn btn--big" type="button" id="prev"><Icon name="arrow-left" /> Back</button>
+      <button class="btn btn--red btn--big" type="button" id="next">
+        <span id="next-label">Start cooking</span>
+        <Icon name="arrow-right" />
+      </button>
+    </div>
+    <div class="tray tray--cook" id="tray-cook" aria-live="polite"></div>
+  </dialog>
+
+  <script
+    type="application/json"
+    id="recipe-data"
+    set:html={JSON.stringify({
+      slug: recipe.id,
+      steps: flat.map((s) => ({ phase: s.phase ?? '', timer: s.timer ?? 0 })),
+    })}
+  />
+  <script>
+    import { initRecipe } from '../../scripts/recipe';
+    initRecipe();
+  </script>
+</Base>
+
+<style>
+  .page {
+    position: relative;
+    z-index: 1;
+    width: min(1180px, 100%);
+    margin: 0 auto;
+    padding: 20px var(--gutter) 140px;
+  }
+  .crumbs {
+    margin-bottom: 18px;
+  }
+  .crumbs__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    color: var(--green);
+    font-family: var(--print);
+    font-stretch: 85%;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .crumbs__back:hover span {
+    text-decoration: underline;
+  }
+
+  .sheet {
+    padding: clamp(20px, 4vw, 56px) clamp(16px, 4.5vw, 64px) clamp(28px, 4vw, 56px);
+  }
+  @media (min-width: 1024px) {
+    .sheet {
+      transform: rotate(-0.35deg);
+    }
+  }
+
+  .sheet__head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 16px 32px;
+    align-items: start;
+  }
+  .sheet__title {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 0;
+  }
+  .sheet__hz {
+    color: var(--red);
+    font-size: var(--step-5);
+    line-height: 1.02;
+    letter-spacing: 0.02em;
+    overflow-wrap: anywhere;
+  }
+  .sheet__en {
+    font-family: var(--print);
+    font-stretch: 80%;
+    font-weight: 750;
+    font-size: var(--step-4);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  .sheet__py {
+    margin: 10px 0 0;
+    color: var(--green);
+    font-size: var(--step-1);
+    letter-spacing: 0.02em;
+  }
+  .sheet__summary {
+    max-width: 62ch;
+    margin: 14px 0 0;
+    color: var(--ink-2);
+    font-size: var(--step-1);
+    line-height: 1.5;
+  }
+  .sheet__stamp {
+    display: grid;
+    justify-items: center;
+    gap: 6px;
+    padding-top: 6px;
+  }
+  .sheet__stamp .stamp {
+    --rot: -14deg;
+    font-size: clamp(1.4rem, 1rem + 1.6vw, 2.1rem);
+  }
+  .sheet__stamp-label {
+    color: var(--red);
+    font-size: 0.75rem;
+  }
+
+  .fields {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin: clamp(22px, 3vw, 34px) 0 0;
+    border-top: 3px double var(--red);
+  }
+  .field {
+    padding: 10px 14px 12px 0;
+    border-bottom: 1px solid var(--green-rule);
+  }
+  .field + .field:not(.field--wide) {
+    padding-left: 14px;
+    border-left: 1px solid var(--green-rule);
+  }
+  .field--wide {
+    grid-column: 1 / -1;
+  }
+  .field dt {
+    color: var(--green);
+    font-size: 0.6875rem;
+  }
+  .field dd {
+    margin: 4px 0 0;
+  }
+  .field a {
+    color: var(--blue);
+  }
+  .field a :global(svg) {
+    width: 0.85em;
+    height: 0.85em;
+    margin-left: 2px;
+    vertical-align: -0.05em;
+  }
+  .yield {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .yield__btn {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin: -8px 0;
+    border: 1.5px solid var(--green-rule);
+    border-radius: 2px;
+    background: none;
+    color: var(--green);
+    cursor: pointer;
+  }
+  .yield__btn:hover {
+    background: var(--green-faint);
+  }
+  .yield__btn :global(svg) {
+    width: 18px;
+    height: 18px;
+  }
+  .yield__n {
+    min-width: 2ch;
+    color: var(--blue);
+    font-size: var(--step-2);
+    font-weight: 700;
+    text-align: center;
+  }
+  @media (max-width: 640px) {
+    .fields {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .field + .field:not(.field--wide) {
+      padding-left: 0;
+      border-left: 0;
+    }
+    .sheet__head {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .sheet__stamp {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+    }
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 24px 0 0;
+  }
+  .btn--big {
+    min-height: 56px;
+    padding: 0 1.5em;
+    font-size: var(--step-1);
+  }
+
+  .sheet__body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 36px;
+    margin-top: clamp(32px, 4vw, 48px);
+  }
+  @media (min-width: 900px) {
+    .sheet__body {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: clamp(32px, 4vw, 64px);
+    }
+  }
+
+  .sec {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin: 0 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 1.5px solid var(--green);
+    color: var(--green);
+    font-size: var(--step-1);
+    font-weight: 400;
+  }
+  .sec .hz {
+    color: var(--red);
+    font-size: 1.3em;
+  }
+  .sub {
+    margin: 18px 0 6px;
+    color: var(--green);
+    font-size: 0.75rem;
+  }
+
+  .ing-list,
+  .mise ul,
+  .need ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .ing-list li,
+  .mise li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--green-faint);
+  }
+  .ing-list label,
+  .mise label {
+    flex: 1;
+    padding-top: 3px;
+    cursor: pointer;
+  }
+  :global(.q) {
+    color: var(--blue);
+    font-weight: 700;
+  }
+  .ing__note {
+    display: block;
+    color: var(--ink-2);
+    font-size: 0.875rem;
+  }
+  .ing-list li:has(.tick:checked) label,
+  .mise li:has(.tick:checked) label {
+    color: var(--ink-2);
+    text-decoration: line-through;
+    text-decoration-color: var(--blue);
+  }
+
+  .steps {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .step {
+    position: relative;
+    display: grid;
+    grid-template-columns: 2.4em minmax(0, 1fr);
+    column-gap: 10px;
+    padding: 10px 0 12px;
+    border-bottom: 1px solid var(--green-faint);
+    counter-increment: none;
+  }
+  .step::before {
+    content: attr(data-index);
+    grid-row: span 2;
+    color: var(--red);
+    font-family: var(--print);
+    font-stretch: 80%;
+    font-weight: 800;
+    font-size: var(--step-2);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .step__text {
+    margin: 0;
+    max-width: 65ch;
+  }
+  .step[data-done]::after {
+    content: '好';
+    position: absolute;
+    top: 8px;
+    right: 0;
+    display: grid;
+    place-items: center;
+    width: 1.9em;
+    height: 1.9em;
+    border: 0.13em solid var(--red-ink);
+    border-radius: 50%;
+    color: var(--red-ink);
+    font-family: var(--hz);
+    font-weight: 900;
+    transform: rotate(-10deg);
+    mix-blend-mode: var(--stamp-blend);
+  }
+  .step[data-done] .step__text {
+    padding-right: 2.6em;
+  }
+  :global(.ref) {
+    text-decoration: underline;
+    text-decoration-color: var(--green-rule);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
+  }
+
+  .timer-chip {
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 36px;
+    margin-top: 8px;
+    padding: 0 12px;
+    border: 1.5px solid var(--green-rule);
+    border-radius: 2px;
+    background: none;
+    color: var(--green);
+    font-family: var(--print);
+    font-stretch: 85%;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    cursor: pointer;
+  }
+  .timer-chip:hover {
+    background: var(--green-faint);
+  }
+  .timer-chip :global(svg) {
+    width: 18px;
+    height: 18px;
+  }
+
+  .extra,
+  .notes,
+  .related {
+    margin-top: clamp(32px, 4vw, 48px);
+  }
+  .extra__table {
+    border-collapse: collapse;
+    min-width: min(420px, 100%);
+  }
+  .extra__table th,
+  .extra__table td {
+    padding: 8px 18px 8px 0;
+    border-bottom: 1px solid var(--green-faint);
+    text-align: left;
+    font-weight: 400;
+  }
+  .extra__table td {
+    color: var(--blue);
+    font-weight: 700;
+  }
+
+  .notes__cols {
+    display: grid;
+    gap: 8px 48px;
+  }
+  @media (min-width: 900px) {
+    .notes__cols {
+      grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    }
+  }
+  .notes ul {
+    margin: 0;
+    padding: 0 0 0 1.1em;
+  }
+  .notes li {
+    margin: 0 0 10px;
+    max-width: 62ch;
+  }
+  .notes__cook ul {
+    padding: 0;
+    list-style: none;
+  }
+  .notes__cook li {
+    position: relative;
+    padding-left: 30px;
+    color: var(--blue);
+    font-style: italic;
+    font-size: var(--step-1);
+    line-height: 1.45;
+  }
+  .notes__cook li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.3em;
+    width: 20px;
+    height: 20px;
+    background: var(--blue);
+    -webkit-mask: var(--icon-check) center / contain no-repeat;
+    mask: var(--icon-check) center / contain no-repeat;
+    transform: rotate(-6deg);
+  }
+
+  .related {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 8px 22px;
+    padding-top: 14px;
+    border-top: 1px solid var(--green-rule);
+  }
+  .related .print {
+    color: var(--green);
+    font-size: 0.75rem;
+  }
+  .related a {
+    font-family: var(--print);
+    font-stretch: 88%;
+    font-weight: 700;
+    font-size: var(--step-1);
+  }
+  .related .hz {
+    color: var(--red);
+  }
+
+  .photo {
+    margin: 32px 0 0;
+    padding: 12px 12px 10px;
+  }
+  .photo img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+  .photo figcaption {
+    margin-top: 8px;
+    color: var(--ink-2);
+    font-size: 0.8125rem;
+  }
+  @media (min-width: 1180px) {
+    .page:has(.photo) {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 300px;
+      column-gap: 48px;
+      align-items: start;
+    }
+    .page:has(.photo) .crumbs {
+      grid-column: 1 / -1;
+    }
+    .photo {
+      position: sticky;
+      top: 32px;
+      margin-top: 40px;
+      transform: rotate(2deg);
+    }
+  }
+
+  /* ---------- Guided cook mode ---------- */
+  .cook {
+    width: 100%;
+    max-width: none;
+    height: 100dvh;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: var(--card);
+    color: var(--ink);
+    overflow: hidden;
+  }
+  .cook[open] {
+    display: grid;
+    grid-template-rows: auto auto minmax(0, 1fr) auto auto;
+  }
+  .cook::backdrop {
+    background: var(--table);
+  }
+  .cook__bar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    grid-template-areas: 'title awake close' 'where awake close';
+    align-items: center;
+    column-gap: 8px;
+    padding: 12px var(--gutter) 10px;
+    padding-top: max(12px, env(safe-area-inset-top));
+    border-bottom: 3px double var(--red);
+  }
+  .cook__title {
+    grid-area: title;
+    margin: 0;
+    font-family: var(--print);
+    font-stretch: 85%;
+    font-weight: 700;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .cook__title .hz {
+    margin-right: 8px;
+    color: var(--red);
+  }
+  .cook__where {
+    grid-area: where;
+    margin: 2px 0 0;
+    color: var(--green);
+    font-size: 0.75rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .cook__icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-width: 48px;
+    height: 48px;
+    padding: 0 10px;
+    border: 1.5px solid transparent;
+    border-radius: 2px;
+    background: none;
+    color: var(--ink);
+    font-family: var(--print);
+    font-stretch: 85%;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .cook__icon-btn :global(svg) {
+    width: 24px;
+    height: 24px;
+  }
+  #awake {
+    grid-area: awake;
+    color: var(--ink-2);
+  }
+  #awake[aria-pressed='true'] {
+    border-color: var(--green-rule);
+    color: var(--green);
+  }
+  #cook-close {
+    grid-area: close;
+  }
+  @media (max-width: 520px) {
+    .cook__awake-label {
+      display: none;
+    }
+  }
+
+  .track {
+    display: flex;
+    gap: 4px;
+    margin: 0;
+    padding: 10px var(--gutter);
+    overflow-x: auto;
+    list-style: none;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+  }
+  .track::-webkit-scrollbar {
+    display: none;
+  }
+  .track li {
+    flex: none;
+  }
+  .track button {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border: 1px solid var(--green-rule);
+    border-radius: 1px;
+    background: none;
+    color: var(--ink-2);
+    font-size: 0.8125rem;
+    cursor: pointer;
+  }
+  .track button[aria-current='step'] {
+    border: 2px solid var(--blue);
+    color: var(--blue);
+    font-weight: 700;
+  }
+  .track button[data-done]::after {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border: 2px solid var(--red-ink);
+    border-radius: 50%;
+    transform: rotate(-12deg);
+    mix-blend-mode: var(--stamp-blend);
+  }
+  .track button[data-done] .num {
+    color: var(--red);
+  }
+
+  .stage {
+    position: relative;
+    overflow-y: auto;
+    padding: clamp(20px, 4vw, 48px) var(--gutter) 24px;
+  }
+  .panel {
+    width: min(860px, 100%);
+    margin: 0 auto;
+  }
+  .panel.is-entering {
+    animation: chit-in 280ms var(--ease-out) both;
+  }
+  .panel.is-entering-back {
+    animation: chit-back 280ms var(--ease-out) both;
+  }
+  @keyframes chit-in {
+    from {
+      transform: translateX(28px) rotate(0.6deg);
+      opacity: 0.25;
+    }
+  }
+  @keyframes chit-back {
+    from {
+      transform: translateX(-28px) rotate(-0.6deg);
+      opacity: 0.25;
+    }
+  }
+  .panel__lead {
+    margin: 0 0 8px;
+    font-family: var(--print);
+    font-stretch: 82%;
+    font-weight: 750;
+    font-size: var(--step-3);
+    line-height: 1.1;
+  }
+  .panel__aside {
+    max-width: 60ch;
+    margin: 0 0 20px;
+    color: var(--ink-2);
+    font-size: var(--step-1);
+  }
+  .panel__text {
+    max-width: 34ch;
+    margin: 0;
+    font-size: clamp(1.5rem, 1.1rem + 2vw, 2.4rem);
+    line-height: 1.32;
+    font-weight: 500;
+    outline: none;
+  }
+  .panel__text :global(.q) {
+    font-weight: 800;
+  }
+  .mise {
+    columns: 2 300px;
+    column-gap: 40px;
+  }
+  .mise__group {
+    break-inside: avoid;
+  }
+  .mise label {
+    font-size: var(--step-1);
+  }
+  .panel__next {
+    display: grid;
+    gap: 4px;
+    max-width: 60ch;
+    margin: 40px 0 0;
+    padding-top: 14px;
+    border-top: 1px dashed var(--green-rule);
+    color: var(--ink-2);
+    font-size: var(--step-1);
+  }
+  .panel__next .print {
+    color: var(--green);
+    font-size: 0.75rem;
+  }
+  .panel__next :global(.q) {
+    color: inherit;
+    font-weight: 700;
+  }
+  .need {
+    margin-top: 28px;
+    padding-top: 12px;
+    border-top: 1px solid var(--green-rule);
+  }
+  .need li {
+    padding: 4px 0;
+    font-size: var(--step-1);
+  }
+
+  .clock {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px 28px;
+    margin-top: 28px;
+  }
+  .clock__face {
+    min-width: 4.2ch;
+    color: var(--blue);
+    font-size: clamp(3rem, 2rem + 6vw, 5.5rem);
+    font-weight: 800;
+    line-height: 1;
+  }
+  .clock[data-state='running'] .clock__face {
+    color: var(--green);
+  }
+  .clock[data-state='over'] .clock__face {
+    color: var(--red);
+  }
+  .clock__btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .clock :global(.i-pause),
+  .clock[data-state='running'] :global(.i-play) {
+    display: none;
+  }
+  .clock[data-state='running'] :global(.i-pause) {
+    display: inline-block;
+  }
+  .timer-chip[data-state='running'] {
+    border-color: var(--green);
+    background: var(--green-faint);
+  }
+  .timer-chip[data-state='over'] {
+    border-color: var(--red);
+    color: var(--red);
+  }
+
+  .panel--done {
+    display: grid;
+    justify-items: start;
+    gap: 12px;
+  }
+  .stamp--hero {
+    --rot: -10deg;
+    font-size: clamp(3rem, 2rem + 6vw, 5rem);
+    margin-bottom: 8px;
+  }
+
+  .cook__nav {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 12px;
+    padding: 12px var(--gutter);
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+    border-top: 1px solid var(--green-rule);
+  }
+  #next {
+    justify-content: space-between;
+  }
+
+  /* Running timers: the page tray floats; the cook tray sits under the nav. */
+  .tray {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tray:empty {
+    display: none;
+  }
+  #tray-page {
+    position: fixed;
+    right: var(--gutter);
+    bottom: max(16px, env(safe-area-inset-bottom));
+    z-index: 30;
+    justify-content: flex-end;
+    max-width: calc(100% - 2 * var(--gutter));
+  }
+  .tray--cook {
+    padding: 0 var(--gutter) 12px;
+  }
+  .tray :global(.chip) {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 10px 0 12px;
+    border: 1.5px solid var(--green);
+    border-radius: 2px;
+    background: var(--card);
+    color: var(--green);
+    font-family: var(--print);
+    font-stretch: 85%;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    box-shadow: 0 8px 20px -10px var(--card-shade);
+  }
+  .tray :global(.chip[data-state='over']) {
+    border-color: var(--red);
+    background: var(--red);
+    color: var(--card);
+    animation: nudge 900ms ease-in-out infinite;
+  }
+  .tray :global(.chip button) {
+    min-width: 32px;
+    height: 32px;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+  }
+  @keyframes nudge {
+    50% {
+      transform: translateY(-2px);
+    }
+  }
+
+  @media print {
+    :global(body::before),
+    .crumbs,
+    .actions,
+    .timer-chip,
+    .tray,
+    .cook,
+    .photo,
+    .yield__btn,
+    .sheet__stamp {
+      display: none !important;
+    }
+    .page {
+      padding: 0;
+    }
+    .sheet {
+      box-shadow: none;
+      transform: none;
+      padding: 0;
+    }
+    .sheet__hz {
+      font-size: 2.6rem;
+    }
+    .sheet__en {
+      font-size: 2rem;
+    }
+    .sheet__body {
+      grid-template-columns: 2fr 3fr;
+    }
+    .tick {
+      width: 14px;
+      height: 14px;
+    }
+  }
+</style>

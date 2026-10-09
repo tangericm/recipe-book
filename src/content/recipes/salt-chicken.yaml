@@ -1,0 +1,56 @@
+title: Salt Chicken
+hanzi: 盐鸡
+pinyin: Yán jī
+chapter: braises
+status: cooked
+source:
+  kind: notebook
+summary: Chicken legs and thighs parboiled, then slow-simmered in a spiced, soy-and-fish-sauce stock until tender. The stock becomes the sauce or a noodle broth.
+yield: { qty: 4, unit: servings }
+time: { active: 20, total: 120 }
+ingredients:
+  - items:
+      - { id: legs, qty: 2, name: chicken legs }
+      - { id: thighs, qty: 2, name: chicken thighs }
+      - { id: water, name: water, note: "enough to cover, twice" }
+      - { id: stock, name: beef or chicken stock, note: "optional, for a richer broth" }
+  - name: Seasoning
+    items:
+      - { id: sesame-oil, name: sesame oil or hot sesame oil }
+      - { id: soy, name: light soy sauce }
+      - { id: fish-sauce, name: fish sauce }
+      - { id: shaoxing, name: Shaoxing wine }
+      - { id: salt, name: salt }
+      - { id: bouillon, name: chicken bouillon }
+      - { id: garlic, name: garlic, note: or garlic powder }
+      - { id: onion, name: onion, note: or onion powder }
+      - { id: ginger, name: ginger, note: or ginger powder }
+      - { id: ancho, name: ancho chile powder }
+      - { id: sichuan, name: ground Sichuan peppercorn }
+      - { id: paprika, name: paprika }
+      - { id: white-pepper, name: white pepper }
+  - name: Spice pouch
+    items:
+      - { id: cinnamon, qty: 1, name: cinnamon stick }
+      - { id: bay, qty: 1, name: bay leaf }
+      - { id: star-anise, qty: 3, name: star anise }
+      - { id: peppercorn, name: black peppercorns }
+      - { id: chili-flakes, name: chili flakes }
+steps:
+  - name: Parboil
+    steps:
+      - text: Put {legs} and {thighs} in a pot and cover with cold {water}.
+      - text: Bring to a boil on high, about 10 minutes, until the water boils and the scum rises.
+        timer: 600
+      - text: Drain, then rinse the chicken and the pot clean.
+  - name: Slow cook
+    steps:
+      - text: Return the chicken to the pot and cover with fresh water. For a deeper flavor, use some {stock} in place of part of the water.
+      - text: Add the seasonings, from {sesame-oil} through {white-pepper}, to taste.
+      - text: Fill a spice pouch with {cinnamon}, {bay}, {star-anise}, {peppercorn} and {chili-flakes}. Drop it in and hold the string under the lid so it is easy to fish out.
+      - text: Bring to a boil, then lower the heat to a gentle simmer.
+      - text: Simmer about 1½ hours, until the meat is tender.
+        timer: 5400
+  - name: Serve
+    steps:
+      - text: Serve the chicken over rice with the stock spooned on as sauce, or over noodles in the broth.

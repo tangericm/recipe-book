@@ -1,0 +1,857 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { allRecipes, byChapter, STATUS, CHAPTERS } from '../lib/recipes';
+import { amount, fold, minutes } from '../lib/format';
+
+const recipes = await allRecipes();
+const chapters = byChapter(recipes);
+
+// What the client needs for the plan and the shopping list.
+const planData = Object.fromEntries(
+  recipes.map((r) => [
+    r.id,
+    {
+      title: r.data.title,
+      hanzi: r.data.hanzi ?? '',
+      lang: r.data.hanziLang,
+      active: r.data.time.active,
+      total: r.data.time.total,
+      groups: r.data.ingredients.map((g) => ({
+        name: g.name ?? '',
+        items: g.items.map((i) => [amount(i.qty, i.unit), i.name].filter(Boolean).join(' ')),
+      })),
+    },
+  ]),
+);
+
+const searchText = (r: (typeof recipes)[number]) =>
+  fold(
+    [
+      r.data.title,
+      r.data.hanzi,
+      r.data.pinyin,
+      CHAPTERS.find((c) => c.id === r.data.chapter)?.name,
+      ...r.data.ingredients.flatMap((g) => g.items.map((i) => i.name)),
+    ]
+      .filter(Boolean)
+      .join(' '),
+  );
+
+const counts = {
+  cooked: recipes.filter((r) => r.data.status === 'cooked').length,
+  total: recipes.length,
+};
+---
+
+<Base
+  title="家常 Home Cooking, Eric's recipe book"
+  description={`Eric's recipe book: ${counts.total} Chinese home-cooking recipes, braises, buns and a cake, each with a guided cook mode.`}
+>
+  <div class="spread">
+    <main class="order card" aria-labelledby="book-title">
+      <header class="order__head">
+        <h1 id="book-title" class="order__title">
+          <span class="hz" lang="zh-Hans">家常</span>
+          <span class="order__en print">Home Cooking</span>
+        </h1>
+        <p class="order__sub">
+          Eric's recipe book. {counts.total} dishes, {counts.cooked} of them cooked and annotated. Open one to be walked
+          through it, or tick a few to plan a cook.
+        </p>
+        <div class="find">
+          <label for="find" class="find__label">
+            <span class="hz" lang="zh-Hans" aria-hidden="true">找</span>
+            <span class="print">Find a dish</span>
+          </label>
+          <input
+            id="find"
+            class="find__input"
+            type="search"
+            autocomplete="off"
+            spellcheck="false"
+            enterkeyhint="search"
+            placeholder=" "
+            aria-describedby="find-hint"
+          />
+          <Icon name="search" class="icon find__icon" />
+          <p id="find-hint" class="find__hint">Search by name, ingredient, pinyin or 汉字.</p>
+        </div>
+      </header>
+
+      <table class="grid">
+        <caption class="visually-hidden">All recipes by chapter, with time, status and a plan checkbox</caption>
+        <colgroup>
+          <col />
+          <col class="grid__time" />
+          <col class="grid__status" />
+          <col class="grid__plan" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th scope="col"><span class="print">Dish</span></th>
+            <th scope="col"><span class="print">Time</span></th>
+            <th scope="col"><span class="print">Status</span></th>
+            <th scope="col"><span class="print">Plan</span></th>
+          </tr>
+        </thead>
+        {
+          chapters.map((ch) => (
+            <tbody data-chapter={ch.id}>
+              <tr class="chapter">
+                <th colspan="4" scope="rowgroup">
+                  <span class="hz" lang="zh-Hans">
+                    {ch.hanzi}
+                  </span>
+                  <span class="chapter__name">{ch.name}</span>
+                </th>
+              </tr>
+              {ch.recipes.map((r, i) => (
+                <tr class="dish" data-search={searchText(r)} data-slug={r.id}>
+                  <th scope="row">
+                    <a class="dish__link" href={`/r/${r.id}/`}>
+                      {r.data.hanzi && (
+                        <span class="dish__zh">
+                          <span class="dish__hz hz" lang={r.data.hanziLang}>
+                            {r.data.hanzi}
+                          </span>
+                          {r.data.pinyin && <span class="dish__py">{r.data.pinyin}</span>}
+                        </span>
+                      )}
+                      <span class="dish__en">{r.data.title}</span>
+                    </a>
+                  </th>
+                  <td class="dish__time num">{minutes(r.data.time.total)}</td>
+                  <td class="dish__status">
+                    <span
+                      class="stamp"
+                      data-status={r.data.status}
+                      style={`--rot: ${((i * 37) % 24) - 14}deg`}
+                      title={STATUS[r.data.status].long}
+                      aria-hidden="true"
+                    >
+                      {STATUS[r.data.status].stamp}
+                    </span>
+                    <span class="visually-hidden">{STATUS[r.data.status].label}</span>
+                  </td>
+                  <td class="dish__plan">
+                    <input class="tick" type="checkbox" data-plan={r.id} aria-label={`Plan ${r.data.title}`} />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          ))
+        }
+        <tbody class="nomatch" hidden>
+          <tr>
+            <td colspan="4">
+              Nothing on the card matches <q id="nomatch-q"></q>. Try an ingredient, like pork or 鸡.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <footer class="order__foot">
+        <ul class="legend" aria-label="Status stamps">
+          {
+            (Object.keys(STATUS) as (keyof typeof STATUS)[]).map((k) => (
+              <li>
+                <span class="stamp" data-status={k} aria-hidden="true">
+                  {STATUS[k].stamp}
+                </span>
+                {STATUS[k].long}
+              </li>
+            ))
+          }
+        </ul>
+      </footer>
+    </main>
+
+    <aside class="chit card" id="chit" aria-labelledby="chit-title" data-count="0">
+      <h2 id="chit-title" class="chit__title">
+        <span class="hz" lang="zh-Hans">点单</span>
+        <span class="print">Plan</span>
+      </h2>
+      <p class="chit__empty">Tick dishes on the card to plan a cook. Ticks stay on this device.</p>
+      <ol class="chit__list" id="chit-list"></ol>
+      <dl class="chit__sum">
+        <div><dt class="print">Dishes</dt><dd class="num" id="sum-n">0</dd></div>
+        <div><dt class="print">Hands-on</dt><dd class="num" id="sum-active">0 min</dd></div>
+        <div><dt class="print">Longest</dt><dd class="num" id="sum-total">0 min</dd></div>
+      </dl>
+      <div class="chit__actions">
+        <button class="btn btn--red" type="button" id="open-list" disabled>
+          <Icon name="list-checks" />
+          Shopping list
+        </button>
+        <button class="btn" type="button" id="clear-plan" disabled>Clear</button>
+      </div>
+    </aside>
+  </div>
+
+  <dialog class="list card" id="list" aria-labelledby="list-title">
+    <header class="list__head">
+      <h2 id="list-title"><span class="hz" lang="zh-Hans">买菜</span> <span class="print">Shopping list</span></h2>
+      <button class="list__close" type="button" id="close-list" aria-label="Close shopping list">
+        <Icon name="x" />
+      </button>
+    </header>
+    <div id="list-body" class="list__body"></div>
+    <footer class="list__foot">
+      <button class="btn" type="button" id="print-list"><Icon name="printer" /> Print</button>
+    </footer>
+  </dialog>
+
+  <footer class="colophon">
+    家常 Home Cooking. Recipes by Eric Tang; sources credited on each card. Set in Noto Serif SC, Archivo and Atkinson
+    Hyperlegible Next. Icons by Phosphor.
+  </footer>
+
+  <script type="application/json" id="plan-data" set:html={JSON.stringify(planData)} />
+  <script>
+    import { fold, minutes } from '../lib/format';
+
+    type Plan = Record<
+      string,
+      { title: string; hanzi: string; lang: string; active: number; total: number; groups: { name: string; items: string[] }[] }
+    >;
+    const data: Plan = JSON.parse(document.getElementById('plan-data')!.textContent!);
+    const KEY = 'homecooking:plan';
+    const read = (): string[] => {
+      try {
+        return JSON.parse(localStorage.getItem(KEY) ?? '[]');
+      } catch {
+        return [];
+      }
+    };
+    const write = (v: string[]) => {
+      try {
+        localStorage.setItem(KEY, JSON.stringify(v));
+      } catch {
+        /* private mode: plan lives for this visit only */
+      }
+    };
+
+    let plan = read().filter((s) => data[s]);
+    const boxes = [...document.querySelectorAll<HTMLInputElement>('input[data-plan]')];
+    const chit = document.getElementById('chit')!;
+    const list = document.getElementById('chit-list')!;
+
+    function render() {
+      boxes.forEach((b) => (b.checked = plan.includes(b.dataset.plan!)));
+      list.replaceChildren(
+        ...plan.map((slug) => {
+          const r = data[slug];
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = `/r/${slug}/`;
+          if (r.hanzi) {
+            const hz = document.createElement('span');
+            hz.className = 'hz';
+            hz.lang = r.lang;
+            hz.textContent = r.hanzi;
+            a.append(hz, ' ');
+          }
+          a.append(r.title);
+          const t = document.createElement('span');
+          t.className = 'num';
+          t.textContent = minutes(r.total);
+          li.append(a, t);
+          return li;
+        }),
+      );
+      const active = plan.reduce((s, k) => s + data[k].active, 0);
+      const longest = plan.reduce((s, k) => Math.max(s, data[k].total), 0);
+      document.getElementById('sum-n')!.textContent = String(plan.length);
+      document.getElementById('sum-active')!.textContent = minutes(active);
+      document.getElementById('sum-total')!.textContent = minutes(longest);
+      chit.dataset.count = String(plan.length);
+      (document.getElementById('open-list') as HTMLButtonElement).disabled = !plan.length;
+      (document.getElementById('clear-plan') as HTMLButtonElement).disabled = !plan.length;
+    }
+
+    boxes.forEach((b) =>
+      b.addEventListener('change', () => {
+        const slug = b.dataset.plan!;
+        plan = b.checked ? [...plan, slug] : plan.filter((s) => s !== slug);
+        write(plan);
+        render();
+      }),
+    );
+    document.getElementById('clear-plan')!.addEventListener('click', () => {
+      plan = [];
+      write(plan);
+      render();
+    });
+    render();
+
+    // Shopping list, grouped by dish so quantities stay honest.
+    const dialog = document.getElementById('list') as HTMLDialogElement;
+    const body = document.getElementById('list-body')!;
+    document.getElementById('open-list')!.addEventListener('click', () => {
+      body.replaceChildren(
+        ...plan.map((slug) => {
+          const r = data[slug];
+          const sec = document.createElement('section');
+          const h = document.createElement('h3');
+          h.textContent = r.title;
+          sec.append(h);
+          r.groups.forEach((g, gi) => {
+            if (g.name) {
+              const gh = document.createElement('p');
+              gh.className = 'list__group print';
+              gh.textContent = g.name;
+              sec.append(gh);
+            }
+            const ul = document.createElement('ul');
+            g.items.forEach((text, ii) => {
+              const li = document.createElement('li');
+              const label = document.createElement('label');
+              const box = document.createElement('input');
+              box.type = 'checkbox';
+              box.className = 'tick';
+              box.id = `buy-${slug}-${gi}-${ii}`;
+              label.htmlFor = box.id;
+              label.textContent = text;
+              li.append(box, label);
+              ul.append(li);
+            });
+            sec.append(ul);
+          });
+          return sec;
+        }),
+      );
+      dialog.showModal();
+    });
+    document.getElementById('close-list')!.addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog) dialog.close();
+    });
+    document.getElementById('print-list')!.addEventListener('click', () => window.print());
+
+    // Find: filters rows in place; chapters with no matches fold away.
+    const input = document.getElementById('find') as HTMLInputElement;
+    const rows = [...document.querySelectorAll<HTMLTableRowElement>('tr.dish')];
+    const groups = [...document.querySelectorAll<HTMLTableSectionElement>('tbody[data-chapter]')];
+    const nomatch = document.querySelector<HTMLTableSectionElement>('tbody.nomatch')!;
+    input.addEventListener('input', () => {
+      const q = fold(input.value.trim());
+      let shown = 0;
+      rows.forEach((r) => {
+        const hit = !q || q.split(/\s+/).every((w) => r.dataset.search!.includes(w));
+        r.hidden = !hit;
+        if (hit) shown++;
+      });
+      groups.forEach((g) => (g.hidden = !g.querySelector('tr.dish:not([hidden])')));
+      nomatch.hidden = shown > 0;
+      document.getElementById('nomatch-q')!.textContent = input.value.trim();
+    });
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const first = rows.find((r) => !r.hidden);
+        if (first) first.querySelector('a')!.click();
+      }
+    });
+  </script>
+</Base>
+
+<style>
+  .spread {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+    width: min(1240px, 100%);
+    margin: 0 auto;
+    padding: clamp(16px, 4vw, 56px) var(--gutter) 120px;
+  }
+  @media (min-width: 1024px) {
+    .spread {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      align-items: start;
+      gap: clamp(40px, 5vw, 80px);
+    }
+  }
+
+  /* The order card */
+  .order {
+    padding: clamp(20px, 4vw, 52px) clamp(16px, 4vw, 56px) clamp(24px, 3vw, 40px);
+  }
+  @media (min-width: 1024px) {
+    .order {
+      transform: rotate(-0.5deg);
+    }
+  }
+
+  .order__title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 0.4em;
+    margin: 0;
+    line-height: 0.95;
+  }
+  .order__title .hz {
+    color: var(--red);
+    font-size: var(--step-5);
+    letter-spacing: 0.02em;
+  }
+  .order__en {
+    color: var(--green);
+    font-size: var(--step-3);
+    font-stretch: 72%;
+    letter-spacing: 0.04em;
+  }
+  .order__sub {
+    max-width: 58ch;
+    margin: 0.9rem 0 0;
+    color: var(--ink-2);
+    font-size: var(--step-1);
+    line-height: 1.45;
+  }
+
+  .find {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: end;
+    column-gap: 14px;
+    margin-top: clamp(20px, 3vw, 32px);
+  }
+  .find__label {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding-bottom: 10px;
+    color: var(--green);
+    font-size: var(--step-0);
+  }
+  .find__label .hz {
+    color: var(--red);
+    font-size: 1.6em;
+    line-height: 1;
+  }
+  .find__input {
+    width: 100%;
+    min-height: 48px;
+    padding: 6px 40px 6px 2px;
+    border: 0;
+    border-bottom: 2px solid var(--green);
+    border-radius: 0;
+    background: transparent;
+    color: var(--blue);
+    font: 500 var(--step-2) / 1.2 var(--text);
+    outline-offset: 6px;
+  }
+  .find__input::-webkit-search-cancel-button {
+    filter: hue-rotate(120deg);
+  }
+  .find :global(.find__icon) {
+    position: absolute;
+    right: 6px;
+    top: 14px;
+    width: 22px;
+    height: 22px;
+    color: var(--green);
+    pointer-events: none;
+  }
+  .find:has(.find__input:not(:placeholder-shown)) :global(.find__icon) {
+    display: none;
+  }
+  .find__hint {
+    grid-column: 2;
+    margin: 6px 0 0;
+    color: var(--ink-2);
+    font-size: 0.875rem;
+  }
+
+  /* The ruled grid */
+  .grid {
+    width: 100%;
+    margin-top: clamp(24px, 3vw, 36px);
+    border-collapse: collapse;
+  }
+  .grid__time {
+    width: 5.5em;
+  }
+  .grid__status {
+    width: 4.75em;
+  }
+  .grid__plan {
+    width: 4.25em;
+  }
+  thead th {
+    padding: 0 8px 8px;
+    border-bottom: 3px double var(--red);
+    color: var(--green);
+    font-size: 0.8125rem;
+    text-align: left;
+  }
+  thead th:not(:first-child) {
+    text-align: center;
+  }
+  thead th:first-child {
+    padding-left: 0;
+  }
+
+  .chapter th {
+    padding: 28px 0 8px;
+    border-bottom: 1.5px solid var(--green);
+    text-align: left;
+    font-weight: 400;
+  }
+  tbody:first-of-type .chapter th {
+    padding-top: 14px;
+  }
+  .chapter .hz {
+    margin-right: 10px;
+    color: var(--red);
+    font-size: var(--step-2);
+  }
+  .chapter__name {
+    color: var(--green);
+    font-family: var(--print);
+    font-stretch: 85%;
+    font-weight: 700;
+    font-size: var(--step-1);
+  }
+
+  .dish > * {
+    border-bottom: 1px solid var(--green-rule);
+    vertical-align: middle;
+  }
+  .dish > :not(:first-child) {
+    border-left: 1px solid var(--green-rule);
+    text-align: center;
+  }
+  .dish th {
+    padding: 0;
+    text-align: left;
+    font-weight: 400;
+  }
+  .dish__link {
+    display: grid;
+    gap: 2px;
+    padding: 12px 10px 13px 0;
+    text-decoration: none;
+    transition: background-color 160ms var(--ease-out);
+  }
+  .dish__link:hover {
+    background: linear-gradient(90deg, var(--blue-faint), transparent 80%);
+  }
+  .dish__zh {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 12px;
+  }
+  .dish__hz {
+    color: var(--red);
+    font-size: var(--step-2);
+    line-height: 1.15;
+  }
+  .dish__py {
+    color: var(--green);
+    font-size: 0.875rem;
+  }
+  .dish__en {
+    font-family: var(--print);
+    font-stretch: 92%;
+    font-weight: 650;
+    font-size: var(--step-1);
+    line-height: 1.2;
+  }
+  .dish__link:hover .dish__en {
+    text-decoration: underline;
+    text-decoration-color: var(--blue);
+    text-decoration-thickness: 2px;
+  }
+  .dish__time {
+    padding: 0 6px;
+    font-size: var(--step-0);
+    white-space: nowrap;
+  }
+  .dish__status .stamp {
+    font-size: 0.95rem;
+  }
+  .dish__plan {
+    padding: 0 6px;
+  }
+
+  .nomatch td {
+    padding: 28px 0;
+    color: var(--ink-2);
+    font-size: var(--step-1);
+  }
+
+  .order__foot {
+    margin-top: 28px;
+  }
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 28px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: var(--ink-2);
+    font-size: 0.875rem;
+  }
+  .legend li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .legend .stamp {
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 640px) {
+    .dish__link {
+      padding: 10px 6px 11px 0;
+    }
+    .dish__hz {
+      font-size: var(--step-1);
+    }
+    .grid__time {
+      width: 4.4em;
+    }
+    .grid__status {
+      width: 3.6em;
+    }
+    .grid__plan {
+      width: 3.4em;
+    }
+    .dish__time {
+      font-size: 0.875rem;
+    }
+    thead th {
+      font-size: 0.6875rem;
+      padding-inline: 4px;
+    }
+    .find {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .find__label {
+      padding-bottom: 0;
+    }
+    .find__hint {
+      grid-column: 1;
+    }
+  }
+
+  /* The tally chit */
+  .chit {
+    padding: 22px 22px 24px;
+    border-top: 2px dashed var(--green-rule);
+  }
+  .chit__title {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin: 0 0 12px;
+    font-size: var(--step-1);
+    color: var(--green);
+  }
+  .chit__title .hz {
+    color: var(--red);
+    font-size: 1.4em;
+  }
+  .chit__empty {
+    margin: 0 0 16px;
+    color: var(--ink-2);
+    font-size: 0.9375rem;
+  }
+  .chit[data-count]:not([data-count='0']) .chit__empty {
+    display: none;
+  }
+  .chit__list {
+    margin: 0 0 16px;
+    padding: 0;
+    list-style: none;
+    counter-reset: chit;
+  }
+  .chit__list :global(li) {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--green-rule);
+    color: var(--blue);
+    font-size: 0.9375rem;
+  }
+  .chit__list :global(a) {
+    text-decoration: none;
+  }
+  .chit__list :global(a:hover) {
+    text-decoration: underline;
+  }
+  .chit__list :global(.hz) {
+    color: var(--red);
+  }
+  .chit__sum {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin: 0 0 18px;
+  }
+  .chit__sum dt {
+    color: var(--green);
+    font-size: 0.6875rem;
+  }
+  .chit__sum dd {
+    margin: 2px 0 0;
+    font-size: var(--step-1);
+    font-weight: 700;
+  }
+  .chit__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  @media (min-width: 1024px) {
+    .chit {
+      position: sticky;
+      top: 32px;
+      transform: rotate(1.1deg);
+    }
+  }
+  @media (max-width: 1023px) {
+    .chit {
+      position: fixed;
+      inset: auto 0 0;
+      z-index: 20;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 0 16px;
+      padding: 12px var(--gutter) calc(12px + env(safe-area-inset-bottom));
+      transform: translateY(110%);
+      transition: transform 260ms var(--ease-out);
+    }
+    .chit[data-count]:not([data-count='0']) {
+      transform: none;
+    }
+    .chit__title,
+    .chit__empty,
+    .chit__list {
+      display: none;
+    }
+    .chit__sum {
+      margin: 0;
+    }
+    .chit__sum dd {
+      font-size: var(--step-0);
+    }
+    #clear-plan {
+      display: none;
+    }
+  }
+
+  /* Shopping list */
+  .list {
+    width: min(640px, calc(100% - 24px));
+    max-height: min(86dvh, 900px);
+    padding: 0;
+    border: 0;
+    color: var(--ink);
+  }
+  .list::backdrop {
+    background: rgb(15 30 24 / 0.45);
+  }
+  .list__head {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 22px 12px;
+    background: var(--card);
+    border-bottom: 3px double var(--red);
+  }
+  .list__head h2 {
+    margin: 0;
+    color: var(--green);
+    font-size: var(--step-1);
+  }
+  .list__head .hz {
+    color: var(--red);
+  }
+  .list__close {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    background: none;
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .list__close :global(svg) {
+    width: 22px;
+    height: 22px;
+  }
+  .list__body {
+    padding: 8px 22px 12px;
+  }
+  .list__body :global(h3) {
+    margin: 18px 0 4px;
+    font-family: var(--print);
+    font-stretch: 90%;
+    font-size: var(--step-1);
+  }
+  .list__body :global(.list__group) {
+    margin: 10px 0 2px;
+    color: var(--green);
+    font-size: 0.75rem;
+  }
+  .list__body :global(ul) {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .list__body :global(li) {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--green-faint);
+  }
+  .list__body :global(li:has(input:checked) label) {
+    color: var(--ink-2);
+    text-decoration: line-through;
+    text-decoration-color: var(--blue);
+  }
+  .list__foot {
+    padding: 12px 22px 20px;
+  }
+
+  .colophon {
+    position: relative;
+    z-index: 1;
+    width: min(1240px, 100%);
+    margin: 0 auto;
+    padding: 0 var(--gutter) 40px;
+    color: var(--ink-2);
+    font-size: 0.8125rem;
+  }
+
+  @media print {
+    .spread,
+    .colophon {
+      display: none;
+    }
+    .list {
+      position: static;
+      width: 100%;
+      max-height: none;
+      box-shadow: none;
+    }
+    .list__close,
+    .list__foot {
+      display: none;
+    }
+  }
+</style>

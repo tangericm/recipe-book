@@ -1,0 +1,59 @@
+title: Pork Dumplings
+hanzi: 猪肉饺子
+pinyin: Zhūròu jiǎozi
+chapter: dough
+status: cooked
+source:
+  kind: notebook
+summary: Juicy pork, chive and ginger filling, pan-fried with a crisp cornstarch skirt or boiled as soft dumplings.
+yield: { qty: 50, unit: dumplings }
+time: { active: 60, total: 75 }
+related: [dumpling-wrappers]
+ingredients:
+  - name: Filling
+    items:
+      - { id: pork, qty: 1, unit: lb, name: ground pork }
+      - { id: garlic, qty: 3, name: garlic cloves, note: minced }
+      - { id: egg, qty: 1, name: large egg, note: beaten }
+      - { id: chives, qty: 2, unit: tbsp, name: Chinese chives, note: finely chopped }
+      - { id: soy, qty: 2, unit: tbsp, name: soy sauce }
+      - { id: sesame-oil, qty: 1.5, unit: tbsp, name: sesame oil, note: hot sesame oil works }
+      - { id: ginger, qty: 1, unit: tbsp, name: fresh ginger, note: minced }
+      - { id: lard, name: pork lard, note: "or another oil, a spoonful" }
+      - { id: shallots, name: shallots, note: minced }
+      - { id: scallions, name: scallions, note: minced }
+  - name: Wrapping and cooking
+    items:
+      - { id: wrappers, qty: 50, name: dumpling wrappers, note: store-bought or homemade }
+      - { id: oil, qty: 0.5, unit: cup, name: vegetable oil, note: "for frying, as needed" }
+      - { id: fry-water, qty: 1, unit: cup, name: water, note: for steaming in the pan }
+      - { id: cornstarch, name: cornstarch, note: "a spoonful, mixed into water" }
+  - name: Dipping sauce
+    items:
+      - { id: vinegar, name: Chinese black vinegar }
+      - { id: dip-sesame, name: sesame oil }
+      - { id: seeds, name: sesame seeds }
+      - { id: chili-oil, name: chili oil }
+steps:
+  - name: Filling
+    steps:
+      - text: Mix {pork}, {garlic}, {egg}, {chives}, {soy}, {sesame-oil}, {ginger}, {lard}, {shallots} and {scallions} in a large bowl until thoroughly combined.
+  - name: Wrap
+    steps:
+      - text: Set a wrapper from {wrappers} on a lightly floured surface and spoon about 1 tablespoon of filling into the middle.
+      - text: Wet the edge with a little water, fold, and crimp small pleats along one side to seal. Repeat with the rest.
+  - name: Pan-fry
+    steps:
+      - text: Heat 1 to 2 tablespoons of {oil|oil} in a large skillet over medium-high heat. Add 8 to 10 dumplings and brown the bottoms.
+        timer: 120
+      - text: Pour in {fry-water}, cover, and cook until the wrappers are tender and the pork is cooked through.
+        timer: 300
+      - text: Near the end, stir {cornstarch} into a little water and pour it around the dumplings for a crisp lacy bottom.
+      - text: Set a plate over the skillet and flip to turn them out.
+  - name: Or boil
+    steps:
+      - text: Bring a large pot of water to a boil. Drop in the dumplings and cook 3 minutes. Overcooking makes them fall apart.
+        timer: 180
+  - name: Serve
+    steps:
+      - text: Serve with {vinegar}, {dip-sesame}, {seeds} and {chili-oil} to dip.

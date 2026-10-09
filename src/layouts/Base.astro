@@ -1,0 +1,39 @@
+---
+import '@fontsource-variable/noto-serif-sc';
+import '@fontsource-variable/archivo/wdth.css';
+import '@fontsource-variable/atkinson-hyperlegible-next';
+import '../styles/global.css';
+import check from '@phosphor-icons/core/assets/bold/check-bold.svg?raw';
+
+interface Props {
+  title: string;
+  description: string;
+  jsonLd?: object;
+}
+
+const { title, description, jsonLd } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const checkUri = `url("data:image/svg+xml,${encodeURIComponent(check)}")`;
+---
+
+<!doctype html>
+<html lang="en" style={`--icon-check: ${checkUri}`}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#d7e3db" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f1814" media="(prefers-color-scheme: dark)" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

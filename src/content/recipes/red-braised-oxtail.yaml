@@ -1,0 +1,84 @@
+title: Red-Braised Oxtail with Daikon
+hanzi: 红烧牛尾
+pinyin: Hóngshāo niúwěi
+chapter: braises
+status: cooked
+source:
+  kind: chat
+  date: 2026-09
+summary: Oxtail blanched, seared and pressure-cooked in soy, Shaoxing, rock sugar and star anise until it falls off the bone, with daikon added at the end so it holds its shape.
+yield: { qty: 4, unit: servings }
+time: { active: 45, total: 105 }
+equipment: Instant Pot
+ingredients:
+  - name: Oxtail
+    items:
+      - { id: oxtail, qty: 3, unit: lb, name: oxtail, note: cut into 4 to 5 cm pieces }
+      - { id: oil, qty: 2, unit: tbsp, name: neutral oil }
+  - name: Aromatics
+    items:
+      - { id: onion, qty: 1, name: medium onion, note: quartered }
+      - { id: shallots, qty: 2, name: shallots, note: halved }
+      - { id: garlic, qty: 6, name: garlic cloves, note: smashed }
+      - { id: ginger, qty: 8, name: thick ginger slices }
+      - { id: scallions, qty: 4, name: scallions, note: "whites for the braise, greens to finish" }
+  - name: Braise
+    items:
+      - { id: shaoxing, qty: 0.33, unit: cup, name: Shaoxing wine }
+      - { id: soy, qty: 0.33, unit: cup, name: light soy sauce }
+      - { id: dark-soy, qty: 2, unit: tbsp, name: dark soy sauce }
+      - { id: sugar, qty: 2, unit: tbsp, name: rock sugar or brown sugar }
+      - { id: star-anise, qty: 2, name: star anise }
+      - { id: cinnamon, qty: 1, name: cinnamon stick }
+      - { id: white-pepper, qty: 1, unit: tsp, name: white pepper }
+      - { id: water, qty: 2, unit: cup, name: water or unsalted stock }
+      - { id: daikon, qty: 1, unit: lb, name: daikon, note: peeled and cut into 4 cm chunks }
+  - name: To finish
+    items:
+      - { id: cornstarch, qty: 1, unit: tbsp, name: cornstarch }
+      - { id: slurry-water, qty: 2, unit: tbsp, name: cold water }
+      - { id: rice, name: steamed rice }
+steps:
+  - name: Blanch
+    steps:
+      - text: Cover {oxtail} with cold water in a pot and bring to a boil. Boil, skimming the scum.
+        timer: 300
+      - text: Drain, rinse under warm water, and pat very dry.
+  - name: Sear
+    steps:
+      - text: Set the Instant Pot to Sauté (High) with {oil}. Sear the oxtail in two batches, 3 to 4 minutes a side, until deeply browned. Set aside.
+        timer: 720
+      - text: Add {onion}, {shallots}, {garlic}, {ginger} and the scallion whites from {scallions}. Sauté until fragrant.
+        timer: 120
+      - text: Pour in {shaoxing} and scrape the bottom completely clean. Leftover browned bits trigger the burn warning.
+  - name: Pressure cook
+    steps:
+      - text: Stir in {soy}, {dark-soy}, {sugar}, {star-anise}, {cinnamon}, {white-pepper} and {water}. Nestle the oxtail in; the liquid should come about halfway up the meat.
+      - text: Cancel Sauté, seal, and cook on High pressure.
+        timer: 2700
+      - text: Let the pressure come down on its own, then vent the rest. Quick release tightens the meat.
+        timer: 900
+  - name: Daikon
+    steps:
+      - text: The meat should pull from the bone with a fork; if it resists, give it 5 to 10 more minutes. Push {daikon} under the liquid, seal, and cook on High.
+        timer: 300
+      - text: Quick release.
+  - name: Glaze
+    steps:
+      - text: Lift out the oxtail and daikon. Skim off the fat (there is a lot), then boil the liquid on Sauté to reduce by about a third.
+        timer: 600
+      - text: Whisk {cornstarch} into {slurry-water}, stir it in, and simmer a minute until glossy. Add a splash more soy if it needs it.
+  - name: Serve
+    steps:
+      - text: Return the oxtail and daikon and turn them in the sauce. Serve over {rice} with the sliced scallion greens.
+notes:
+  - kind: cook
+    text: My liquid only pooled about an inch deep at first. Top it up so it reaches halfway up the meat, or there won't be enough sauce to cover the daikon.
+  - kind: cook
+    text: Pieces I blanched but didn't sear still came out tender, with a lighter, cleaner sauce. Searing gives the deeper one.
+  - kind: cook
+    text: "Don't trim the white tendon: that collagen is what makes the sauce. If a thick base piece is still chewy, it needs more time, not less; it's done when the tendon turns translucent."
+  - kind: tip
+    text: Thick tail sections may need 55 minutes. Better the next day; chill, lift off the fat cap, reheat gently.
+  - kind: tip
+    text: "For a wine braise, use a dry, full-bodied red like Syrah or Côtes du Rhône, about 1½ to 2 cups, reduced by half before the stock goes in."

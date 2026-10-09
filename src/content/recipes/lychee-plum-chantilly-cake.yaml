@@ -1,0 +1,110 @@
+title: Lychee Plum Chantilly Cake
+hanzi: 荔枝李子鲜奶油蛋糕
+pinyin: Lìzhī lǐzi xiān nǎiyóu dàngāo
+chapter: bakery
+status: cooked
+scalable: false
+source:
+  kind: chat
+  date: 2026-10
+summary: The Whole Foods chantilly cake rebuilt around East Asian fruit. Soft oil cake soaked in lychee-yuzu syrup, plum-ginger compote, lychee and Asian pear between the layers, almond mascarpone chantilly, glazed fruit on top.
+yield: { qty: 8, unit: slices }
+time: { active: 270, total: 2880 }
+equipment: Three 6 × 2 in pans, turntable, offset spatula, bench scraper, 1M star tip
+ingredients:
+  - name: Cake (three 6 in layers)
+    items:
+      - { id: butter, qty: 85, unit: g, name: unsalted butter, note: melted; 6 tbsp }
+      - { id: oil, qty: 100, unit: g, name: neutral oil, note: ½ cup; keeps it soft when cold }
+      - { id: sugar, qty: 200, unit: g, name: granulated sugar, note: 1 cup }
+      - { id: vanilla, qty: 1, unit: tbsp, name: vanilla extract }
+      - { id: eggs, qty: 2, name: large eggs, note: room temperature }
+      - { id: flour, qty: 245, unit: g, name: all-purpose flour, note: 1¾ cups }
+      - { id: baking-powder, qty: 1, unit: tsp, name: baking powder }
+      - { id: baking-soda, qty: 0.5, unit: tsp, name: baking soda }
+      - { id: salt, qty: 0.5, unit: tsp, name: kosher salt }
+      - { id: buttermilk, qty: 120, unit: g, name: buttermilk, note: room temperature }
+      - { id: sour-cream, qty: 100, unit: g, name: sour cream }
+  - name: Plum-ginger compote
+    items:
+      - { id: plums-cooked, qty: 300, unit: g, name: ripe plums, note: about 3; pitted and diced; skin on }
+      - { id: compote-sugar, qty: 50, unit: g, name: granulated sugar, note: 1 tbsp more if tart }
+      - { id: compote-ginger, qty: 1, unit: tsp, name: fresh ginger, note: finely grated }
+      - { id: compote-yuzu, qty: 1, unit: tbsp, name: yuzu juice, note: or lemon }
+      - { id: compote-starch, qty: 1.5, unit: tsp, name: cornstarch, note: in 1 tbsp water }
+  - name: Lychee-yuzu syrup
+    items:
+      - { id: lychee-syrup, qty: 120, unit: g, name: syrup from the lychee can }
+      - { id: syrup-water, qty: 2, unit: tbsp, name: water }
+      - { id: syrup-yuzu, qty: 1, unit: tbsp, name: yuzu juice, note: or lime }
+  - name: Chantilly cream
+    items:
+      - { id: mascarpone, qty: 227, unit: g, name: mascarpone, note: one 8 oz tub; cool room temp }
+      - { id: cream-cheese, qty: 113, unit: g, name: full-fat block cream cheese, note: room temp }
+      - { id: powdered, qty: 180, unit: g, name: powdered sugar, note: sifted }
+      - { id: cream, qty: 240, unit: ml, name: heavy cream, note: cold; 36 percent fat or more }
+      - { id: chantilly-vanilla, qty: 0.75, unit: tsp, name: vanilla extract }
+      - { id: almond, qty: 0.25, unit: tsp, name: almond extract, note: up to ½ tsp; the signature }
+      - { id: rose, qty: 0.25, unit: tsp, name: rose water, note: optional; a light hand }
+      - { id: chantilly-salt, name: salt, note: a pinch }
+  - name: Fruit and glaze
+    items:
+      - { id: lychees, qty: 1, name: can lychees in syrup, note: 20 oz; drained; keep the syrup }
+      - { id: pear, qty: 1, name: large Asian pear, note: peeled and thinly sliced }
+      - { id: plums-top, qty: 2, name: ripe but firm plums, note: for the top only }
+      - { id: pear-yuzu, qty: 2, unit: tsp, name: yuzu juice, note: keeps the pear white }
+      - { id: glaze-syrup, qty: 0.25, unit: cup, name: lychee syrup, note: reduced for the glaze }
+      - { id: glaze-yuzu, qty: 1, unit: tsp, name: yuzu juice }
+steps:
+  - name: Day 1, cake layers
+    steps:
+      - text: Heat the oven to 325°F (165°C). Grease three 6 × 2 in pans, line the bottoms with parchment, grease again.
+      - text: Whisk {butter}, {oil}, {sugar} and {vanilla} until smooth, then whisk in {eggs} one at a time.
+      - text: Sift {flour}, {baking-powder}, {baking-soda} and {salt} together and fold in until just combined.
+      - text: Whisk {buttermilk} with {sour-cream} and fold in until smooth. It should pour like pancake batter. Don't beat it.
+      - text: Weigh the batter evenly into the pans, about 315 g each. Smooth and rap each pan once.
+      - text: Bake until the centers spring back and a toothpick shows a few moist crumbs (205 to 210°F inside). Start checking at 22 minutes.
+        timer: 1500
+      - text: Cool 10 minutes, turn out, peel the parchment, cool completely. Wrap and chill; cold layers level and stack far more easily.
+  - name: Day 1, compote and syrup
+    steps:
+      - text: Cook {plums-cooked}, {compote-sugar}, {compote-ginger} and {compote-yuzu} over medium, stirring, until the plums collapse into loose jam.
+        timer: 540
+      - text: Stir in {compote-starch} and cook a minute more until glossy. Cool; it firms in the fridge.
+      - text: Stir {lychee-syrup}, {syrup-water} and {syrup-yuzu} together. That's the soak.
+  - name: Day 2, chantilly
+    steps:
+      - text: Paddle {mascarpone} and {cream-cheese} on medium-low just until smooth, about 30 seconds. Overbeating mascarpone turns it grainy.
+      - text: Add {powdered} on low a few spoonfuls at a time, then {chantilly-vanilla}, {almond}, {rose} and {chantilly-salt}. Beat until fluffy and scrape into another bowl.
+      - text: In a clean bowl, whip {cream} to stiff peaks. Stop the moment the tip stands straight.
+      - text: Fold a third of the cream into the cheese to loosen it, then fold in the rest. Never put it back on the mixer.
+  - name: Day 2, assembly
+    steps:
+      - text: Halve about 10 of the {lychees} and press between paper towels until dry. Slice half the {pear} and toss with {pear-yuzu}.
+      - text: Level the layers. Set the first on the board cut side up and brush generously with syrup.
+      - text: Spread about ⅓ cup compote, stopping 1 cm from the edge. Then ½ to ¾ cup chantilly, then one layer of lychee and pear, pressed in, leaving the rim clear.
+      - text: Repeat with the second layer. Set the third on cut side down so the smooth bottom faces up, and brush it with syrup.
+      - text: Chill the stacked cake uncovered so the filling firms.
+        timer: 1080
+      - text: Crumb coat. A thin skim all over, filling the gaps between layers so the sides are flush; you should see cake through it. Chill until firm and dry to the touch.
+        timer: 1800
+      - text: Final coat. Mound about ¾ cup on top and push it over the edge, coat the sides thickly, then hold the scraper still and spin the turntable 2 or 3 turns. Sweep the top ridge inward. Chill.
+        timer: 1800
+  - name: Day 3, decorate
+    steps:
+      - text: Simmer {glaze-syrup} until reduced by half and sticky. Off the heat, stir in {glaze-yuzu} and let it cool to warm.
+        timer: 240
+      - text: With the 1M tip, pipe a ring of rosettes around the top edge, each just touching the last. About 12 to 14 on a 6 in cake.
+      - text: Slice {plums-top} into thin wedges and fan them skin side up in a crescent over one half. Fill the other half with lychee halves and curled pear slices.
+      - text: Dab the warm glaze over the fruit, keeping it off the cream. Chill until 20 minutes before serving and slice with a hot, wiped knife.
+notes:
+  - kind: cook
+    text: "Stack check: straight and level, with the top layer bottom side up for a flat surface. Cream bulging at the sides and a little compote peeking through is normal; the crumb coat covers both."
+  - kind: cook
+    text: The crumb coat came out right when it was thin enough to see cake through it. Wipe the cream smeared on the turntable base before the final coat.
+  - kind: cook
+    text: Save 1 to 1½ cups of chantilly for the border. If you run low, the border matters more than perfect sides.
+  - kind: tip
+    text: Make ahead. Bake, compote and syrup on day 1; fill, coat and pipe on day 2; slice the top fruit and glaze within an hour of serving.
+  - kind: tip
+    text: If the chantilly turns grainy while whipping, the cream went to butter. Start over with fresh cream.

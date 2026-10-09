@@ -1,0 +1,69 @@
+title: Steamed Pork Buns
+hanzi: 猪肉包子
+pinyin: Zhūròu bāozi
+chapter: dough
+status: draft
+source:
+  kind: draft
+  label: The Woks of Life
+  url: https://thewoksoflife.com/steamed-pork-buns-baozi/
+  also:
+    label: Red House Spice, pork rind jelly
+    url: https://redhousespice.com/pork-rind-jelly/
+summary: Soft yeasted buns pleated around a juicy pork and ginger filling and steamed. Written for the book from the bookmarked recipes; not cooked yet.
+yield: { qty: 12, unit: buns }
+time: { active: 60, total: 150 }
+related: [pork-dumplings]
+ingredients:
+  - name: Dough
+    items:
+      - { id: flour, qty: 300, unit: g, name: all-purpose flour }
+      - { id: yeast, qty: 1, unit: tsp, name: instant yeast }
+      - { id: sugar, qty: 15, unit: g, name: sugar }
+      - { id: water, qty: 165, unit: ml, name: warm water, note: or warm milk }
+      - { id: dough-oil, qty: 1, unit: tbsp, name: neutral oil }
+  - name: Filling
+    items:
+      - { id: pork, qty: 400, unit: g, name: ground pork, note: about 25 percent fat }
+      - { id: soy, qty: 2, unit: tbsp, name: light soy sauce }
+      - { id: oyster, qty: 1, unit: tbsp, name: oyster sauce }
+      - { id: dark-soy, qty: 1, unit: tsp, name: dark soy sauce }
+      - { id: shaoxing, qty: 1, unit: tbsp, name: Shaoxing wine }
+      - { id: fill-sugar, qty: 1, unit: tsp, name: sugar }
+      - { id: salt, qty: 0.5, unit: tsp, name: salt }
+      - { id: white-pepper, qty: 0.25, unit: tsp, name: white pepper }
+      - { id: sesame-oil, qty: 1, unit: tbsp, name: sesame oil }
+      - { id: ginger, qty: 1, unit: tbsp, name: fresh ginger, note: minced }
+      - { id: scallions, qty: 3, name: scallions, note: minced }
+      - { id: liquid, qty: 80, unit: ml, name: stock or water, note: cold }
+      - { id: jelly, qty: 100, unit: g, name: pork rind jelly, note: optional; diced; makes soupier buns }
+steps:
+  - name: Dough
+    steps:
+      - text: Mix {flour}, {yeast} and {sugar}. Add {water} and {dough-oil} and bring it together.
+      - text: Knead until smooth and elastic.
+        timer: 600
+      - text: Cover and let rise until doubled.
+        timer: 3600
+  - name: Filling
+    steps:
+      - text: Mix {pork} with {soy}, {oyster}, {dark-soy}, {shaoxing}, {fill-sugar}, {salt} and {white-pepper}.
+      - text: Stir hard in one direction, adding {liquid} a spoonful at a time, until the filling turns sticky and springy.
+      - text: Fold in {sesame-oil}, {ginger}, {scallions} and {jelly} if using. Chill while you shape the dough.
+  - name: Shape
+    steps:
+      - text: Knock back the dough and divide into 12 pieces. Roll each into a round about 10 cm across, thicker in the middle than at the edge.
+      - text: Put about 30 g of filling in the center. Pleat the edge up and around, then twist the top closed.
+      - text: Set each bun on a square of parchment in the steamer. Cover and let rise again until slightly puffy.
+        timer: 1200
+  - name: Steam
+    steps:
+      - text: Steam over high heat with the lid on.
+        timer: 840
+      - text: Turn off the heat and wait before lifting the lid, so the buns do not collapse.
+        timer: 240
+notes:
+  - kind: tip
+    text: The pork rind jelly is the soup-dumpling trick. It melts as the buns steam and leaves broth inside.
+  - kind: tip
+    text: Wrap the steamer lid in a towel so condensation doesn't drip onto the buns.

@@ -1,0 +1,94 @@
+title: Pineapple Buns
+hanzi: 菠蘿麵包
+hanziLang: zh-Hant
+pinyin: Bōluó miànbāo
+chapter: bakery
+status: cooked
+source:
+  kind: adapted
+  label: mimi 大頭 kitchen (YouTube)
+  url: https://www.youtube.com/watch?v=c2C8B-N-dKs
+summary: Hong Kong bakery buns with a roux-softened milk dough, a crackly sugar-butter topping and a custard center. Made more than once; the notes are from those bakes.
+yield: { qty: 6, unit: buns }
+time: { active: 75, total: 300 }
+ingredients:
+  - name: Bread dough
+    items:
+      - { id: roux-water, qty: 125, unit: ml, name: water, note: for the roux }
+      - { id: roux-flour, qty: 25, unit: g, name: bread flour, note: for the roux }
+      - { id: flour, qty: 275, unit: g, name: bread flour }
+      - { id: salt, qty: 0.5, unit: tsp, name: salt }
+      - { id: milk, qty: 72, unit: ml, name: whole milk }
+      - { id: dough-egg, qty: 0.5, name: beaten egg }
+      - { id: yeast, qty: 1.5, unit: tsp, name: instant yeast }
+      - { id: sugar, qty: 40, unit: g, name: granulated sugar }
+      - { id: butter, qty: 25, unit: g, name: unsalted butter, note: room temperature }
+  - name: Pineapple topping
+    items:
+      - { id: top-egg, qty: 0.5, name: beaten egg }
+      - { id: top-butter, qty: 75, unit: g, name: unsalted butter, note: melted }
+      - { id: top-sugar, qty: 50, unit: g, name: powdered sugar }
+      - { id: top-flour, qty: 144, unit: g, name: bread flour }
+      - { id: baking-powder, qty: 0.5, unit: tsp, name: baking powder, note: or a pinch of baking soda }
+  - name: Custard filling
+    items:
+      - { id: cus-butter, qty: 45, unit: g, name: unsalted butter, note: room temperature }
+      - { id: cus-sugar, qty: 26, unit: g, name: powdered sugar }
+      - { id: cus-egg, qty: 1, name: beaten egg, note: add slowly; you may not need all of it }
+      - { id: milk-powder, qty: 50, unit: g, name: milk powder }
+  - name: Finish
+    items:
+      - { id: egg-wash, name: egg wash }
+steps:
+  - name: Bread dough
+    steps:
+      - text: Whisk {roux-water} and {roux-flour} over low heat until thick. Take off the heat and set aside.
+      - text: Mix {flour}, {salt}, the roux, {milk}, {dough-egg}, {yeast} and {sugar}. Hand-knead until the dough turns sticky.
+      - text: Fold in {butter} and keep kneading until the dough is sticky again, then smooth. Do not stop early; the butter must be fully worked in.
+      - text: Rest in an oiled bowl.
+        timer: 2700
+      - text: Knead out the air bubbles and let it rise again.
+        timer: 3600
+      - text: Flour the board and dough. Cut into 6 large or 9 smaller pieces and shape into balls.
+      - text: Cover with plastic wrap and let rise until doubled.
+        timer: 7200
+  - name: Pineapple topping
+    steps:
+      - text: While the dough rises, mix {top-egg}, {top-butter} and {top-sugar} in a bowl.
+      - text: Add {top-flour} and {baking-powder} and mix just until a dough forms.
+      - text: Refrigerate.
+        timer: 1200
+  - name: Custard filling
+    steps:
+      - text: Beat {cus-butter} and {cus-sugar} with an electric mixer until smooth, then finish with a spatula.
+      - text: Add {cus-egg} a little at a time, mixing after each addition.
+      - text: Mix in {milk-powder}, then freeze.
+        timer: 1200
+      - text: Turn the custard onto a board and roll into small balls, one per bun.
+  - name: Assemble
+    steps:
+      - text: The dough should have doubled. Press out the air, then wrap each piece around a custard ball and pinch the bottom closed.
+      - text: Roll the chilled topping into a log and cut one piece per bun. Roll each into a ball and press it flat between two sheets of plastic wrap.
+      - text: Lay a topping disc over each bun. Flatten the bun slightly first so it rises less into a ball and cracks the topping less.
+  - name: Bake
+    steps:
+      - text: Brush the tops with {egg-wash}.
+      - text: Bake at 375°F (190°C).
+        timer: 900
+notes:
+  - kind: cook
+    text: Knead the dough properly before the first proof. Mine was not smooth; make sure the butter is room temperature and fully worked in.
+  - kind: cook
+    text: The topping crumbled instead of forming a smooth dough. Follow the steps in order rather than mixing everything at once, and add a little more liquid (egg or melted butter) if needed. It was fine after chilling but still fell apart easily.
+  - kind: cook
+    text: The custard went loose after the egg. Use the mixer for the butter and sugar so there are no lumps, and add the egg slowly; you probably don't need a whole one.
+  - kind: cook
+    text: 15 minutes at 375°F gave lightly toasted tops. Leave them in longer for a deeper golden color.
+  - kind: cook
+    text: Brown eggs are preferred.
+  - kind: cook
+    text: For a flower top, lay the petals down first, then the center, without overlapping the two.
+  - kind: tip
+    text: For a batch of 2, scale the dough and custard but keep the full topping; it is easier to make in this amount and the extra keeps for next time.
+  - kind: tip
+    text: No fresh milk? About 7 ml milk powder in 22 ml water makes the 24 ml of milk a batch of 2 needs.

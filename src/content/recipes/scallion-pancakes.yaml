@@ -1,0 +1,70 @@
+title: Scallion Pancakes
+hanzi: 葱油饼
+pinyin: Cōng yóubǐng
+chapter: dough
+status: cooked
+source:
+  kind: adapted
+  label: Red House Spice
+  url: https://redhousespice.com/spring-onion-pancake/
+summary: Hot-water dough rolled thin, brushed with a lard and Sichuan pepper paste, rolled up with scallions, coiled and pan-fried under a lid.
+yield: { qty: 4, unit: pancakes }
+time: { active: 35, total: 55 }
+ingredients:
+  - name: Dough
+    items:
+      - { id: flour, qty: 250, unit: g, name: all-purpose flour, note: about 2 cups }
+      - { id: hot-water, qty: 160, unit: g, name: hot water, note: about ⅔ cup }
+      - { id: coating-oil, name: cooking oil, note: for coating }
+  - name: Filling
+    items:
+      - { id: lard, qty: 2, unit: tbsp, name: melted lard, note: or coconut oil }
+      - { id: filling-flour, qty: 2, unit: tbsp, name: all-purpose flour }
+      - { id: sichuan, qty: 0.25, unit: tsp, name: ground Sichuan pepper, note: or five-spice }
+      - { id: salt, qty: 0.25, unit: tsp, name: salt }
+      - { id: scallions, qty: 40, unit: g, name: scallions, note: "finely chopped, about ½ cup" }
+  - name: Frying
+    items:
+      - { id: frying-oil, qty: 1, unit: tbsp, name: neutral oil }
+  - name: Dipping sauce
+    items:
+      - { id: chili-oil, name: chili oil }
+      - { id: black-vinegar, name: black rice vinegar }
+      - { id: soy, name: light soy sauce }
+steps:
+  - name: Dough
+    steps:
+      - text: Pour {hot-water} over {flour} in a heatproof bowl. Stir with chopsticks until no dry flour or loose water remains, then press it together into a rough dough by hand.
+      - text: Cover tightly and rest.
+        timer: 900
+  - name: Filling
+    steps:
+      - text: While the dough rests, mix {lard}, {filling-flour}, {sichuan} and {salt} into a smooth paste.
+  - name: Shape
+    steps:
+      - text: Knead the rested dough until very smooth. Oil the dough and the work surface with {coating-oil}.
+      - text: Roll the dough into a thin rectangle, about 43 × 33 cm (17 × 13 in).
+      - text: Brush the paste over the dough and scatter {scallions} on top.
+      - text: Roll it up loosely from the short side into a rope, then cut the rope into 4 pieces.
+      - text: Stand each piece on end, press it flat with your palm, then roll it out to about 13 cm (5 in). For thinner pancakes, cut the rope into 3 and roll each to about 23 cm (9 in).
+  - name: Fry
+    steps:
+      - text: Heat {frying-oil} in a skillet over high heat until a piece of scallion sizzles.
+      - text: Drop to medium and lay in the pancakes, top side down. Cover and cook until golden underneath.
+        timer: 120
+      - text: Flip, cover again, and cook until the second side is golden.
+        timer: 120
+      - text: Rest on a wire rack for a minute or two so the bottoms stay crisp.
+        timer: 90
+  - name: Serve
+    steps:
+      - text: Eat warm, torn or cut into wedges, with a dip of {chili-oil}, {black-vinegar} and {soy}.
+notes:
+  - kind: cook
+    text: Roll thinner, and use a bigger skillet.
+  - kind: cook
+    text: Make more of the filling paste, and make it spicier.
+  - kind: tip
+    text: To make ahead, freeze the rolled-out raw pancakes between sheets of parchment. Cook from frozen the same way; thick ones want a splash of water under the lid.
+  - kind: tip
+    text: Leftovers keep 3 days in the fridge. Reheat in a dry pan, oven or air fryer.

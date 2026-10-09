@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.astro/
+.vercel/
+.env*
+research_notes/
+.impeccable/mocks/
+.impeccable/decision/
+.impeccable/review/
+*.log
+.impeccable/questions/
+.impeccable/hook.cache.json

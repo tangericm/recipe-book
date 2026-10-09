@@ -1,0 +1,80 @@
+title: Red-Braised Chicken Legs
+hanzi: 红烧鸡腿
+pinyin: Hóngshāo jītuǐ
+chapter: braises
+status: saved
+source:
+  kind: chat
+  date: 2026
+summary: Chicken legs seared in caramelized rock sugar, then braised with soy, Shaoxing, star anise and carrots until the sauce reduces to a glossy glaze.
+yield: { qty: 4, unit: servings }
+time: { active: 45, total: 105 }
+ingredients:
+  - name: Chicken
+    items:
+      - { id: chicken, qty: 4, name: chicken leg quarters, note: or 8 drumsticks }
+      - { id: salt, qty: 1, unit: tsp, name: kosher salt }
+      - { id: oil, qty: 2, unit: tbsp, name: neutral oil }
+      - { id: rock-sugar, qty: 25, unit: g, name: rock sugar, note: or brown sugar }
+  - name: Aromatics
+    items:
+      - { id: ginger, qty: 8, name: thick ginger coins }
+      - { id: scallions, qty: 4, name: scallions, note: "whites in 5 cm lengths, greens sliced thin" }
+      - { id: garlic, qty: 5, name: garlic cloves, note: smashed }
+      - { id: onion, qty: 1, name: medium yellow onion, note: thickly sliced }
+      - { id: star-anise, qty: 2, name: star anise }
+      - { id: cassia, qty: 1, name: cassia or cinnamon stick }
+      - { id: bay, qty: 2, name: bay leaves }
+      - { id: chilies, qty: 3, name: dried red chilies, note: optional }
+  - name: Braise
+    items:
+      - { id: shaoxing, qty: 60, unit: ml, name: Shaoxing wine }
+      - { id: soy, qty: 3, unit: tbsp, name: light soy sauce }
+      - { id: dark-soy, qty: 1, unit: tbsp, name: dark soy sauce }
+      - { id: oyster, qty: 1, unit: tbsp, name: oyster sauce }
+      - { id: water, qty: 350, unit: ml, name: hot water or unsalted stock }
+      - { id: white-pepper, qty: 0.25, unit: tsp, name: white pepper }
+      - { id: carrots, qty: 2, name: medium carrots, note: roll-cut }
+      - { id: sesame-oil, qty: 1, unit: tsp, name: toasted sesame oil }
+steps:
+  - name: Prep
+    steps:
+      - text: Pat {chicken} completely dry and season all over with {salt}. Leave it uncovered while you prep.
+        timer: 900
+      - text: Slice the aromatics. Separate scallion whites from greens. Keep {star-anise}, {cassia}, {bay} and {chilies} together in a small bowl.
+  - name: Caramel and sear
+    steps:
+      - text: Heat {oil} in a wide heavy pot over medium. Add {rock-sugar} and stir until it melts to the color of amber honey. Stay at the pot; it burns in seconds.
+        timer: 180
+      - text: Lay the chicken in skin side down, in batches if needed. Leave it until the skin is lacquered deep brown, then brown the other side. Set aside.
+        timer: 480
+  - name: Aromatics
+    steps:
+      - text: Pour off all but about 2 tablespoons of fat. Stir in {ginger}, the scallion whites and {garlic} until the garlic is pale gold.
+        timer: 90
+      - text: Add {onion} and cook until the edges turn translucent. Add the spice bowl and stir 30 seconds.
+        timer: 210
+      - text: Pour in {shaoxing} and scrape the bottom clean.
+        timer: 75
+  - name: Braise
+    steps:
+      - text: Stir in {soy}, {dark-soy}, {oyster}, {water} and {white-pepper}. Return the chicken skin side up; the liquid should reach two-thirds of the way up.
+      - text: Cover and keep at the lowest bubble. Skim any foam early and turn the legs once halfway.
+        timer: 1500
+      - text: Tuck {carrots} into the liquid, cover, and cook until the carrots are tender and the meat pulls back from the bone.
+        timer: 1200
+  - name: Glaze
+    steps:
+      - text: Uncover, turn the heat to medium and reduce the sauce, spooning it over the legs, until it coats a spoon and shines.
+        timer: 480
+      - text: Off the heat, fish out the whole spices and stir in {sesame-oil}. Scatter the scallion greens and let it sit 5 minutes. Serve over rice.
+        timer: 300
+notes:
+  - kind: tip
+    text: If the caramel step scares you, melt the sugar into the braising liquid instead and lean on dark soy for color.
+  - kind: tip
+    text: "Taste before reducing: flat wants more light soy, harsh wants a pinch of sugar, muddy wants a splash of Shaoxing."
+  - kind: tip
+    text: Potatoes, rehydrated shiitakes or peeled hard-boiled eggs all go in with the carrots. Better on day two.
+  - kind: tip
+    text: "Skip Western celery here; its grassy note fights the soy and star anise. Onion and carrot are fine."

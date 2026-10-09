@@ -1,0 +1,64 @@
+title: Mapo Tofu
+hanzi: 麻婆豆腐
+pinyin: Mápó dòufu
+chapter: braises
+status: draft
+source:
+  kind: draft
+  label: The Woks of Life
+  url: https://thewoksoflife.com/ma-po-tofu-real-deal/
+summary: Soft tofu simmered in a red, numbing sauce of chili bean paste, fermented black beans and crisped beef, finished with ground Sichuan pepper. Written for the book from the bookmarked recipe; not cooked yet.
+yield: { qty: 4, unit: servings }
+time: { active: 25, total: 30 }
+ingredients:
+  - name: Tofu
+    items:
+      - { id: tofu, qty: 450, unit: g, name: soft or medium tofu, note: "one block, cut into 2 cm cubes" }
+      - { id: tofu-salt, qty: 1, unit: tsp, name: salt, note: for the blanching water }
+  - name: Sauce
+    items:
+      - { id: oil, qty: 2, unit: tbsp, name: neutral oil }
+      - { id: beef, qty: 120, unit: g, name: ground beef, note: or pork }
+      - { id: doubanjiang, qty: 2, unit: tbsp, name: Pixian chili bean paste (doubanjiang) }
+      - { id: douchi, qty: 1, unit: tbsp, name: fermented black beans, note: rinsed and chopped }
+      - { id: chili, qty: 2, unit: tsp, name: ground chili flakes, note: or 1 tbsp chili oil }
+      - { id: garlic, qty: 3, name: garlic cloves, note: minced }
+      - { id: ginger, qty: 1, unit: tbsp, name: fresh ginger, note: minced }
+      - { id: shaoxing, qty: 1, unit: tbsp, name: Shaoxing wine }
+      - { id: stock, qty: 240, unit: ml, name: stock or water }
+      - { id: soy, qty: 1, unit: tsp, name: light soy sauce }
+      - { id: sugar, qty: 0.5, unit: tsp, name: sugar }
+      - { id: cornstarch, qty: 1, unit: tbsp, name: cornstarch }
+      - { id: slurry-water, qty: 3, unit: tbsp, name: cold water, note: for the slurry }
+  - name: Finish
+    items:
+      - { id: sichuan, qty: 1.5, unit: tsp, name: ground roasted Sichuan peppercorn }
+      - { id: scallions, qty: 2, name: scallions or garlic greens, note: sliced }
+      - { id: rice, name: steamed rice, note: to serve }
+steps:
+  - name: Blanch the tofu
+    steps:
+      - text: Bring a pot of water to a bare simmer with {tofu-salt}. Slide in {tofu} and leave it to firm up and season. Lift out gently.
+        timer: 180
+  - name: Build the sauce
+    steps:
+      - text: Heat {oil} in a wok over medium-high. Fry {beef}, breaking it up, until browned and a little crisp.
+        timer: 300
+      - text: Lower the heat. Add {doubanjiang} and fry until the oil turns red and fragrant.
+        timer: 60
+      - text: Add {douchi}, {chili}, {garlic} and {ginger}. Stir 30 seconds without letting it scorch.
+      - text: Splash in {shaoxing}, then add {stock}, {soy} and {sugar}. Bring to a simmer.
+  - name: Simmer
+    steps:
+      - text: Slide in the tofu and nudge it in with the back of the spatula rather than stirring, so it stays whole.
+      - text: Simmer gently so the tofu takes on the sauce.
+        timer: 300
+      - text: Mix {cornstarch} with {slurry-water}. Add it in two or three additions, nudging between each, until the sauce turns glossy and clings.
+  - name: Finish
+    steps:
+      - text: Scatter {sichuan} and {scallions} over the top and serve hot with {rice}.
+notes:
+  - kind: tip
+    text: Doubanjiang brands vary a lot in salt. Taste before adding the soy sauce.
+  - kind: tip
+    text: For more numbing heat, toast whole Sichuan peppercorns in a dry pan and grind them fresh.

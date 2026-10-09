@@ -1,0 +1,317 @@
+/* The world: a printed dim sum order card on a celadon table.
+   Two printed inks (vermilion, card green), the cook's ballpoint blue,
+   and red rubber stamps for what is done. Rules, not boxes. */
+
+:root {
+  --table: #d7e3db;
+  --table-deep: #c5d6cb;
+  --card: #fbfbf7;
+  --card-shade: rgb(32 66 52 / 0.16);
+  --red: #c41f2e;
+  --red-ink: rgb(196 31 46 / 0.88);
+  --green: #1b6a4e;
+  --green-rule: rgb(27 106 78 / 0.55);
+  --green-faint: rgb(27 106 78 / 0.14);
+  --ink: #15191a;
+  --ink-2: #44514b;
+  --blue: #1f4ea1;
+  --blue-faint: rgb(31 78 161 / 0.1);
+  --stamp-blend: multiply;
+
+  --hz: 'Noto Serif SC Variable', 'Songti SC', 'STSong', 'SimSun', serif;
+  --print: 'Archivo Variable', 'Arial Narrow', sans-serif;
+  --text: 'Atkinson Hyperlegible Next Variable', system-ui, sans-serif;
+
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+  --step-1: clamp(1.125rem, 1.05rem + 0.35vw, 1.3rem);
+  --step-2: clamp(1.35rem, 1.2rem + 0.75vw, 1.75rem);
+  --step-3: clamp(1.75rem, 1.45rem + 1.5vw, 2.6rem);
+  --step-4: clamp(2.4rem, 1.7rem + 3.4vw, 4.4rem);
+  --step-5: clamp(3.4rem, 2.2rem + 6vw, 6rem);
+
+  --gutter: clamp(16px, 4vw, 48px);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --table: #0f1814;
+    --table-deep: #0b120f;
+    --card: #1a2420;
+    --card-shade: rgb(0 0 0 / 0.45);
+    --red: #f2707a;
+    --red-ink: rgb(242 112 122 / 0.9);
+    --green: #79c9a4;
+    --green-rule: rgb(121 201 164 / 0.42);
+    --green-faint: rgb(121 201 164 / 0.12);
+    --ink: #e9eeeb;
+    --ink-2: #a8b8b0;
+    --blue: #93b6ff;
+    --blue-faint: rgb(147 182 255 / 0.12);
+    --stamp-blend: screen;
+    color-scheme: dark;
+  }
+}
+:root[data-theme='dark'] {
+  --table: #0f1814;
+  --table-deep: #0b120f;
+  --card: #1a2420;
+  --card-shade: rgb(0 0 0 / 0.45);
+  --red: #f2707a;
+  --red-ink: rgb(242 112 122 / 0.9);
+  --green: #79c9a4;
+  --green-rule: rgb(121 201 164 / 0.42);
+  --green-faint: rgb(121 201 164 / 0.12);
+  --ink: #e9eeeb;
+  --ink-2: #a8b8b0;
+  --blue: #93b6ff;
+  --blue-faint: rgb(147 182 255 / 0.12);
+  --stamp-blend: screen;
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scrollbar-color: var(--green-rule) var(--table);
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--table);
+  color: var(--ink);
+  font-family: var(--text);
+  font-size: var(--step-0);
+  line-height: 1.55;
+  text-autospace: normal;
+  -webkit-font-smoothing: antialiased;
+  caret-color: var(--blue);
+}
+
+/* Table grain: fixed, non-interactive, never on a scrolling layer. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .1 0 0 0 0 .25 0 0 0 0 .18 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+::selection {
+  background: var(--blue-faint);
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.hz {
+  font-family: var(--hz);
+  font-weight: 900;
+  font-variant-east-asian: proportional-width;
+}
+
+.print {
+  font-family: var(--print);
+  font-stretch: 78%;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.num {
+  font-family: var(--print);
+  font-variant-numeric: tabular-nums;
+  font-stretch: 85%;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Paper */
+.card {
+  position: relative;
+  z-index: 1;
+  background: var(--card);
+  box-shadow:
+    0 1px 0 var(--green-faint),
+    0 18px 40px -18px var(--card-shade),
+    0 4px 10px -4px var(--card-shade);
+}
+
+/* Rubber stamp */
+.stamp {
+  --rot: -12deg;
+  display: inline-grid;
+  place-items: center;
+  width: 2.3em;
+  height: 2.3em;
+  border: 0.14em solid var(--red-ink);
+  border-radius: 50%;
+  color: var(--red-ink);
+  font-family: var(--hz);
+  font-weight: 900;
+  line-height: 1;
+  transform: rotate(var(--rot));
+  mix-blend-mode: var(--stamp-blend);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.4 2.05'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.4 2.05'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.stamp[data-status='draft'] {
+  border-style: dashed;
+}
+
+@keyframes stamp-press {
+  0% {
+    transform: rotate(var(--rot)) scale(1.6);
+    opacity: 0;
+  }
+  55% {
+    transform: rotate(var(--rot)) scale(0.94);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(var(--rot)) scale(1);
+  }
+}
+.stamp.is-landing {
+  animation: stamp-press 260ms var(--ease-out) both;
+}
+
+/* Ballpoint tick box, printed in card green */
+.tick {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: none;
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  border: 1.5px solid var(--green-rule);
+  border-radius: 1px;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+}
+.tick::after {
+  content: '';
+  width: 26px;
+  height: 26px;
+  background: var(--blue);
+  -webkit-mask: var(--icon-check) center / contain no-repeat;
+  mask: var(--icon-check) center / contain no-repeat;
+  transform: rotate(-6deg) scale(0.4);
+  opacity: 0;
+  transition:
+    transform 180ms var(--ease-out),
+    opacity 120ms linear;
+}
+.tick:checked::after {
+  opacity: 1;
+  transform: rotate(-6deg) scale(1.15) translate(2px, -3px);
+}
+.tick:hover {
+  border-color: var(--green);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  min-height: 48px;
+  padding: 0 1.25em;
+  border: 1.5px solid var(--green);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--green);
+  font-family: var(--print);
+  font-stretch: 85%;
+  font-weight: 700;
+  font-size: var(--step-0);
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 160ms var(--ease-out),
+    transform 120ms var(--ease-out);
+}
+.btn:hover {
+  background: var(--green-faint);
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn[disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.btn--red {
+  background: var(--red);
+  border-color: var(--red);
+  color: var(--card);
+}
+.btn--red:hover {
+  background: color-mix(in oklab, var(--red) 88%, var(--ink));
+}
+.btn svg {
+  width: 1.2em;
+  height: 1.2em;
+  flex: none;
+}
+
+.icon {
+  display: inline-block;
+  width: 1.1em;
+  height: 1.1em;
+  vertical-align: -0.18em;
+  fill: currentColor;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}

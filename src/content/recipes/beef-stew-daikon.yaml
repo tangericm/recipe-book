@@ -1,0 +1,80 @@
+title: Beef Stew with Daikon and Ginger
+hanzi: 萝卜炖牛肉
+pinyin: Luóbo dùn niúròu
+chapter: braises
+status: cooked
+source:
+  kind: chat
+  date: 2026-09
+summary: Grass-fed chuck pressure-braised with red wine, toasted tomato paste and a ginger-daikon backbone. A French and Chinese hybrid; the daikon goes in late so it holds together.
+yield: { qty: 6, unit: servings }
+time: { active: 45, total: 165 }
+equipment: Instant Pot
+ingredients:
+  - name: Beef
+    items:
+      - { id: chuck, qty: 2.4, unit: lb, name: boneless chuck roast }
+      - { id: salt, qty: 2, unit: tsp, name: kosher salt }
+      - { id: pepper, qty: 1, unit: tsp, name: black pepper, note: freshly ground }
+      - { id: oil, qty: 2, unit: tbsp, name: neutral oil }
+  - name: Base
+    items:
+      - { id: onion, qty: 1, name: large onion, note: diced }
+      - { id: celery, qty: 3, name: celery stalks, note: in 2.5 cm pieces }
+      - { id: garlic, qty: 5, name: garlic cloves, note: smashed }
+      - { id: ginger, qty: 3, unit: tbsp, name: fresh ginger, note: thin coins }
+      - { id: tomato-paste, qty: 3, unit: tbsp, name: tomato paste }
+      - { id: wine, qty: 1, unit: cup, name: red wine, note: Cabernet Sauvignon }
+      - { id: stock, qty: 3, unit: cup, name: beef stock }
+      - { id: soy, qty: 2, unit: tbsp, name: soy sauce }
+      - { id: worcestershire, qty: 1, unit: tbsp, name: Worcestershire sauce }
+      - { id: bay, qty: 2, name: bay leaves }
+      - { id: thyme, qty: 1, unit: tsp, name: dried thyme }
+  - name: Vegetables and finish
+    items:
+      - { id: daikon, qty: 1, unit: lb, name: daikon, note: in 4 cm half-moons }
+      - { id: carrots, qty: 4, name: carrots, note: in 4 cm chunks }
+      - { id: cornstarch, qty: 2, unit: tbsp, name: cornstarch }
+      - { id: cold-water, qty: 3, unit: tbsp, name: cold water }
+      - { id: herbs, qty: 3, unit: tbsp, name: scallions or parsley, note: chopped }
+steps:
+  - name: Beef
+    steps:
+      - text: Cut {chuck} into 3 large chunks, or 5 cm cubes for a richer sauce. Leave the seams of connective tissue. Pat dry and season with {salt} and {pepper}.
+        timer: 900
+      - text: Sauté on High with {oil}. Sear in batches without crowding, about 4 minutes, then 3 on the next side. Set aside.
+        timer: 840
+  - name: Base
+    steps:
+      - text: Add {onion}, {celery}, {garlic} and {ginger}, scraping up the browned bits, until the onion softens.
+        timer: 300
+      - text: Push the vegetables aside and fry {tomato-paste} on the bare metal until it darkens to brick, then stir it through.
+        timer: 120
+      - text: Pour in {wine} and scrape the bottom until bare. Simmer until reduced by a third and no longer sharp with alcohol.
+        timer: 300
+  - name: Pressure cook
+    steps:
+      - text: Turn off Sauté. Return the beef in a single layer with its juices, then add {stock}, {soy}, {worcestershire}, {bay} and {thyme}. Liquid about two-thirds up the beef.
+      - text: Seal and cook on High pressure. Cubes take 35 minutes; 3 whole chunks take 50.
+        timer: 3000
+      - text: Let the pressure release naturally. Venting early squeezes moisture out of lean grass-fed beef.
+        timer: 1500
+  - name: Vegetables
+    steps:
+      - text: Nestle in {daikon} and {carrots}. Seal, cook on High, then quick release at once.
+        timer: 240
+      - text: For whole chunks, pull the beef into rough pieces with tongs.
+  - name: Finish
+    steps:
+      - text: Fish out the bay leaves. Reduce on Sauté first if the sauce is thin, then stir in {cornstarch} whisked into {cold-water} and simmer until it coats a spoon.
+        timer: 240
+      - text: Salt to taste; it will need more than you expect. Scatter {herbs} and serve.
+notes:
+  - kind: cook
+    text: I braised 3 whole chunks instead of cubes, in one layer. 50 minutes plus a full natural release, and the sauce came out thinner, so reduce harder before thickening.
+  - kind: cook
+    text: Start to finish with whole chunks is 2½ to 3 hours, only about 45 minutes of it hands-on. Coming to pressure and the natural release add nearly an hour.
+  - kind: tip
+    text: Almost every BURN warning traces back to the deglaze. Scrape until the metal is bare.
+  - kind: tip
+    text: Better on day two; the fat cap lifts off cold. For a more Chinese lean, swap half the wine for Shaoxing and add a star anise.
