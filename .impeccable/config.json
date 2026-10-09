@@ -29,6 +29,33 @@
         ],
         "createdAt": "2026-10-09T19:53:57.611Z",
         "reason": "Claude: gitignored throwaway direction-decision mock, not part of the shipped site"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/assigned.html"
+        ],
+        "createdAt": "2026-10-09T20:04:11.316Z",
+        "reason": "Claude: gitignored pre-DESIGN.md direction-decision mock, not part of the shipped site"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/model-pick.html"
+        ],
+        "createdAt": "2026-10-09T20:04:11.504Z",
+        "reason": "Claude: gitignored pre-DESIGN.md direction-decision mock, not part of the shipped site"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/challenger-glazier.html"
+        ],
+        "createdAt": "2026-10-09T20:04:11.787Z",
+        "reason": "Claude: gitignored pre-DESIGN.md direction-decision mock, not part of the shipped site"
       }
     ]
   }
