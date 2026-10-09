@@ -699,6 +699,10 @@ const step = d.yield.qty > 12 ? Math.max(1, Math.round(d.yield.qty / 5)) : 1;
   .track li:nth-child(3n) {
     --stamp-rot: -19deg;
   }
+  .step.is-landing::after {
+    --rot: var(--stamp-rot, -10deg);
+    animation: stamp-press 260ms var(--ease-out) both;
+  }
   .step[data-done] .step__text {
     padding-right: 2.6em;
   }
@@ -1026,6 +1030,10 @@ const step = d.yield.qty > 12 ? Math.max(1, Math.round(d.yield.qty / 5)) : 1;
     mix-blend-mode: var(--stamp-blend);
     -webkit-mask-image: var(--ink-mask);
     mask-image: var(--ink-mask);
+  }
+  .track button.is-landing::after {
+    --rot: var(--stamp-rot, -12deg);
+    animation: stamp-press 260ms var(--ease-out) both;
   }
   .track button[data-done] > span {
     opacity: 0.28;

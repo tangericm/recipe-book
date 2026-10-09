@@ -1,0 +1,484 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-09T20:00:51+00:00",
+  "title": "Design System: 家常 Home Cooking",
+  "extensions": {
+    "colorMeta": {
+      "vermilion": {
+        "role": "primary",
+        "displayName": "Dim Sum Vermilion",
+        "canonical": "oklch(53.0% 0.197 24)",
+        "tonalRamp": [
+          "#310000",
+          "#550000",
+          "#8b0000",
+          "#b2001f",
+          "#da3940",
+          "#ff6060",
+          "#ff9f99",
+          "#ffc1ba"
+        ],
+        "cssVar": "--red",
+        "dark": "#f2707a"
+      },
+      "vermilion-stamp-ink": {
+        "role": "primary",
+        "displayName": "Stamp Vermilion",
+        "canonical": "rgb(196 31 46 / 0.88)",
+        "tonalRamp": [
+          "#310000",
+          "#550000",
+          "#8b0000",
+          "#b2001f",
+          "#da3940",
+          "#ff6060",
+          "#ff9f99",
+          "#ffc1ba"
+        ],
+        "cssVar": "--red-ink",
+        "dark": "rgb(242 112 122 / 0.9)"
+      },
+      "card-green": {
+        "role": "secondary",
+        "displayName": "Order Card Green",
+        "canonical": "oklch(47.0% 0.088 165)",
+        "tonalRamp": [
+          "#001205",
+          "#002d1c",
+          "#004e34",
+          "#1f6d51",
+          "#448e70",
+          "#66b091",
+          "#9fd1ba",
+          "#c9f0dd"
+        ],
+        "cssVar": "--green",
+        "dark": "#79c9a4"
+      },
+      "card-green-rule": {
+        "role": "secondary",
+        "displayName": "Green Rule",
+        "canonical": "rgb(27 106 78 / 0.55)",
+        "tonalRamp": [
+          "#001205",
+          "#002d1c",
+          "#004e34",
+          "#1f6d51",
+          "#448e70",
+          "#66b091",
+          "#9fd1ba",
+          "#c9f0dd"
+        ],
+        "cssVar": "--green-rule",
+        "dark": "rgb(121 201 164 / 0.42)"
+      },
+      "card-green-faint": {
+        "role": "secondary",
+        "displayName": "Green Wash",
+        "canonical": "rgb(27 106 78 / 0.14)",
+        "tonalRamp": [
+          "#001205",
+          "#002d1c",
+          "#004e34",
+          "#1f6d51",
+          "#448e70",
+          "#66b091",
+          "#9fd1ba",
+          "#c9f0dd"
+        ],
+        "cssVar": "--green-faint",
+        "dark": "rgb(121 201 164 / 0.12)"
+      },
+      "ballpoint-blue": {
+        "role": "tertiary",
+        "displayName": "Ballpoint Blue",
+        "canonical": "oklch(44.2% 0.144 261)",
+        "tonalRamp": [
+          "#000234",
+          "#032054",
+          "#09398a",
+          "#2a59ad",
+          "#497bd2",
+          "#699df7",
+          "#9fc5ff",
+          "#d6e6ff"
+        ],
+        "cssVar": "--blue",
+        "dark": "#93b6ff"
+      },
+      "ballpoint-blue-faint": {
+        "role": "tertiary",
+        "displayName": "Blue Wash",
+        "canonical": "rgb(31 78 161 / 0.1)",
+        "tonalRamp": [
+          "#000234",
+          "#032054",
+          "#09398a",
+          "#2a59ad",
+          "#497bd2",
+          "#699df7",
+          "#9fc5ff",
+          "#d6e6ff"
+        ],
+        "cssVar": "--blue-faint",
+        "dark": "rgb(147 182 255 / 0.12)"
+      },
+      "celadon-table": {
+        "role": "neutral",
+        "displayName": "Celadon Table",
+        "canonical": "oklch(90.5% 0.017 157)",
+        "tonalRamp": [
+          "#070d09",
+          "#202622",
+          "#39433c",
+          "#56615a",
+          "#768079",
+          "#96a29a",
+          "#bec6c1",
+          "#e6f2ea"
+        ],
+        "cssVar": "--table",
+        "dark": "#0f1814"
+      },
+      "celadon-table-deep": {
+        "role": "neutral",
+        "displayName": "Celadon Shadow",
+        "canonical": "#c5d6cb",
+        "tonalRamp": [
+          "#070d09",
+          "#202622",
+          "#39433c",
+          "#56615a",
+          "#768079",
+          "#96a29a",
+          "#bec6c1",
+          "#e6f2ea"
+        ],
+        "cssVar": "--table-deep",
+        "dark": "#0b120f"
+      },
+      "card-stock": {
+        "role": "neutral",
+        "displayName": "Cool Card Stock",
+        "canonical": "oklch(98.7% 0.005 106)",
+        "tonalRamp": [
+          "#0b0b09",
+          "#242422",
+          "#40403d",
+          "#5e5e5a",
+          "#7d7d7a",
+          "#9f9f9b",
+          "#c4c4c1",
+          "#efefeb"
+        ],
+        "cssVar": "--card",
+        "dark": "#1a2420"
+      },
+      "card-shade": {
+        "role": "neutral",
+        "displayName": "Card Shade",
+        "canonical": "rgb(32 66 52 / 0.16)",
+        "tonalRamp": [
+          "#070d09",
+          "#202622",
+          "#39433c",
+          "#56615a",
+          "#768079",
+          "#96a29a",
+          "#bec6c1",
+          "#e6f2ea"
+        ],
+        "cssVar": "--card-shade",
+        "dark": "rgb(0 0 0 / 0.45)"
+      },
+      "press-ink": {
+        "role": "neutral",
+        "displayName": "Press Ink",
+        "canonical": "oklch(21.0% 0.006 214)",
+        "tonalRamp": [
+          "#090c0c",
+          "#222525",
+          "#3c4142",
+          "#5a5f60",
+          "#797e80",
+          "#9a9fa1",
+          "#c1c5c6",
+          "#eaf0f1"
+        ],
+        "cssVar": "--ink",
+        "dark": "#e9eeeb"
+      },
+      "press-ink-soft": {
+        "role": "neutral",
+        "displayName": "Faded Ink",
+        "canonical": "oklch(42.2% 0.019 166)",
+        "tonalRamp": [
+          "#060d0a",
+          "#1e2622",
+          "#36433d",
+          "#54615b",
+          "#73817b",
+          "#94a29c",
+          "#bcc7c2",
+          "#e3f3eb"
+        ],
+        "cssVar": "--ink-2",
+        "dark": "#a8b8b0"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Hanzi Display",
+        "purpose": "Hanzi name of the book and each recipe, vermilion, language-tagged."
+      },
+      "headline": {
+        "displayName": "English Headline",
+        "purpose": "English recipe title under its hanzi, card green."
+      },
+      "title": {
+        "displayName": "Panel Lead",
+        "purpose": "Cook-mode panel leads, card green."
+      },
+      "dish": {
+        "displayName": "Dish Name",
+        "purpose": "English dish names in index rows and related links."
+      },
+      "cook-step": {
+        "displayName": "Cook Step",
+        "purpose": "The single instruction in cook mode, max 34ch; quantities 800 blue."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Steps, notes, summaries; 62 to 65ch."
+      },
+      "label": {
+        "displayName": "Printed Caps",
+        "purpose": "Column heads, field labels, group names, meta lines; uppercase."
+      },
+      "numeral": {
+        "displayName": "Numeral",
+        "purpose": "Step numbers in vermilion; timers and tally totals at larger sizes; tabular."
+      }
+    },
+    "shadows": [
+      {
+        "name": "card-on-table",
+        "value": "0 1px 0 var(--green-faint), 0 18px 40px -18px var(--card-shade), 0 4px 10px -4px var(--card-shade)",
+        "purpose": "Every card on the table. Removed in print and on the full-bleed cook card below 900px."
+      },
+      {
+        "name": "chip-lift",
+        "value": "0 8px 20px -10px var(--card-shade)",
+        "purpose": "Running timer chips floating over the page."
+      }
+    ],
+    "textures": [
+      {
+        "name": "ink-mask",
+        "cssVar": "--ink-mask",
+        "value": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.4 2.05'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+        "purpose": "Shared noise mask for every rubber stamp (試 存 草 好)."
+      },
+      {
+        "name": "paper-tooth",
+        "selector": ".card::before",
+        "value": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='3' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .4 0 0 0 0 .36 0 0 0 .24 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E\")",
+        "purpose": "Card grain under the print, opacity 0.5 light / 0.35 dark."
+      },
+      {
+        "name": "table-grain",
+        "selector": "body::before",
+        "purpose": "Fixed fractal-noise grain over the celadon table at 0.35 opacity, never on a scrolling layer."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The easing curve for state changes."
+      },
+      {
+        "name": "tick-draw",
+        "value": "transform 180ms, opacity 120ms",
+        "purpose": "Ballpoint check snapping into a tick box."
+      },
+      {
+        "name": "chit-slide",
+        "value": "280ms from translateX(+/-28px) rotate(+/-0.6deg), opacity 0.25",
+        "purpose": "Cook panel entering forward or back."
+      },
+      {
+        "name": "chit-rise",
+        "value": "transform 260ms",
+        "purpose": "Mobile tally strip sliding up once a dish is ticked."
+      },
+      {
+        "name": "button-press",
+        "value": "background 160ms, translateY(1px) 120ms",
+        "purpose": "Button hover fill and press."
+      },
+      {
+        "name": "nudge",
+        "value": "900ms ease-in-out infinite, translateY(-2px)",
+        "purpose": "Overdue timer chip; one iteration under reduced motion."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "1ms",
+        "purpose": "All animation and transition durations collapse under prefers-reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact",
+        "value": "640px",
+        "purpose": "Index drops the time column; field grid goes to one column."
+      },
+      {
+        "name": "cook-wide",
+        "value": "900px",
+        "purpose": "Recipe body splits 5:7; cook card insets from the viewport edge."
+      },
+      {
+        "name": "askew",
+        "value": "1024px",
+        "purpose": "Cards tilt; tally chit becomes a sticky side card."
+      },
+      {
+        "name": "photo-rail",
+        "value": "1180px",
+        "purpose": "Recipe photo card pins to the right rail."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Button",
+      "kind": "button",
+      "refersTo": "button",
+      "description": "Printed outline button in card green; the default action.",
+      "html": "<button class=\"ds-btn\">Back to the card</button>",
+      "css": ":host{--table:#d7e3db;--card:#fbfbf7;--card-shade:rgb(32 66 52 / .16);--red:#c41f2e;--red-ink:rgb(196 31 46 / .88);--green:#1b6a4e;--green-rule:rgb(27 106 78 / .55);--green-faint:rgb(27 106 78 / .14);--ink:#15191a;--ink-2:#44514b;--blue:#1f4ea1;--blue-faint:rgb(31 78 161 / .1);--stamp-blend:multiply;--hz:'Noto Serif SC Variable','Songti SC','STSong','SimSun',serif;--print:'Archivo Variable','Arial Narrow',sans-serif;--text:'Atkinson Hyperlegible Next Variable',system-ui,sans-serif;--ease-out:cubic-bezier(.16,1,.3,1);} .ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;min-height:48px;padding:0 1.25em;border:1.5px solid var(--green);border-radius:2px;background:transparent;color:var(--green);font-family:var(--print);font-stretch:85%;font-weight:700;font-size:1rem;letter-spacing:.02em;cursor:pointer;transition:background-color 160ms var(--ease-out),transform 120ms var(--ease-out);} .ds-btn:hover{background:var(--green-faint);} .ds-btn:active{transform:translateY(1px);} .ds-btn:focus-visible{outline:2px solid var(--blue);outline-offset:3px;}"
+    },
+    {
+      "name": "Red Button",
+      "kind": "button",
+      "refersTo": "button-red",
+      "description": "Solid vermilion; one per surface for the main act.",
+      "html": "<button class=\"ds-btn ds-btn--red\">Done, next step</button>",
+      "css": ":host{--table:#d7e3db;--card:#fbfbf7;--card-shade:rgb(32 66 52 / .16);--red:#c41f2e;--red-ink:rgb(196 31 46 / .88);--green:#1b6a4e;--green-rule:rgb(27 106 78 / .55);--green-faint:rgb(27 106 78 / .14);--ink:#15191a;--ink-2:#44514b;--blue:#1f4ea1;--blue-faint:rgb(31 78 161 / .1);--stamp-blend:multiply;--hz:'Noto Serif SC Variable','Songti SC','STSong','SimSun',serif;--print:'Archivo Variable','Arial Narrow',sans-serif;--text:'Atkinson Hyperlegible Next Variable',system-ui,sans-serif;--ease-out:cubic-bezier(.16,1,.3,1);} .ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;min-height:48px;padding:0 1.25em;border:1.5px solid var(--green);border-radius:2px;background:transparent;color:var(--green);font-family:var(--print);font-stretch:85%;font-weight:700;font-size:1rem;letter-spacing:.02em;cursor:pointer;transition:background-color 160ms var(--ease-out),transform 120ms var(--ease-out);} .ds-btn:hover{background:var(--green-faint);} .ds-btn:active{transform:translateY(1px);} .ds-btn:focus-visible{outline:2px solid var(--blue);outline-offset:3px;} .ds-btn--red{background:var(--red);border-color:var(--red);color:var(--card);} .ds-btn--red:hover{background:color-mix(in oklab,var(--red) 88%,var(--ink));}"
+    },
+    {
+      "name": "Find Field",
+      "kind": "input",
+      "refersTo": "find-input",
+      "description": "Unboxed search line: green underline, typed text in ballpoint blue.",
+      "html": "<label class=\"ds-find\"><span class=\"ds-find__hz\" lang=\"zh-Hans\">找</span><span class=\"ds-find__label\">Find a dish</span><input class=\"ds-find__input\" type=\"search\" value=\"dumplings\"></label>",
+      "css": ":host{--table:#d7e3db;--card:#fbfbf7;--card-shade:rgb(32 66 52 / .16);--red:#c41f2e;--red-ink:rgb(196 31 46 / .88);--green:#1b6a4e;--green-rule:rgb(27 106 78 / .55);--green-faint:rgb(27 106 78 / .14);--ink:#15191a;--ink-2:#44514b;--blue:#1f4ea1;--blue-faint:rgb(31 78 161 / .1);--stamp-blend:multiply;--hz:'Noto Serif SC Variable','Songti SC','STSong','SimSun',serif;--print:'Archivo Variable','Arial Narrow',sans-serif;--text:'Atkinson Hyperlegible Next Variable',system-ui,sans-serif;--ease-out:cubic-bezier(.16,1,.3,1);} .ds-find{display:grid;grid-template-columns:auto auto minmax(0,1fr);align-items:end;column-gap:8px;font-family:var(--text);} .ds-find__hz{font-family:var(--hz);font-weight:900;color:var(--red);font-size:1.6rem;line-height:1;padding-bottom:10px;} .ds-find__label{font-family:var(--print);font-stretch:78%;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--green);padding-bottom:12px;margin-right:6px;} .ds-find__input{min-height:48px;padding:6px 8px 6px 2px;border:0;border-bottom:2px solid var(--green);border-radius:0;background:transparent;color:var(--blue);font:500 1.5rem/1.2 var(--text);} .ds-find__input:focus-visible{outline:2px solid var(--blue);outline-offset:6px;}"
+    },
+    {
+      "name": "Ballpoint Tick",
+      "kind": "custom",
+      "refersTo": "tick",
+      "description": "Printed green blank; checking draws a blue ballpoint check that overshoots the box.",
+      "html": "<label class=\"ds-tickrow\"><input class=\"ds-tick\" type=\"checkbox\" checked><span><b class=\"ds-q\">450 g</b> ground pork</span></label>",
+      "css": ":host{--table:#d7e3db;--card:#fbfbf7;--card-shade:rgb(32 66 52 / .16);--red:#c41f2e;--red-ink:rgb(196 31 46 / .88);--green:#1b6a4e;--green-rule:rgb(27 106 78 / .55);--green-faint:rgb(27 106 78 / .14);--ink:#15191a;--ink-2:#44514b;--blue:#1f4ea1;--blue-faint:rgb(31 78 161 / .1);--stamp-blend:multiply;--hz:'Noto Serif SC Variable','Songti SC','STSong','SimSun',serif;--print:'Archivo Variable','Arial Narrow',sans-serif;--text:'Atkinson Hyperlegible Next Variable',system-ui,sans-serif;--ease-out:cubic-bezier(.16,1,.3,1);} .ds-tickrow{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--green-faint);font-family:var(--text);color:var(--ink);} .ds-q{color:var(--blue);} .ds-tick{appearance:none;-webkit-appearance:none;width:30px;height:30px;margin:0;border:1.5px solid var(--green-rule);border-radius:1px;background:transparent;display:inline-grid;place-items:center;cursor:pointer;} .ds-tick::after{content:'';width:26px;height:26px;background:var(--blue);-webkit-mask:url(\"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20256%20256%22%3E%3Cpath%20d%3D%22M232.49%2C80.49l-128%2C128a12%2C12%2C0%2C0%2C1-17%2C0l-56-56a12%2C12%2C0%2C1%2C1%2C17-17L96%2C183%2C215.51%2C63.51a12%2C12%2C0%2C0%2C1%2C17%2C17Z%22/%3E%3C/svg%3E\") center/contain no-repeat;mask:url(\"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20256%20256%22%3E%3Cpath%20d%3D%22M232.49%2C80.49l-128%2C128a12%2C12%2C0%2C0%2C1-17%2C0l-56-56a12%2C12%2C0%2C1%2C1%2C17-17L96%2C183%2C215.51%2C63.51a12%2C12%2C0%2C0%2C1%2C17%2C17Z%22/%3E%3C/svg%3E\") center/contain no-repeat;transform:rotate(-6deg) scale(.4);opacity:0;transition:transform 180ms var(--ease-out),opacity 120ms linear;} .ds-tick:checked::after{opacity:1;transform:rotate(-6deg) scale(1.15) translate(2px,-3px);} .ds-tick:hover{border-color:var(--green);} .ds-tick:focus-visible{outline:2px solid var(--blue);outline-offset:3px;} .ds-tickrow:has(.ds-tick:checked) span{color:var(--ink-2);text-decoration:line-through;text-decoration-color:var(--blue);}"
+    },
+    {
+      "name": "Rubber Stamps",
+      "kind": "custom",
+      "refersTo": "stamp",
+      "description": "試 cooked, 存 saved, 草 draft (dashed), 好 done; one shared ink mask, rotation per index.",
+      "html": "<div class=\"ds-stamps\"><span class=\"ds-stamp\" lang=\"zh-Hant\">試</span><span class=\"ds-stamp\" style=\"--rot:7deg\" lang=\"zh-Hans\">存</span><span class=\"ds-stamp ds-stamp--draft\" style=\"--rot:-19deg\" lang=\"zh-Hans\">草</span><span class=\"ds-stamp\" style=\"--rot:-10deg\" lang=\"zh-Hans\">好</span></div>",
+      "css": ":host{--table:#d7e3db;--card:#fbfbf7;--card-shade:rgb(32 66 52 / .16);--red:#c41f2e;--red-ink:rgb(196 31 46 / .88);--green:#1b6a4e;--green-rule:rgb(27 106 78 / .55);--green-faint:rgb(27 106 78 / .14);--ink:#15191a;--ink-2:#44514b;--blue:#1f4ea1;--blue-faint:rgb(31 78 161 / .1);--stamp-blend:multiply;--hz:'Noto Serif SC Variable','Songti SC','STSong','SimSun',serif;--print:'Archivo Variable','Arial Narrow',sans-serif;--text:'Atkinson Hyperlegible Next Variable',system-ui,sans-serif;--ease-out:cubic-bezier(.16,1,.3,1);} .ds-stamps{display:flex;gap:18px;padding:12px;background:var(--card);font-size:1.6rem;} .ds-stamp{--rot:-12deg;display:inline-grid;place-items:center;width:2.3em;height:2.3em;border:.14em solid var(--red-ink);border-radius:50%;color:var(--red-ink);font-family:var(--hz);font-weight:900;line-height:1;transform:rotate(var(--rot));mix-blend-mode:var(--stamp-blend);-webkit-mask-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.4 2.05'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\");mask-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.4 2.05'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\");} .ds-stamp--draft{border-style:dashed;}"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Card stock on the celadon table: paper tooth grain, soft layered drop, square corners, rules inside.",
+      "html": "<div class=\"ds-table\"><article class=\"ds-card\"><h3 class=\"ds-sec\"><span class=\"ds-hz\" lang=\"zh-Hans\">配料</span> <span class=\"ds-caps\">Ingredients</span></h3><p class=\"ds-row\"><b class=\"ds-q\">400 g</b> napa cabbage</p><p class=\"ds-row\"><b class=\"ds-q\">150 g</b> pressed tofu</p></article></div>",
+      "css": ":host{--table:#d7e3db;--card:#fbfbf7;--card-shade:rgb(32 66 52 / .16);--red:#c41f2e;--red-ink:rgb(196 31 46 / .88);--green:#1b6a4e;--green-rule:rgb(27 106 78 / .55);--green-faint:rgb(27 106 78 / .14);--ink:#15191a;--ink-2:#44514b;--blue:#1f4ea1;--blue-faint:rgb(31 78 161 / .1);--stamp-blend:multiply;--hz:'Noto Serif SC Variable','Songti SC','STSong','SimSun',serif;--print:'Archivo Variable','Arial Narrow',sans-serif;--text:'Atkinson Hyperlegible Next Variable',system-ui,sans-serif;--ease-out:cubic-bezier(.16,1,.3,1);} .ds-table{background:var(--table);padding:28px;} .ds-card{position:relative;z-index:1;background:var(--card);padding:28px 32px;transform:rotate(-.35deg);box-shadow:0 1px 0 var(--green-faint),0 18px 40px -18px var(--card-shade),0 4px 10px -4px var(--card-shade);font-family:var(--text);color:var(--ink);} .ds-card::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.5;background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='3' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .4 0 0 0 0 .36 0 0 0 .24 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E\");} .ds-sec{display:flex;align-items:baseline;gap:10px;margin:0 0 12px;padding-bottom:8px;border-bottom:1.5px solid var(--green);font-weight:400;font-size:1.2rem;} .ds-hz{font-family:var(--hz);font-weight:900;color:var(--red);font-size:1.3em;} .ds-caps{font-family:var(--print);font-stretch:78%;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--green);} .ds-row{margin:0;padding:8px 0;border-bottom:1px solid var(--green-faint);} .ds-q{color:var(--blue);}"
+    },
+    {
+      "name": "Cook Track",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Ruled numeral strip: blue underline on the current step, 好 stamps on done steps, right-edge fade.",
+      "html": "<ol class=\"ds-track\"><li><button><span class=\"ds-hz\" lang=\"zh-Hans\">料</span></button></li><li><button data-done><span>1</span></button></li><li style=\"--stamp-rot:7deg\"><button data-done><span>2</span></button></li><li><button aria-current=\"step\"><span>3</span></button></li><li><button><span>4</span></button></li><li><button><span>5</span></button></li><li><button><span>6</span></button></li><li><button><span>7</span></button></li><li><button><span>8</span></button></li><li><button><span>9</span></button></li></ol>",
+      "css": ":host{--table:#d7e3db;--card:#fbfbf7;--card-shade:rgb(32 66 52 / .16);--red:#c41f2e;--red-ink:rgb(196 31 46 / .88);--green:#1b6a4e;--green-rule:rgb(27 106 78 / .55);--green-faint:rgb(27 106 78 / .14);--ink:#15191a;--ink-2:#44514b;--blue:#1f4ea1;--blue-faint:rgb(31 78 161 / .1);--stamp-blend:multiply;--hz:'Noto Serif SC Variable','Songti SC','STSong','SimSun',serif;--print:'Archivo Variable','Arial Narrow',sans-serif;--text:'Atkinson Hyperlegible Next Variable',system-ui,sans-serif;--ease-out:cubic-bezier(.16,1,.3,1);} .ds-track{display:flex;margin:0;padding:0 56px 0 16px;list-style:none;background:var(--card);border-top:3px double var(--red);border-bottom:1px solid var(--green-rule);overflow-x:auto;scrollbar-width:none;-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 56px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 56px),transparent);} .ds-track li{flex:none;} .ds-track li+li{border-left:1px solid var(--green-faint);} .ds-track button{position:relative;display:grid;place-items:center;width:42px;height:46px;padding:0;border:0;border-bottom:3px solid transparent;background:none;color:var(--ink-2);font-family:var(--text);font-size:.9375rem;cursor:pointer;} .ds-track button:hover{background:var(--blue-faint);} .ds-track button:focus-visible{outline:2px solid var(--blue);outline-offset:-3px;} .ds-hz{font-family:var(--hz);font-weight:900;color:var(--green);} .ds-track button[aria-current='step']{border-bottom-color:var(--blue);color:var(--blue);font-weight:700;} .ds-track button[data-done]>span{opacity:.28;} .ds-track button[data-done]::after{content:'好';position:absolute;top:50%;left:50%;display:grid;place-items:center;width:28px;height:28px;margin:-15px 0 0 -14px;border:1.5px solid var(--red-ink);border-radius:50%;color:var(--red-ink);font-family:var(--hz);font-weight:900;font-size:14px;line-height:1;transform:rotate(var(--stamp-rot,-12deg));mix-blend-mode:var(--stamp-blend);-webkit-mask-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.4 2.05'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\");mask-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.4 2.05'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\");}"
+    },
+    {
+      "name": "Timer Chip",
+      "kind": "chip",
+      "refersTo": "timer-chip",
+      "description": "Inline step timer: green outline, tabular print numerals; green wash running, red when over.",
+      "html": "<div class=\"ds-chips\"><button class=\"ds-chip\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 256 256\" width=\"18\" height=\"18\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M234.49,111.07,90.41,22.94A20,20,0,0,0,60,39.87V216.13a20,20,0,0,0,30.41,16.93l144.08-88.13a19.82,19.82,0,0,0,0-33.86ZM84,208.85V47.15L216.16,128Z\"/></svg><span>45:00</span></button><button class=\"ds-chip\" data-state=\"running\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 256 256\" width=\"18\" height=\"18\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M234.49,111.07,90.41,22.94A20,20,0,0,0,60,39.87V216.13a20,20,0,0,0,30.41,16.93l144.08-88.13a19.82,19.82,0,0,0,0-33.86ZM84,208.85V47.15L216.16,128Z\"/></svg><span>12:31</span></button><button class=\"ds-chip\" data-state=\"over\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 256 256\" width=\"18\" height=\"18\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M234.49,111.07,90.41,22.94A20,20,0,0,0,60,39.87V216.13a20,20,0,0,0,30.41,16.93l144.08-88.13a19.82,19.82,0,0,0,0-33.86ZM84,208.85V47.15L216.16,128Z\"/></svg><span>-0:42</span></button></div>",
+      "css": ":host{--table:#d7e3db;--card:#fbfbf7;--card-shade:rgb(32 66 52 / .16);--red:#c41f2e;--red-ink:rgb(196 31 46 / .88);--green:#1b6a4e;--green-rule:rgb(27 106 78 / .55);--green-faint:rgb(27 106 78 / .14);--ink:#15191a;--ink-2:#44514b;--blue:#1f4ea1;--blue-faint:rgb(31 78 161 / .1);--stamp-blend:multiply;--hz:'Noto Serif SC Variable','Songti SC','STSong','SimSun',serif;--print:'Archivo Variable','Arial Narrow',sans-serif;--text:'Atkinson Hyperlegible Next Variable',system-ui,sans-serif;--ease-out:cubic-bezier(.16,1,.3,1);} .ds-chips{display:flex;gap:10px;flex-wrap:wrap;} .ds-chip{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 12px;border:1.5px solid var(--green-rule);border-radius:2px;background:none;color:var(--green);font-family:var(--print);font-stretch:85%;font-weight:700;font-variant-numeric:tabular-nums;cursor:pointer;} .ds-chip:hover{background:var(--green-faint);} .ds-chip:focus-visible{outline:2px solid var(--blue);outline-offset:3px;} .ds-chip[data-state='running']{border-color:var(--green);background:var(--green-faint);} .ds-chip[data-state='over']{border-color:var(--red);color:var(--red);}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Dim Sum Order Card",
+    "overview": "Every surface is a sheet of thin, cool-white card stock lying on a pale celadon table, printed in exactly two inks and then marked up by the cook. The index is the tally card you tick to plan a cook, a recipe is its own card you work down, and the guided cook view is a card laid on the table that you stamp off line by line. Structure comes from printed rules (single, double, dashed), never from boxed panels or rounded containers.\n\nDensity is that of a working form: ruled rows, compact printed caps, generous touch targets inside the cells. Three hands are visible and never confused: the printer (vermilion and card green), the cook (ballpoint blue), and the rubber stamp (translucent vermilion with one shared ink texture). Cards sit slightly askew on wide screens and lie square on phones, where the card fills the viewport. Dark mode turns the table and card to night tones; the inks lighten and the stamps switch from multiply to screen so they still read as ink.\n\nMotion is limited to physical acts: the ballpoint tick snapping in, the step panel sliding across like a chit, the mobile tally strip rising from the bottom edge, and an overdue timer nudging. Everything collapses to near-instant under reduced motion.",
+    "keyCharacteristics": [
+      "Two printed inks (vermilion, card green) plus the cook's ballpoint blue; no other hues.",
+      "Rules, not boxes: hairline green row rules, a red double rule under every header band, dashed rules for tear-offs.",
+      "One shared ink-mask noise on every rubber stamp; per-index rotation.",
+      "Paper tooth grain inside every card; a coarser grain fixed over the table.",
+      "Hanzi lead every heading in heavy Song/Ming vermilion; English follows in condensed green caps."
+    ],
+    "rules": [
+      {
+        "name": "The Two Inks Rule",
+        "body": "The printer owns exactly two inks. Vermilion is for hanzi, step numerals and key rules; card green is for the ruled grid, column heads, English titles and panel leads. No third printed color, no gradients, no tints beyond the rule and wash alphas.",
+        "section": "colors"
+      },
+      {
+        "name": "The Ballpoint Rule",
+        "body": "Blue appears only where the cook has acted or is acting: ticks, quantities, notes, typed search text, the current step. Printed matter is never blue.",
+        "section": "colors"
+      },
+      {
+        "name": "The Hanzi First Rule",
+        "body": "Every section head pairs a vermilion hanzi with a green printed-caps English word, hanzi first (配料 Ingredients, 做法 Method, 笔记 Notes, 买菜 Shopping list).",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Clock Rule",
+        "body": "Times, counts and timers are set in the condensed print face with tabular figures, so digits never jitter as they tick.",
+        "section": "typography"
+      },
+      {
+        "name": "The Askew Card Rule",
+        "body": "From 1024px up, cards sit slightly off square: order card -0.5deg, recipe card -0.35deg, tally chit 1.1deg, photo 2deg. Below 1024px and in print, every card is square. The cook card is never rotated.",
+        "section": "layout"
+      },
+      {
+        "name": "The Paper Tooth Rule",
+        "body": "Any new card surface uses the shared card class so it gets the same grain and shadow; never a flat panel and never a second grain.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Rules, Not Boxes Rule",
+        "body": "Group content with rules and whitespace, not bordered or filled containers. The only bordered rectangles are printed form blanks a hand acts on: buttons, tick boxes, steppers and timer chips.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "**Do** set every section head as vermilion hanzi plus green printed caps, with `lang=\"zh-Hans\"` or `zh-Hant` on the hanzi.",
+      "**Do** close every header band with the 3px vermilion double rule and divide rows with 1px green rules.",
+      "**Do** put every new card on the shared card surface so it carries the paper tooth and the card-on-table shadow.",
+      "**Do** give every new stamp the shared ink mask, stamp vermilion, the theme blend mode and an index-driven `--stamp-rot`.",
+      "**Do** keep ballpoint blue for marks the cook makes or is making, and keep touch targets at 44 to 48px or larger.",
+      "**Do** tilt cards only from 1024px up, by no more than 2deg, and lay them square on phones and in print."
+    ],
+    "donts": [
+      "**Don't** add a third printed ink, a gradient fill, or a tint other than the existing rule and wash alphas.",
+      "**Don't** box or fill content groups; use rules. Bordered rectangles are only for buttons, tick boxes, steppers and timer chips.",
+      "**Don't** round card corners or give controls more than a 2px corner; the stamp is the only circle.",
+      "**Don't** print anything in blue, or mark anything the cook did in green or red (except the stamp).",
+      "**Don't** turn the index into a hero photo, intro paragraph or grid of equal recipe cards; it is a ruled order card with one row per dish.",
+      "**Don't** add icon families other than Phosphor bold, or emoji and text glyphs in place of icons."
+    ]
+  }
+}

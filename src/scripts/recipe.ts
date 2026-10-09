@@ -235,6 +235,14 @@ export function initRecipe() {
     if (btn) btn.dataset.done = '';
     $(`.step[data-index="${i}"]`)?.setAttribute('data-done', '');
   }
+  /* Replay the stamp-press on a freshly stamped mark. */
+  function land(el: Element | null | undefined) {
+    if (!el) return;
+    el.classList.remove('is-landing');
+    void (el as HTMLElement).offsetWidth;
+    el.classList.add('is-landing');
+    el.addEventListener('animationend', () => el.classList.remove('is-landing'), { once: true });
+  }
   function applyDone() {
     trackBtns.forEach((b) => {
       const i = Number(b.dataset.go);
@@ -328,14 +336,8 @@ export function initRecipe() {
     if (i > 0 && !state.done.includes(i)) {
       state.done.push(i);
       stampStep(i);
-      const btn = trackBtns.find((b) => Number(b.dataset.go) === i);
-      btn?.animate(
-        [
-          { transform: 'scale(1.35)', opacity: 0.4 },
-          { transform: 'scale(1)', opacity: 1 },
-        ],
-        { duration: 240, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' },
-      );
+      land(trackBtns.find((b) => Number(b.dataset.go) === i));
+      land($(`.step[data-index="${i}"]`));
     }
     show(i + 1, 1);
   });
