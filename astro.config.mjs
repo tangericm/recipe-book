@@ -6,4 +6,9 @@ export default defineConfig({
   output: 'static',
   trailingSlash: 'ignore',
   build: { format: 'directory' },
+  // Older dumpling cards, replaced by the family versions.
+  redirects: {
+    '/r/pork-dumplings': '/r/pork-napa-tofu-dumplings',
+    '/r/dumpling-wrappers': '/r/hand-rolled-wrappers',
+  },
 });

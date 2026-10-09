@@ -8,7 +8,7 @@ source:
 summary: Pork with napa cabbage, pressed tofu, grated ginger and green onion, seasoned with two soy sauces, Shaoxing wine, sesame oil and a little black vinegar, then boiled.
 yield: { qty: 40, unit: dumplings }
 time: { active: 70, total: 80 }
-related: [hand-rolled-wrappers, pork-dumplings]
+related: [hand-rolled-wrappers]
 ingredients:
   - name: Filling
     items:

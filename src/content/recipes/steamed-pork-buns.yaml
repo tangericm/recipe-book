@@ -13,7 +13,7 @@ source:
 summary: Soft yeasted buns pleated around a juicy pork and ginger filling and steamed. Written for the book from the bookmarked recipes; not cooked yet.
 yield: { qty: 12, unit: buns }
 time: { active: 60, total: 150 }
-related: [pork-dumplings]
+related: [pork-napa-tofu-dumplings]
 photo:
   src: "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Baozi%2C_Au_Petit_Grain_de_Sel%2C_Paris_001.jpg/1280px-Baozi%2C_Au_Petit_Grain_de_Sel%2C_Paris_001.jpg"
   alt: "Seven pleated baozi on parchment in a bamboo steamer"

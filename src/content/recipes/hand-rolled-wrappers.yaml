@@ -9,6 +9,12 @@ summary: Flour, then water a splash at a time until there is no loose flour left
 yield: { qty: 40, unit: wrappers }
 time: { active: 40, total: 70 }
 related: [pork-napa-tofu-dumplings]
+photo:
+  src: "https://images.pexels.com/photos/13995953/pexels-photo-13995953.jpeg?auto=compress&cs=tinysrgb&w=1280"
+  alt: "Hands rolling small dough discs with a short rolling pin on a floured board"
+  credit: "tom L"
+  license: "Pexels License"
+  href: "https://www.pexels.com/photo/a-person-making-dumpling-wrappers-13995953/"
 ingredients:
   - items:
       - { id: flour, qty: 300, unit: g, name: all-purpose flour, note: plus more for dusting }
