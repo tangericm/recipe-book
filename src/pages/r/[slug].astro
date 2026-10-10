@@ -37,7 +37,7 @@ const url = new URL(`/r/${recipe.id}/`, Astro.site).href;
 const step = d.yield.qty > 12 ? Math.max(1, Math.round(d.yield.qty / 5)) : 1;
 ---
 
-<Base title={`${d.hanzi ? `${d.hanzi} ` : ''}${d.title}, Home Cooking`} description={d.summary} jsonLd={jsonLd(recipe, url)}>
+<Base title={`${d.hanzi ? `${d.hanzi} ` : ''}${d.title}, Eric's Recipe Book`} description={d.summary} jsonLd={jsonLd(recipe, url)}>
   <div class="page">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/" class="crumbs__back"><Icon name="arrow-left" /> <span>All recipes</span></a>

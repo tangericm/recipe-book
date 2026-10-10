@@ -1,5 +1,5 @@
 ---
-name: 家常 Home Cooking
+name: Eric's Recipe Book · 家常
 description: Eric's recipe book, set as a printed dim sum order card on a celadon table.
 colors:
   vermilion: "#c41f2e"
@@ -115,7 +115,7 @@ components:
     padding: "clamp(20px, 4vw, 56px) clamp(16px, 4.5vw, 64px)"
 ---
 
-# Design System: 家常 Home Cooking
+# Design System: Eric's Recipe Book · 家常
 
 ## Overview
 
